@@ -4,6 +4,7 @@ Pokemon CNN Predictor — loads the pre-trained Keras model and performs inferen
 
 import os
 
+# Force CPU-only mode and suppress TF C++ logs — MUST be set before importing TF
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 
@@ -43,6 +44,9 @@ class PokemonPredictor:
     # ── Private helpers ────────────────────────────────────────────────────────
     def _load(self) -> None:
         """Load the Keras model and the index-to-name mapping."""
+        logger.info("Model path: %s (exists: %s)", MODEL_PATH, MODEL_PATH.exists())
+        logger.info("Index path: %s (exists: %s)", INDEX_MAP_PATH, INDEX_MAP_PATH.exists())
+
         if not MODEL_PATH.exists():
             logger.warning("Model file not found at %s — predictor disabled.", MODEL_PATH)
             return
@@ -55,13 +59,11 @@ class PokemonPredictor:
             # machines without TF (e.g. for testing the rest of the bot).
             import tensorflow as tf
 
-            # Suppress excessive TF logging
-            os.environ.setdefault("TF_CPP_MIN_LOG_LEVEL", "2")
             tf.get_logger().setLevel("ERROR")
 
             logger.info("Loading model from %s …", MODEL_PATH)
             self.model = tf.keras.models.load_model(str(MODEL_PATH))
-            logger.info("Model loaded successfully.")
+            logger.info("Model loaded successfully. Input shape: %s", self.model.input_shape)
 
             with open(INDEX_MAP_PATH, "r", encoding="utf-8") as fh:
                 raw = json.load(fh)
@@ -69,7 +71,18 @@ class PokemonPredictor:
             self.index_to_pokemon = {int(k): v for k, v in raw.items()}
             logger.info("Loaded %d class labels.", len(self.index_to_pokemon))
 
+            # Validate: model output classes should match index map
+            output_classes = self.model.output_shape[-1]
+            if output_classes != len(self.index_to_pokemon):
+                logger.warning(
+                    "Model output size (%d) != index map size (%d) — predictions may be wrong!",
+                    output_classes, len(self.index_to_pokemon)
+                )
+
             self.loaded = True
+        except ImportError:
+            logger.warning("TensorFlow not installed — predictor disabled.")
+            self.loaded = False
         except Exception:
             logger.exception("Failed to load model / index map.")
             self.loaded = False
@@ -90,6 +103,9 @@ class PokemonPredictor:
 
         tensor = self._preprocess(image_bytes)
         preds = self.model.predict(tensor, verbose=0)[0]  # shape: (num_classes,)
+
+        # Clamp top_k to actual number of classes
+        top_k = min(top_k, len(preds))
 
         # Get top-k indices
         top_indices = preds.argsort()[-top_k:][::-1]

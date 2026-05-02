@@ -40,6 +40,10 @@ def _start_bot_thread():
             logger.error("Bot stopped: %s", e)
         finally:
             _bot_running = False
+            try:
+                _bot_loop.close()
+            except Exception:
+                pass
 
     _bot_thread = threading.Thread(target=_run, daemon=True)
     _bot_thread.start()
@@ -50,7 +54,10 @@ def _stop_bot():
     global _bot_running
     if not _bot_running or not _bot_loop:
         return False
-    asyncio.run_coroutine_threadsafe(_bot_ref.close(), _bot_loop)
+    try:
+        asyncio.run_coroutine_threadsafe(_bot_ref.close(), _bot_loop)
+    except Exception as e:
+        logger.error("Error stopping bot: %s", e)
     _bot_running = False
     return True
 
@@ -217,11 +224,12 @@ function fmtUptime(s){
 async function refresh(){
   try{
     const r=await fetch('/dashboard/status');
+    if(!r.ok) return;
     const d=await r.json();
-    document.getElementById('totalCaught').textContent=d.stats.total_caught;
-    document.getElementById('cnnCatches').textContent=d.stats.cnn_catches;
-    document.getElementById('hintCatches').textContent=d.stats.hint_catches;
-    document.getElementById('skipped').textContent=d.stats.skipped;
+    document.getElementById('totalCaught').textContent=d.stats.total_caught||0;
+    document.getElementById('cnnCatches').textContent=d.stats.cnn_catches||0;
+    document.getElementById('hintCatches').textContent=d.stats.hint_catches||0;
+    document.getElementById('skipped').textContent=d.stats.skipped||0;
     document.getElementById('uptime').textContent=fmtUptime(d.stats.uptime_seconds);
 
     const badge=document.getElementById('statusBadge');
@@ -235,7 +243,7 @@ async function refresh(){
 
     const lc=document.getElementById('logContainer');
     if(d.logs&&d.logs.length){
-      lc.innerHTML=d.logs.map(l=>'<div class="log-line">'+l+'</div>').join('');
+      lc.innerHTML=d.logs.map(l=>'<div class="log-line">'+l.replace(/</g,'&lt;')+'</div>').join('');
       lc.parentElement.scrollTop=lc.parentElement.scrollHeight;
     }
   }catch(e){console.error(e);}
@@ -259,6 +267,13 @@ setInterval(refresh,5000);
 
 
 # ── Routes ─────────────────────────────────────────────────────────────────────
+@app.route("/")
+def index():
+    """Redirect root to dashboard."""
+    from flask import redirect
+    return redirect("/dashboard")
+
+
 @app.route("/dashboard")
 def dashboard():
     return render_template_string(DASHBOARD_HTML)
@@ -301,5 +316,3 @@ def settings():
         "distraction_chance": DISTRACTION_CHANCE,
         "catch_channel_id": CATCH_CHANNEL_ID,
     })
-
-

@@ -25,7 +25,8 @@ POKETWO_BOT_ID = 716390085896962058
 # Set to None to catch in ALL channels (not recommended).
 # You can also set via environment variable: CATCH_CHANNEL_ID=123456789
 # ═══════════════════════════════════════════════════════════════════════════════
-CATCH_CHANNEL_ID = int(os.getenv("CATCH_CHANNEL_ID", "0")) or None
+_raw_channel_id = os.getenv("CATCH_CHANNEL_ID", "").strip()
+CATCH_CHANNEL_ID = int(_raw_channel_id) if _raw_channel_id.isdigit() else None
 
 MIN_DELAY, MAX_DELAY = 2.0, 5.0
 DISTRACTION_CHANCE = 0.05
@@ -63,12 +64,14 @@ class Stats:
 
 class PokeCatcherBot(discord.Client):
     def __init__(self, **kwargs):
+        # Set up intents before calling super().__init__
         intents = discord.Intents.default()
         intents.message_content = True
         intents.messages = True
         intents.guilds = True
         kwargs["intents"] = intents
         super().__init__(**kwargs)
+
         self.predictor = PokemonPredictor()
         self.state = BotState.IDLE
         self.stats = Stats()
@@ -79,6 +82,17 @@ class PokeCatcherBot(discord.Client):
 
         # Channel restriction
         self.catch_channel_id = CATCH_CHANNEL_ID
+
+        # Reusable aiohttp session (avoid creating one per download)
+        self._http_session: Optional[aiohttp.ClientSession] = None
+
+    async def _get_session(self) -> aiohttp.ClientSession:
+        """Return a reusable aiohttp session, creating one if needed."""
+        if self._http_session is None or self._http_session.closed:
+            self._http_session = aiohttp.ClientSession(
+                timeout=aiohttp.ClientTimeout(total=15)
+            )
+        return self._http_session
 
     def _log(self, msg, level="info"):
         ts = time.strftime("%H:%M:%S")
@@ -101,25 +115,32 @@ class PokeCatcherBot(discord.Client):
         if self.catch_channel_id and message.channel.id != self.catch_channel_id:
             return
 
+        # Check for spawn embed
         if message.embeds:
             for embed in message.embeds:
                 if embed.title and SPAWN_RE.search(embed.title):
                     await self._handle_spawn(message, embed)
                     return
 
+        # Check for hint message
         if self.state == BotState.WAITING_FOR_HINT:
             if message.content and HINT_RE.search(message.content):
                 await self._handle_hint(message)
                 return
 
+        # Check for catch confirmation
         if self.state == BotState.WAITING_FOR_RESULT:
-            if message.content and self.user and (str(self.user.id) in message.content or (self.user.mention and self.user.mention in message.content)):
-                if "caught" in message.content.lower():
-                    self.stats.total_caught += 1
-                    self._log(f"Caught! {message.content}")
-                else:
-                    self._log(f"Catch failed: {message.content}")
-                self.state = BotState.IDLE
+            if message.content and self.user:
+                # Poketwo mentions user by ID or @mention in catch results
+                user_id_str = str(self.user.id)
+                user_mention = f"<@{self.user.id}>"
+                if user_id_str in message.content or user_mention in message.content:
+                    if "caught" in message.content.lower():
+                        self.stats.total_caught += 1
+                        self._log(f"✓ Caught! {message.content}")
+                    else:
+                        self._log(f"✗ Catch failed: {message.content}")
+                    self.state = BotState.IDLE
 
     async def _handle_spawn(self, message, embed):
         if self.state != BotState.IDLE:
@@ -139,9 +160,20 @@ class PokeCatcherBot(discord.Client):
         self._log(f"Waiting {delay:.1f}s before identifying...")
         await asyncio.sleep(delay)
 
+        # If state changed while sleeping (e.g. another handler reset it), abort
+        if self.state != BotState.IDENTIFYING:
+            return
+
         image_bytes = await self._download_spawn_image(embed)
         if image_bytes and self.predictor.loaded:
-            result = await self.predictor.predict_best(image_bytes, min_confidence=CNN_CONFIDENCE_THRESHOLD)
+            try:
+                result = await self.predictor.predict_best(
+                    image_bytes, min_confidence=CNN_CONFIDENCE_THRESHOLD
+                )
+            except Exception as exc:
+                self._log(f"CNN prediction error: {exc}", "error")
+                result = None
+
             if result:
                 name, conf = result
                 self._log(f"CNN prediction: {name} ({conf:.1%})")
@@ -149,12 +181,17 @@ class PokeCatcherBot(discord.Client):
                 self.stats.total_cnn_correct += 1
                 return
             else:
-                top = await self.predictor.predict(image_bytes, top_k=3)
-                top_str = ", ".join(f"{n} ({c:.1%})" for n, c in top)
-                self._log(f"CNN uncertain — top: {top_str}")
+                try:
+                    top = await self.predictor.predict(image_bytes, top_k=3)
+                    top_str = ", ".join(f"{n} ({c:.1%})" for n, c in top)
+                    self._log(f"CNN uncertain — top: {top_str}")
+                except Exception as exc:
+                    self._log(f"CNN top-k error: {exc}", "error")
 
         self._log("Waiting for hint from Poketwo...")
         self.state = BotState.WAITING_FOR_HINT
+
+        # Wait for hint with timeout — use a task so hint handler can cancel it
         await asyncio.sleep(30)
         if self.state == BotState.WAITING_FOR_HINT:
             self._log("Hint timeout — returning to IDLE.", "warning")
@@ -185,7 +222,13 @@ class PokeCatcherBot(discord.Client):
         # Always ping Poketwo bot with @mention to catch
         catch_cmd = f"<@{POKETWO_BOT_ID}> catch {pokemon_name}"
         self._log(f"Sending: {catch_cmd}")
-        await channel.send(catch_cmd)
+        try:
+            await channel.send(catch_cmd)
+        except discord.HTTPException as exc:
+            self._log(f"Failed to send catch command: {exc}", "error")
+            self.state = BotState.IDLE
+            return
+
         await asyncio.sleep(10)
         if self.state == BotState.WAITING_FOR_RESULT:
             self._log("No catch confirmation received.", "warning")
@@ -201,16 +244,22 @@ class PokeCatcherBot(discord.Client):
             self._log("No image URL in spawn embed.", "warning")
             return None
         try:
-            async with aiohttp.ClientSession() as session:
-                async with session.get(url, timeout=aiohttp.ClientTimeout(total=10)) as resp:
-                    if resp.status == 200:
-                        data = await resp.read()
-                        self._log(f"Downloaded spawn image ({len(data)} bytes)")
-                        return data
-                    self._log(f"Image download HTTP {resp.status}", "warning")
+            session = await self._get_session()
+            async with session.get(url) as resp:
+                if resp.status == 200:
+                    data = await resp.read()
+                    self._log(f"Downloaded spawn image ({len(data)} bytes)")
+                    return data
+                self._log(f"Image download HTTP {resp.status}", "warning")
         except Exception as exc:
             self._log(f"Image download failed: {exc}", "warning")
         return None
+
+    async def close(self):
+        """Clean up resources before closing."""
+        if self._http_session and not self._http_session.closed:
+            await self._http_session.close()
+        await super().close()
 
 
 _bot_instance = None
