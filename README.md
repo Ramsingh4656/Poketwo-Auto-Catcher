@@ -7,13 +7,13 @@
 
 [![Python](https://img.shields.io/badge/Python-3.10+-3776ab?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.15+-ff6f00?style=for-the-badge&logo=tensorflow&logoColor=white)](https://tensorflow.org)
-[![discord.py-self](https://img.shields.io/badge/discord.py--self-2.1.0-5865f2?style=for-the-badge&logo=discord&logoColor=white)](https://github.com/dolfies/discord.py-self)
-[![Flask](https://img.shields.io/badge/Flask-3.0+-000000?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com)
+[![discord.py-self](https://img.shields.io/badge/discord.py--self-latest-5865f2?style=for-the-badge&logo=discord&logoColor=white)](https://github.com/dolfies/discord.py-self)
+[![Flask](https://img.shields.io/badge/Flask-2.3+-000000?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com)
 [![License](https://img.shields.io/badge/License-MIT-22c55e?style=for-the-badge)](LICENSE)
 
 A Discord selfbot that uses a **custom trained CNN model** to automatically identify and catch Pokémon spawned by the [Pokétwo](https://poketwo.net/) bot — with human-like delays and a live web dashboard.
 
-[Features](#-features) · [How It Works](#-how-it-works) · [Setup](#-setup) · [Dashboard](#-dashboard) · [Training](#-model-training) · [FAQ](#-faq)
+[Features](#-features) · [How It Works](#-how-it-works) · [Project Structure](#-project-structure) · [Setup](#-setup) · [Dashboard](#-dashboard) · [FAQ](#-faq)
 
 </div>
 
@@ -32,8 +32,8 @@ A Discord selfbot that uses a **custom trained CNN model** to automatically iden
 - 🧍 **Human-like Behaviour** — randomized delays (2–5s), typing indicators, occasional "distraction" pauses
 - 🌐 **Live Dashboard** — start/stop the bot, view stats, and read logs from your browser
 - 📺 **Single Channel Only** — strictly watches one channel, ignores everything else
-- ⚡ **Fast Inference** — ~10ms per image on CPU, ~2ms on GPU
-- 🔄 **Zero API Cost** — model runs fully offline after training, no external API calls
+- ⚡ **Fast Inference** — ~10ms per image on CPU
+- 🔄 **Zero API Cost** — model runs fully offline, no external API calls
 
 ---
 
@@ -50,11 +50,11 @@ Pokétwo Spawn Message
         │
        NO
         ↓
-  Request /hint from Pokétwo
+  Request hint from Pokétwo
         ↓
   Pattern match hint against 1200+ Pokémon names
         ↓
-  Confidence ≥ 85%? ──── YES ──→ Send catch command ✅
+  Match found? ──── YES ──→ Send catch command ✅
         │
        NO
         ↓
@@ -62,38 +62,29 @@ Pokétwo Spawn Message
 ```
 
 **Human-like behaviour at every step:**
-- 2.5–5.0 second delay before reacting to spawn
+- 2–5 second random delay before reacting to a spawn
 - 5% chance of an extra 3–8 second "distraction" pause
-- Typing indicator shown before every message
-- Typing duration scales with message length
+- Typing indicator shown before every message sent
 
 ---
 
 ## 📁 Project Structure
 
 ```
-poketwo-autocatcher/
-├── model/                       # Pre-trained model files (you provide these)
+Poketwo-Auto-Catcher/
+├── model/
 │   ├── pokemon_cnn.keras        # Trained CNN model
 │   ├── class_indices.json       # Pokémon name → index
 │   └── index_to_pokemon.json    # Index → Pokémon name
 │
-├── bot/                         # Selfbot + dashboard
-│   ├── main.py                  # Entry point
-│   ├── bot.py                   # Discord selfbot core logic
-│   ├── predictor.py             # CNN model loader & inference
-│   ├── pokemon_data.py          # 1200+ Pokémon names + hint parser
-│   ├── web.py                   # Flask dashboard
-│   └── requirements.txt
-│
-├── train/                       # CNN training pipeline
-│   ├── download_dataset.py      # Download all Pokétwo CDN images
-│   ├── augment.py               # Data augmentation
-│   ├── train_model.py           # Build & train CNN
-│   ├── test_model.py            # Test model with any image
-│   └── requirements_train.txt
-│
-└── README.md
+└── bot/
+    ├── main.py                  # Entry point
+    ├── bot.py                   # Discord selfbot core logic
+    ├── predictor.py             # CNN model loader & inference
+    ├── pokemon_data.py          # 1200+ Pokémon names + hint parser
+    ├── web.py                   # Flask dashboard
+    ├── requirements.txt         # Python dependencies
+    └── .env                     # Your config (you create this)
 ```
 
 ---
@@ -102,10 +93,10 @@ poketwo-autocatcher/
 
 ### Prerequisites
 
-- Python 3.10 or higher
-- A trained CNN model (see [Model Training](#-model-training) below)
-- Your Discord user token
-- The channel ID where Pokétwo spawns happen
+- Python **3.10 or higher**
+- The pre-trained CNN model files inside the `model/` folder
+- Your Discord **user token**
+- The **channel ID** where Pokétwo spawns happen
 
 ---
 
@@ -118,7 +109,7 @@ cd Poketwo-Auto-Catcher
 
 ---
 
-### Step 2 — Install Bot Dependencies
+### Step 2 — Install Dependencies
 
 ```bash
 cd bot
@@ -129,14 +120,14 @@ pip install -r requirements.txt
 
 ### Step 3 — Get Your Discord User Token
 
-> ⚠️ Your user token gives full access to your Discord account. Never share it.
+> ⚠️ Your user token gives **full access** to your Discord account. Never share it with anyone.
 
 1. Open **Discord in your browser** (not the desktop app)
 2. Press `F12` to open DevTools
 3. Go to the **Network** tab
-4. Press `Ctrl+R` to reload the page
-5. Click any request going to `discord.com/api`
-6. In the **Request Headers** section, find `authorization`
+4. Press `Ctrl+R` to reload
+5. Click any request to `discord.com/api`
+6. In **Request Headers**, find `authorization`
 7. Copy that value — that is your `USER_TOKEN`
 
 ---
@@ -145,54 +136,49 @@ pip install -r requirements.txt
 
 1. Open Discord → **User Settings** → **Advanced**
 2. Enable **Developer Mode**
-3. Right-click the channel where Pokétwo spawns happen
+3. Right-click the channel where Pokétwo spawns
 4. Click **Copy Channel ID**
 
 ---
 
-### Step 5 — Set Environment Variables
+### Step 5 — Create Your `.env` File
 
-**Windows (Command Prompt):**
-```cmd
-set USER_TOKEN=your_token_here
-set CATCH_CHANNEL_ID=123456789012345678
-set AUTOSTART=1
+Inside the `bot/` folder, create a file named `.env` and paste this:
+
+```env
+USER_TOKEN=paste_your_token_here
+CATCH_CHANNEL_ID=paste_channel_id_here
+AUTOSTART=true
+PORT=5000
 ```
 
-**Windows (PowerShell):**
-```powershell
-$env:USER_TOKEN="your_token_here"
-$env:CATCH_CHANNEL_ID="123456789012345678"
-$env:AUTOSTART="1"
-```
+Replace `paste_your_token_here` with your Discord token and `paste_channel_id_here` with your channel ID.
 
-**Linux / macOS:**
-```bash
-export USER_TOKEN=your_token_here
-export CATCH_CHANNEL_ID=123456789012345678
-export AUTOSTART=1
-```
+> 💡 The bot reads this file automatically on startup. No need to set environment variables manually every time.
 
 | Variable | Required | Description |
 |---|---|---|
 | `USER_TOKEN` | ✅ | Your Discord user token |
 | `CATCH_CHANNEL_ID` | ✅ | Channel ID to watch for spawns |
+| `AUTOSTART` | ❌ | Set to `true` to auto-start on launch |
 | `PORT` | ❌ | Dashboard port (default: `5000`) |
-| `AUTOSTART` | ❌ | Set to `1` to auto-start the bot on launch |
 
 ---
 
-### Step 7 — Run
+### Step 6 — Run the Bot
 
 ```bash
 cd bot
 python main.py
 ```
 
-Open your browser and go to:
+Then open your browser and go to:
+
 ```
 http://localhost:5000/dashboard
 ```
+
+Click **▶ Start Bot** if you didn't set `AUTOSTART=true`.
 
 ---
 
@@ -203,16 +189,10 @@ The web dashboard lets you control everything from your browser.
 | Feature | Description |
 |---|---|
 | **Start / Stop** | Start or stop the bot with one click |
-| **Model Status** | Shows whether CNN model is loaded |
+| **Model Status** | Shows whether the CNN model loaded successfully |
 | **Live Stats** | Total caught, CNN catches, hint catches, skipped |
 | **Uptime** | How long the bot has been running |
-| **Live Logs** | Auto-refreshes every 5 seconds, colour-coded by level |
-
-**Log colours:**
-- ⬜ Grey — INFO (normal events)
-- 🟡 Yellow — WARN (non-critical issues)
-- 🔴 Red — ERROR (failures)
-- 🟢 Green — successful catches
+| **Live Logs** | Auto-refreshes every 5 seconds |
 
 ---
 
@@ -220,11 +200,11 @@ The web dashboard lets you control everything from your browser.
 
 | Stat | Description |
 |---|---|
-| `total_caught` | Total Pokémon caught this session |
-| `cnn_catches` | Catches made using CNN prediction |
-| `hint_catches` | Catches made using hint fallback |
-| `skipped` | Spawns skipped (low confidence or no match) |
-| `uptime` | Time since bot was last started |
+| `Total Caught` | Total Pokémon caught this session |
+| `CNN Catches` | Catches made using CNN prediction |
+| `Hint Catches` | Catches made using hint fallback |
+| `Skipped` | Spawns skipped (low confidence or no match) |
+| `Uptime` | Time since bot was last started |
 
 ---
 
@@ -232,12 +212,13 @@ The web dashboard lets you control everything from your browser.
 
 | Technology | Purpose |
 |---|---|
-| `discord.py-self` | Discord user account API (no Intents needed) |
-| `TensorFlow / Keras` | CNN model training and inference |
+| `discord.py-self` | Discord user account API |
+| `TensorFlow / Keras` | CNN model inference |
 | `Flask` | Web dashboard backend |
 | `aiohttp` | Async image downloading |
 | `Pillow` | Image preprocessing |
 | `NumPy` | Array operations for inference |
+| `python-dotenv` | `.env` file support |
 
 ---
 
@@ -253,7 +234,7 @@ Pull requests are welcome. For major changes, please open an issue first.
 
 1. Fork the repo
 2. Create your branch: `git checkout -b feature/my-feature`
-3. Commit your changes: `git commit -m 'Add my feature'`
+3. Commit: `git commit -m "Add my feature"`
 4. Push: `git push origin feature/my-feature`
 5. Open a Pull Request
 
