@@ -64,12 +64,14 @@ class Stats:
 
 class PokeCatcherBot(discord.Client):
     def __init__(self, **kwargs):
-        # Set up intents before calling super().__init__
-        intents = discord.Intents.default()
-        intents.message_content = True
-        intents.messages = True
-        intents.guilds = True
-        kwargs["intents"] = intents
+        # discord.py-self (selfbot fork) does NOT use Intents — that's a
+        # bot-only feature.  Only set intents if using regular discord.py.
+        if hasattr(discord, "Intents"):
+            intents = discord.Intents.default()
+            intents.message_content = True
+            intents.messages = True
+            intents.guilds = True
+            kwargs["intents"] = intents
         super().__init__(**kwargs)
 
         self.predictor = PokemonPredictor()
