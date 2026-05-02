@@ -1,0 +1,25 @@
+# ── Secrets ────────────────────────────────────
+.env
+
+# ── Python ─────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+
+# ── TensorFlow / Model artifacts ───────────────
+*.h5
+*.tflite
+checkpoint
+
+# ── OS / IDE ───────────────────────────────────
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
