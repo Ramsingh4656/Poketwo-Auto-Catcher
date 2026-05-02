@@ -4,6 +4,7 @@ web.py — Flask dashboard for monitoring and controlling the selfbot.
 
 import os, threading, asyncio, logging, time
 from flask import Flask, render_template_string, jsonify, request
+from bot import CNN_CONFIDENCE_THRESHOLD, MIN_DELAY, MAX_DELAY, DISTRACTION_CHANCE, CATCH_CHANNEL_ID
 
 logger = logging.getLogger("web")
 
@@ -302,5 +303,3 @@ def settings():
     })
 
 
-# Import constants from bot module
-from bot import CNN_CONFIDENCE_THRESHOLD, MIN_DELAY, MAX_DELAY, DISTRACTION_CHANCE, CATCH_CHANNEL_ID

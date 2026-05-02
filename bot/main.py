@@ -1,3 +1,9 @@
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
+
 """
 main.py — Entry point: starts Flask dashboard and optionally auto-starts the bot.
 

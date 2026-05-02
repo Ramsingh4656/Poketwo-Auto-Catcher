@@ -1,6 +1,7 @@
 flask>=3.0,<4.0
-discord.py-self>=2.0,<3.0
+discord.py-self
 tensorflow>=2.15.0
 aiohttp>=3.9.0
 Pillow>=10.0.0
 numpy>=1.24.0
+python-dotenv

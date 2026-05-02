@@ -63,6 +63,11 @@ class Stats:
 
 class PokeCatcherBot(discord.Client):
     def __init__(self, **kwargs):
+        intents = discord.Intents.default()
+        intents.message_content = True
+        intents.messages = True
+        intents.guilds = True
+        kwargs["intents"] = intents
         super().__init__(**kwargs)
         self.predictor = PokemonPredictor()
         self.state = BotState.IDLE
@@ -108,7 +113,7 @@ class PokeCatcherBot(discord.Client):
                 return
 
         if self.state == BotState.WAITING_FOR_RESULT:
-            if message.content and self.user and str(self.user) in message.content:
+            if message.content and self.user and (str(self.user.id) in message.content or (self.user.mention and self.user.mention in message.content)):
                 if "caught" in message.content.lower():
                     self.stats.total_caught += 1
                     self._log(f"Caught! {message.content}")
