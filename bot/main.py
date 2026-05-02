@@ -98,6 +98,53 @@ if _raw_channel and not _raw_channel.isdigit():
 
 PORT = int(os.getenv("PORT", "5000"))
 AUTOSTART = os.getenv("AUTOSTART", "").lower() in ("1", "true", "yes")
+# ── Verify correct discord library ─────────────────────────────────────────────
+# discord.py-self (selfbot fork) sends tokens as-is.
+# Regular discord.py sends tokens as "Bot <token>" which causes 401 for user tokens.
+# If both are installed, the wrong one may load first.
+import discord
+import inspect
+
+_discord_file = discord.__file__
+_is_selfbot_fork = False
+try:
+    _http_src = inspect.getsource(discord.http.HTTPClient.request)
+    # The selfbot fork does NOT add "Bot " prefix
+    _is_selfbot_fork = "'Bot ' + self.token" not in _http_src
+except Exception:
+    _is_selfbot_fork = not hasattr(discord, "Intents")  # fallback check
+
+if not _is_selfbot_fork:
+    logger.error("=" * 60)
+    logger.error("WRONG DISCORD LIBRARY DETECTED!")
+    logger.error("")
+    logger.error("  Loaded: discord.py %s", discord.__version__)
+    logger.error("  From:   %s", _discord_file)
+    logger.error("")
+    logger.error("  This is regular discord.py (for bots), NOT discord.py-self")
+    logger.error("  (for selfbots). It adds 'Bot ' prefix to your token,")
+    logger.error("  causing 'Improper token' errors.")
+    logger.error("")
+    logger.error("  FIX: Run this command and restart:")
+    logger.error("    pip uninstall discord.py -y")
+    logger.error("=" * 60)
+
+    # Try to auto-fix
+    logger.info("Attempting automatic fix...")
+    import subprocess
+    result = subprocess.run(
+        [sys.executable, "-m", "pip", "uninstall", "discord.py", "-y"],
+        capture_output=True, text=True
+    )
+    if result.returncode == 0:
+        logger.info("Uninstalled regular discord.py. Restarting...")
+        os.execv(sys.executable, [sys.executable] + sys.argv)
+    else:
+        logger.error("Auto-fix failed. Please run manually:")
+        logger.error("  pip uninstall discord.py -y")
+        sys.exit(1)
+else:
+    logger.info("Discord library: discord.py-self %s (OK)", discord.__version__)
 
 # ── Import bot + web ──────────────────────────────────────────────────────────
 from bot import get_bot
