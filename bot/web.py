@@ -4,7 +4,10 @@ web.py — Flask dashboard for monitoring and controlling the selfbot.
 
 import os, threading, asyncio, logging, time
 from flask import Flask, render_template_string, jsonify, request
-from bot import CNN_CONFIDENCE_THRESHOLD, MIN_DELAY, MAX_DELAY, DISTRACTION_CHANCE, CATCH_CHANNEL_ID
+from bot import (
+    CNN_CONFIDENCE_THRESHOLD, MIN_DELAY, MAX_DELAY,
+    DISTRACTION_CHANCE, CATCH_CHANNEL_ID, PokeCatcherBot,
+)
 
 logger = logging.getLogger("web")
 
@@ -16,6 +19,7 @@ _bot_thread = None
 _bot_loop = None
 _bot_token = None
 _bot_running = False
+_bot_lock = threading.Lock()  # Prevent race conditions on start/stop
 
 
 def set_bot_ref(bot, token):
@@ -25,40 +29,72 @@ def set_bot_ref(bot, token):
 
 
 def _start_bot_thread():
-    global _bot_thread, _bot_loop, _bot_running
-    if _bot_running:
-        return False
+    """Start the bot in a new daemon thread with a fresh event loop.
+
+    CRITICAL: discord.py Client objects are bound to the event loop they
+    first run on.  Once that loop closes (after a failure or stop), the
+    client cannot be reused.  We therefore create a FRESH bot instance
+    for every start so the new event loop has a clean client.
+    """
+    global _bot_ref, _bot_thread, _bot_loop, _bot_running
+
+    with _bot_lock:
+        if _bot_running:
+            logger.warning("Bot is already running — ignoring start request.")
+            return False
+
+        # Mark running early inside the lock to block duplicate starts
+        _bot_running = True
+
+    # Create a brand-new bot instance (old one is bound to dead loop)
+    _bot_ref = PokeCatcherBot()
+    logger.info("Created fresh bot instance for new session.")
 
     def _run():
         global _bot_loop, _bot_running
-        _bot_loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(_bot_loop)
-        _bot_running = True
+        loop = asyncio.new_event_loop()
+        _bot_loop = loop
+        asyncio.set_event_loop(loop)
         try:
-            _bot_loop.run_until_complete(_bot_ref.start(_bot_token))
+            loop.run_until_complete(_bot_ref.start(_bot_token))
         except Exception as e:
             logger.error("Bot stopped: %s", e)
         finally:
-            _bot_running = False
+            # Clean up the loop properly
             try:
-                _bot_loop.close()
+                # Cancel all pending tasks
+                pending = asyncio.all_tasks(loop)
+                for task in pending:
+                    task.cancel()
+                if pending:
+                    loop.run_until_complete(
+                        asyncio.gather(*pending, return_exceptions=True)
+                    )
+                loop.run_until_complete(loop.shutdown_asyncgens())
             except Exception:
                 pass
+            finally:
+                loop.close()
+                _bot_running = False
+                logger.info("Bot event loop closed cleanly.")
 
-    _bot_thread = threading.Thread(target=_run, daemon=True)
+    _bot_thread = threading.Thread(target=_run, daemon=True, name="bot-thread")
     _bot_thread.start()
     return True
 
 
 def _stop_bot():
     global _bot_running
-    if not _bot_running or not _bot_loop:
-        return False
-    try:
-        asyncio.run_coroutine_threadsafe(_bot_ref.close(), _bot_loop)
-    except Exception as e:
-        logger.error("Error stopping bot: %s", e)
-    _bot_running = False
+    with _bot_lock:
+        if not _bot_running or not _bot_loop:
+            return False
+        try:
+            future = asyncio.run_coroutine_threadsafe(_bot_ref.close(), _bot_loop)
+            # Wait up to 10 seconds for graceful shutdown
+            future.result(timeout=10)
+        except Exception as e:
+            logger.error("Error stopping bot: %s", e)
+        _bot_running = False
     return True
 
 
@@ -86,6 +122,7 @@ DASHBOARD_HTML = """
     --text-muted: #6c6c80;
     --success: #00d26a;
     --warning: #ffc107;
+    --danger: #e94560;
     --border: rgba(255,255,255,0.06);
     --glass: rgba(255,255,255,0.03);
   }
@@ -146,10 +183,11 @@ DASHBOARD_HTML = """
     font-size:0.85rem; font-weight:600; cursor:pointer; transition:all 0.2s;
     display:inline-flex; align-items:center; gap:6px;
   }
+  .btn:disabled { opacity:0.5; cursor:not-allowed; transform:none !important; }
   .btn-start { background:var(--success); color:#111; }
-  .btn-start:hover { filter:brightness(1.15); transform:scale(1.03); }
+  .btn-start:hover:not(:disabled) { filter:brightness(1.15); transform:scale(1.03); }
   .btn-stop { background:var(--accent); color:#fff; }
-  .btn-stop:hover { filter:brightness(1.15); transform:scale(1.03); }
+  .btn-stop:hover:not(:disabled) { filter:brightness(1.15); transform:scale(1.03); }
   .btn-refresh { background:var(--bg-card); color:var(--text-secondary); border:1px solid var(--border); }
   .btn-refresh:hover { background:var(--bg-card-hover); }
 
@@ -173,6 +211,16 @@ DASHBOARD_HTML = """
   .model-dot { width:10px; height:10px; border-radius:50%; }
   .model-dot.loaded { background:var(--success); box-shadow:0 0 8px var(--success); }
   .model-dot.unloaded { background:var(--accent); box-shadow:0 0 8px var(--accent); }
+
+  .toast {
+    position:fixed; bottom:24px; right:24px; padding:14px 22px;
+    border-radius:12px; font-size:0.85rem; font-weight:500;
+    color:#fff; z-index:1000; opacity:0; transform:translateY(20px);
+    transition:all 0.3s ease; pointer-events:none;
+  }
+  .toast.show { opacity:1; transform:translateY(0); }
+  .toast.error { background:var(--danger); }
+  .toast.success { background:var(--success); color:#111; }
 
   footer { text-align:center; padding:24px 0; font-size:0.75rem; color:var(--text-muted); }
 </style>
@@ -213,12 +261,26 @@ DASHBOARD_HTML = """
 
   <footer>PokéCatcher Dashboard · CNN Auto-Catcher · Use at your own risk</footer>
 </div>
+<div class="toast" id="toast"></div>
 
 <script>
 function fmtUptime(s){
   if(!s)return '—';
   const h=Math.floor(s/3600),m=Math.floor((s%3600)/60),sec=s%60;
   return (h?h+'h ':'')+(m?m+'m ':'')+(sec+'s');
+}
+
+function showToast(msg, type='error'){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.className='toast '+type+' show';
+  setTimeout(()=>{t.className='toast';},4000);
+}
+
+let _busy=false;
+function setButtonState(running){
+  document.getElementById('btnStart').disabled=running||_busy;
+  document.getElementById('btnStop').disabled=!running||_busy;
 }
 
 async function refresh(){
@@ -236,6 +298,7 @@ async function refresh(){
     const stxt=document.getElementById('statusText');
     if(d.running){badge.className='status-badge';stxt.textContent='Online';}
     else{badge.className='status-badge offline';stxt.textContent='Offline';}
+    setButtonState(d.running);
 
     const md=document.getElementById('modelDot'),ms=document.getElementById('modelStatus');
     if(d.model_loaded){md.className='model-dot loaded';ms.textContent='Model: Loaded ✓';}
@@ -250,12 +313,29 @@ async function refresh(){
 }
 
 async function startBot(){
-  await fetch('/dashboard/start',{method:'POST'});
-  setTimeout(refresh,1000);
+  if(_busy) return;
+  _busy=true; setButtonState(false);
+  try{
+    const r=await fetch('/dashboard/start',{method:'POST'});
+    const d=await r.json();
+    if(d.error) showToast(d.error,'error');
+    else if(d.started) showToast('Bot starting…','success');
+    else showToast('Bot is already running','error');
+  }catch(e){showToast('Request failed','error');}
+  _busy=false;
+  setTimeout(refresh,1500);
 }
 async function stopBot(){
-  await fetch('/dashboard/stop',{method:'POST'});
-  setTimeout(refresh,1000);
+  if(_busy) return;
+  _busy=true; setButtonState(true);
+  try{
+    const r=await fetch('/dashboard/stop',{method:'POST'});
+    const d=await r.json();
+    if(d.stopped) showToast('Bot stopped','success');
+    else showToast('Bot is not running','error');
+  }catch(e){showToast('Request failed','error');}
+  _busy=false;
+  setTimeout(refresh,1500);
 }
 
 refresh();
