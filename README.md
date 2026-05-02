@@ -118,23 +118,7 @@ cd Poketwo-Auto-Catcher
 
 ---
 
-### Step 2 — Train or Add the Model
-
-The bot needs a trained CNN model in the `model/` folder.
-
-**Option A — Train it yourself** (recommended, see [Model Training](#-model-training))
-
-**Option B — If you already have the model files**, place them in `model/`:
-```
-model/
-├── pokemon_cnn.keras
-├── class_indices.json
-└── index_to_pokemon.json
-```
-
----
-
-### Step 3 — Install Bot Dependencies
+### Step 2 — Install Bot Dependencies
 
 ```bash
 cd bot
@@ -143,7 +127,7 @@ pip install -r requirements.txt
 
 ---
 
-### Step 4 — Get Your Discord User Token
+### Step 3 — Get Your Discord User Token
 
 > ⚠️ Your user token gives full access to your Discord account. Never share it.
 
@@ -157,7 +141,7 @@ pip install -r requirements.txt
 
 ---
 
-### Step 5 — Get Your Channel ID
+### Step 4 — Get Your Channel ID
 
 1. Open Discord → **User Settings** → **Advanced**
 2. Enable **Developer Mode**
@@ -166,7 +150,7 @@ pip install -r requirements.txt
 
 ---
 
-### Step 6 — Set Environment Variables
+### Step 5 — Set Environment Variables
 
 **Windows (Command Prompt):**
 ```cmd
