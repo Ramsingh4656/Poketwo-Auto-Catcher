@@ -117,24 +117,17 @@ Poketwo-Auto-Catcher/
    cd Poketwo-Auto-Catcher
    ```
 
-2. **Set up a virtual environment:**
-   - **Windows:**
-     ```bash
-     python -m venv .venv
-     .venv\Scripts\activate
-     ```
-   - **Linux/macOS:**
-     ```bash
-     python3 -m venv .venv
-     source .venv/bin/activate
-     ```
+2. **Install Python** (if you don't already have it):
+   Download and install [Python 3.9 – 3.12](https://python.org) for your OS, then confirm it's on your `PATH`:
+   ```bash
+   python --version
+   ```
 
 3. **Install the dependencies:**
    ```bash
-   python -m pip install --upgrade pip
-   python -m pip install -r requirements.txt
+   pip install -r requirements.txt
    ```
-   > 📌 **Note**: This bot requires `discord.py-self`. If regular `discord.py` is installed in your global space, run `pip uninstall discord.py -y` first to prevent token format errors.
+   > 📌 **Note**: This bot requires `discord.py-self`, which is installed automatically by the command above. If regular `discord.py` is *also* present in your Python environment, it will conflict — see [Troubleshooting](#-troubleshooting) below.
 
 4. **Configure environment variables:**
    Copy the configuration template:
@@ -211,23 +204,27 @@ The built-in Flask web panel provides a visual control suite:
 ## 🔧 Troubleshooting
 
 ### "Improper Token" or 401 Error
-- Ensure you do not have regular `discord.py` installed alongside `discord.py-self`. Run:
-  ```bash
-  pip uninstall discord.py -y
-  ```
-- Verify that your token in `bot/.env` does **not** have double or single quotes surrounding it.
+This almost always comes down to one of two causes, both checked automatically at startup:
+
+1. **Wrong Discord library loaded.** Regular `discord.py` (built for bots) prefixes every request with `"Bot "`, which Discord rejects for a user token and returns as a 401/"Improper token" error. `bot/main.py` inspects the installed library at startup and will detect this automatically, print a clear warning, and attempt to fix it by running:
+   ```bash
+   pip uninstall discord.py -y
+   ```
+   If the auto-fix doesn't take effect, run that command yourself and restart the bot.
+
+2. **A malformed token in `bot/.env`.** Check the following:
+   - The `.env` file lives at `bot/.env` (copied from `bot/.env.example`) — not in the project root.
+   - `USER_TOKEN` is set to your **actual account token**, on its own line.
+   - The token is **not wrapped in quotes** (`USER_TOKEN=abc123`, not `USER_TOKEN="abc123"`).
+   - There are **no leading/trailing spaces** — `bot/main.py` strips whitespace, BOM characters, and quotes automatically, but a heavily corrupted token can still fail validation.
+   - The token has the standard three-part, dot-separated Discord token structure. `bot/main.py` checks this on startup and will tell you if the format looks wrong.
+   - Your dependencies are correctly installed and up to date (`pip install -r requirements.txt`) — a stale or mismatched `discord.py-self` version can also trigger login failures.
+
+> 🔒 **Never expose your token.** Don't paste it into chat messages, screenshots, commits, or issue reports. Anyone with your `USER_TOKEN` has full access to your Discord account. Keep `bot/.env` local and out of version control (it's already covered by `.gitignore`-style practice — never commit it).
 
 ### Find Discord Channel ID
-- Go to Discord Settings $\rightarrow$ Advanced $\rightarrow$ Enable **Developer Mode**.
-- Right-click the desired spawn channel $\rightarrow$ Click **Copy Channel ID**.
-
-### Find Discord User Token
-- Log into Discord on a web browser.
-- Press `F12` to open Developer Tools $\rightarrow$ Go to the Console tab.
-- Paste the following code and press Enter to print your token:
-  ```javascript
-  (webpackChunkdiscord_app.push([[''],{},e=>{m=[];for(let c in e.c)m.push(e.c[c])}]),m).find(m=>m?.exports?.default?.getToken!==void 0).exports.default.getToken()
-  ```
+- Go to Discord Settings → Advanced → Enable **Developer Mode**.
+- Right-click the desired spawn channel → Click **Copy Channel ID**.
 
 ---
 
