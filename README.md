@@ -201,25 +201,6 @@ The built-in Flask web panel provides a visual control suite:
 
 ---
 
-## 🔧 Troubleshooting
-
-### "Improper Token" or 401 Error
-This almost always comes down to one of two causes, both checked automatically at startup:
-
-1. **Wrong Discord library loaded.** Regular `discord.py` (built for bots) prefixes every request with `"Bot "`, which Discord rejects for a user token and returns as a 401/"Improper token" error. `bot/main.py` inspects the installed library at startup and will detect this automatically, print a clear warning, and attempt to fix it by running:
-   ```bash
-   pip uninstall discord.py -y
-   ```
-   If the auto-fix doesn't take effect, run that command yourself and restart the bot.
-
-2. **A malformed token in `bot/.env`.** Check the following:
-   - The `.env` file lives at `bot/.env` (copied from `bot/.env.example`) — not in the project root.
-   - `USER_TOKEN` is set to your **actual account token**, on its own line.
-   - The token is **not wrapped in quotes** (`USER_TOKEN=abc123`, not `USER_TOKEN="abc123"`).
-   - There are **no leading/trailing spaces** — `bot/main.py` strips whitespace, BOM characters, and quotes automatically, but a heavily corrupted token can still fail validation.
-   - The token has the standard three-part, dot-separated Discord token structure. `bot/main.py` checks this on startup and will tell you if the format looks wrong.
-   - Your dependencies are correctly installed and up to date (`pip install -r requirements.txt`) — a stale or mismatched `discord.py-self` version can also trigger login failures.
-
 > 🔒 **Never expose your token.** Don't paste it into chat messages, screenshots, commits, or issue reports. Anyone with your `USER_TOKEN` has full access to your Discord account. Keep `bot/.env` local and out of version control (it's already covered by `.gitignore`-style practice — never commit it).
 
 ### Find Discord Channel ID
