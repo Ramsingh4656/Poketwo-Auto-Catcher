@@ -1,0 +1,86 @@
+{
+  "threshold": 0.3,
+  "overall": {
+    "accepted_count": 17834,
+    "count": 26848,
+    "unknown_rate": 0.33574195470798573,
+    "accepted_top1": 0.9768980598856117,
+    "precision_macro": 0.8728911200179359,
+    "recall_macro": 0.859146854529775,
+    "f1_macro": 0.8626639285295178
+  },
+  "by_transform": {
+    "brightness_low": {
+      "accepted_count": 2492,
+      "count": 3356,
+      "unknown_rate": 0.25744934445768775,
+      "accepted_top1": 0.9755216693418941,
+      "precision_macro": 0.8411858974358974,
+      "recall_macro": 0.8356481481481481,
+      "f1_macro": 0.8354929792429792
+    },
+    "brightness_high": {
+      "accepted_count": 1778,
+      "count": 3356,
+      "unknown_rate": 0.47020262216924913,
+      "accepted_top1": 0.9746906636670416,
+      "precision_macro": 0.777960927960928,
+      "recall_macro": 0.7751958689458689,
+      "f1_macro": 0.7734986464153131
+    },
+    "contrast_low": {
+      "accepted_count": 2272,
+      "count": 3356,
+      "unknown_rate": 0.32300357568533966,
+      "accepted_top1": 0.9845950704225352,
+      "precision_macro": 0.8365983553483554,
+      "recall_macro": 0.8333333333333334,
+      "f1_macro": 0.8325812304978972
+    },
+    "blur": {
+      "accepted_count": 2308,
+      "count": 3356,
+      "unknown_rate": 0.31227651966626935,
+      "accepted_top1": 0.9913344887348353,
+      "precision_macro": 0.8459757834757834,
+      "recall_macro": 0.8466880341880342,
+      "f1_macro": 0.8450574888074889
+    },
+    "jpeg_like": {
+      "accepted_count": 1779,
+      "count": 3356,
+      "unknown_rate": 0.4699046483909416,
+      "accepted_top1": 0.9842608206857786,
+      "precision_macro": 0.762962962962963,
+      "recall_macro": 0.7636217948717948,
+      "f1_macro": 0.7611679215845883
+    },
+    "crop": {
+      "accepted_count": 2215,
+      "count": 3356,
+      "unknown_rate": 0.3399880810488677,
+      "accepted_top1": 0.9286681715575621,
+      "precision_macro": 0.7543358262108262,
+      "recall_macro": 0.7404736467236468,
+      "f1_macro": 0.7375342428227043
+    },
+    "dark_ui": {
+      "accepted_count": 2570,
+      "count": 3356,
+      "unknown_rate": 0.234207389749702,
+      "accepted_top1": 0.9867704280155642,
+      "precision_macro": 0.85133547008547,
+      "recall_macro": 0.8499821937321936,
+      "f1_macro": 0.8490588115588116
+    },
+    "light_ui": {
+      "accepted_count": 2420,
+      "count": 3356,
+      "unknown_rate": 0.2789034564958284,
+      "accepted_top1": 0.9871900826446282,
+      "precision_macro": 0.8554220085470085,
+      "recall_macro": 0.8526531339031338,
+      "f1_macro": 0.8522989356322689
+    }
+  }
+}

@@ -1,0 +1,505 @@
+{
+  "official_catchable_records": 936,
+  "dataset_folder_count": 1472,
+  "matched_official_catchable_slugs": 839,
+  "missing_official_catchable_slugs": 97,
+  "unmatched_dataset_folders": 633,
+  "valid_matched_image_files": 19297,
+  "exact_duplicate_hash_groups": 0,
+  "normalized_alias_matches": [],
+  "true_missing_after_aliases": [
+    {
+      "official": "alcremie-vanilla-cream-berry-sweet"
+    },
+    {
+      "official": "alcremie-vanilla-cream-clover-sweet"
+    },
+    {
+      "official": "alcremie-vanilla-cream-flower-sweet"
+    },
+    {
+      "official": "alcremie-vanilla-cream-love-sweet"
+    },
+    {
+      "official": "alcremie-vanilla-cream-ribbon-sweet"
+    },
+    {
+      "official": "alcremie-vanilla-cream-star-sweet"
+    },
+    {
+      "official": "alcremie-vanilla-cream-strawberry-sweet"
+    },
+    {
+      "official": "burmy-plant"
+    },
+    {
+      "official": "burmy-sandy"
+    },
+    {
+      "official": "burmy-trash"
+    },
+    {
+      "official": "cherrim-sunshine"
+    },
+    {
+      "official": "cyclizar-battle"
+    },
+    {
+      "official": "cyclizar-ride"
+    },
+    {
+      "official": "deerling-autumn"
+    },
+    {
+      "official": "deerling-summer"
+    },
+    {
+      "official": "deerling-winter"
+    },
+    {
+      "official": "flabebe-blue"
+    },
+    {
+      "official": "flabebe-orange"
+    },
+    {
+      "official": "flabebe-white"
+    },
+    {
+      "official": "flabebe-yellow"
+    },
+    {
+      "official": "floette-blue"
+    },
+    {
+      "official": "floette-orange"
+    },
+    {
+      "official": "floette-white"
+    },
+    {
+      "official": "floette-yellow"
+    },
+    {
+      "official": "florges-blue"
+    },
+    {
+      "official": "florges-orange"
+    },
+    {
+      "official": "florges-white"
+    },
+    {
+      "official": "florges-yellow"
+    },
+    {
+      "official": "furfrou-dandy"
+    },
+    {
+      "official": "furfrou-debutante"
+    },
+    {
+      "official": "furfrou-diamond"
+    },
+    {
+      "official": "furfrou-heart"
+    },
+    {
+      "official": "furfrou-kabuki"
+    },
+    {
+      "official": "furfrou-la-reine"
+    },
+    {
+      "official": "furfrou-matron"
+    },
+    {
+      "official": "furfrou-pharaoh"
+    },
+    {
+      "official": "furfrou-star"
+    },
+    {
+      "official": "gastrodon-east"
+    },
+    {
+      "official": "koraidon-gliding-build"
+    },
+    {
+      "official": "koraidon-sprinting-build"
+    },
+    {
+      "official": "miraidon-drive-mode"
+    },
+    {
+      "official": "miraidon-glide-mode"
+    },
+    {
+      "official": "missingno"
+    },
+    {
+      "official": "pichu-spiky-eared"
+    },
+    {
+      "official": "rotom-drone"
+    },
+    {
+      "official": "rotom-phone"
+    },
+    {
+      "official": "rotom-pokedex"
+    },
+    {
+      "official": "sawsbuck-autumn"
+    },
+    {
+      "official": "sawsbuck-summer"
+    },
+    {
+      "official": "shellos-east"
+    },
+    {
+      "official": "unown-a"
+    },
+    {
+      "official": "unown-b"
+    },
+    {
+      "official": "unown-c"
+    },
+    {
+      "official": "unown-d"
+    },
+    {
+      "official": "unown-e"
+    },
+    {
+      "official": "unown-exclamation"
+    },
+    {
+      "official": "unown-g"
+    },
+    {
+      "official": "unown-h"
+    },
+    {
+      "official": "unown-i"
+    },
+    {
+      "official": "unown-j"
+    },
+    {
+      "official": "unown-k"
+    },
+    {
+      "official": "unown-l"
+    },
+    {
+      "official": "unown-m"
+    },
+    {
+      "official": "unown-n"
+    },
+    {
+      "official": "unown-o"
+    },
+    {
+      "official": "unown-p"
+    },
+    {
+      "official": "unown-q"
+    },
+    {
+      "official": "unown-question"
+    },
+    {
+      "official": "unown-r"
+    },
+    {
+      "official": "unown-s"
+    },
+    {
+      "official": "unown-t"
+    },
+    {
+      "official": "unown-u"
+    },
+    {
+      "official": "unown-v"
+    },
+    {
+      "official": "unown-w"
+    },
+    {
+      "official": "unown-x"
+    },
+    {
+      "official": "unown-y"
+    },
+    {
+      "official": "unown-z"
+    },
+    {
+      "official": "vivillon-archipelago"
+    },
+    {
+      "official": "vivillon-continental"
+    },
+    {
+      "official": "vivillon-elegant"
+    },
+    {
+      "official": "vivillon-fancy"
+    },
+    {
+      "official": "vivillon-garden"
+    },
+    {
+      "official": "vivillon-high-plains"
+    },
+    {
+      "official": "vivillon-icy-snow"
+    },
+    {
+      "official": "vivillon-jungle"
+    },
+    {
+      "official": "vivillon-marine"
+    },
+    {
+      "official": "vivillon-modern"
+    },
+    {
+      "official": "vivillon-monsoon"
+    },
+    {
+      "official": "vivillon-ocean"
+    },
+    {
+      "official": "vivillon-poke-ball"
+    },
+    {
+      "official": "vivillon-polar"
+    },
+    {
+      "official": "vivillon-river"
+    },
+    {
+      "official": "vivillon-sandstorm"
+    },
+    {
+      "official": "vivillon-savanna"
+    },
+    {
+      "official": "vivillon-sun"
+    },
+    {
+      "official": "vivillon-tundra"
+    },
+    {
+      "official": "xerneas-neutral"
+    }
+  ],
+  "unmatched_folder_sample": [
+    "abomasnow-mega",
+    "abra",
+    "absol-mega",
+    "aegislash-shield",
+    "aerodactyl",
+    "aerodactyl-mega",
+    "aggron",
+    "aggron-mega",
+    "alakazam",
+    "alakazam-mega",
+    "alcremie",
+    "alcremie-anniversary",
+    "alcremie-gmax",
+    "alomomola",
+    "altaria-mega",
+    "amaura-winter",
+    "ampharos-mega",
+    "ampharos-pride",
+    "appletun-festive",
+    "appletun-gmax",
+    "applin-anniversary",
+    "araquanid",
+    "arbok",
+    "arboliva-christmas",
+    "arcanine",
+    "arcanine-hisui",
+    "arceus",
+    "arceus-pride",
+    "archeops",
+    "aron",
+    "articuno",
+    "audino-christmas",
+    "audino-mega",
+    "azurill-easter",
+    "bagon",
+    "baltoy",
+    "baltoy-sweater-weather",
+    "banette",
+    "banette-mega",
+    "barbaracle",
+    "basculin-blue-striped",
+    "basculin-red-striped",
+    "bastiodon",
+    "beautifly-spring",
+    "beedrill-mega",
+    "beheeyem",
+    "beldum",
+    "bellibolt-anniversary",
+    "bellossom-christmas",
+    "bellossom-pride",
+    "bibarel",
+    "bidoof",
+    "binacle",
+    "bisharp",
+    "blacephalon",
+    "blacephalon-halloween",
+    "blastoise-gmax",
+    "blastoise-mega",
+    "blaziken-mega",
+    "boldore",
+    "braixen-halloween",
+    "braviary",
+    "braviary-hisui",
+    "breloom-halloween",
+    "brionne",
+    "bronzor-winter",
+    "bruxish",
+    "bulbasaur-autumn",
+    "buneary-spring",
+    "bunnelby-thanksgiving",
+    "burmy",
+    "butterfree-gmax",
+    "buzzwole",
+    "calyrex-ice",
+    "calyrex-shadow",
+    "camerupt",
+    "camerupt-mega",
+    "carbink",
+    "carbink-halloween",
+    "carnivine-spring",
+    "carvanha",
+    "celesteela",
+    "centiskorch-gmax",
+    "chandelure-halloween",
+    "charizard-gmax",
+    "charizard-mega-x",
+    "charizard-mega-y",
+    "charjabug",
+    "charjabug-summer",
+    "cherrim-spring",
+    "chespin-thanksgiving",
+    "chi-yu-pride",
+    "chikorita-autumn",
+    "cinderace-gmax",
+    "clamperl-anniversary",
+    "clauncher",
+    "clawitzer",
+    "cloyster",
+    "coalossal-gmax",
+    "cofagrigus",
+    "comfey-festive",
+    "comfey-pride",
+    "copperajah-gmax",
+    "corphish",
+    "corviknight-gmax",
+    "cosmog-christmas",
+    "cottonee-spring",
+    "crawdaunt",
+    "crobat",
+    "croconaw",
+    "crustle",
+    "cryogonal",
+    "cubchoo-spring",
+    "cubone",
+    "cubone-festive",
+    "cutiefly-halloween",
+    "cyndaquil",
+    "cyndaquil-winter",
+    "dachsbun-autumn",
+    "darkrai",
+    "darmanitan-standard",
+    "darumaka",
+    "decidueye-valentine",
+    "deerling-christmas",
+    "deino",
+    "delibird-festive",
+    "dewpider",
+    "dialga",
+    "dialga-origin",
+    "diancie",
+    "diancie-mega",
+    "diancie-spring",
+    "diglett-festive",
+    "dolliv-christmas",
+    "doublade",
+    "doublade-anniversary",
+    "dragalge",
+    "dragonite",
+    "dragonite-christmas",
+    "drampa",
+    "drapion",
+    "dratini-summer",
+    "drednaw-gmax",
+    "drilbur",
+    "drowzee",
+    "druddigon",
+    "ducklett-summer",
+    "dugtrio",
+    "duraludon-gmax",
+    "dusclops",
+    "dusknoir",
+    "duskull",
+    "duskull-day-of-the-dead",
+    "dwebble",
+    "eelektrik",
+    "eelektross",
+    "eevee-autumn",
+    "eevee-gmax",
+    "eiscue-ice-christmas",
+    "ekans",
+    "eldegoss-festive",
+    "elgyem",
+    "enamorus-therian",
+    "escavalier",
+    "eternatus-eternamax",
+    "excadrill",
+    "falinks-anniversary",
+    "farfetchd-festive",
+    "fearow",
+    "feebas",
+    "feraligatr",
+    "ferroseed",
+    "ferrothorn",
+    "finneon",
+    "flabebe-autumn",
+    "flapple-gmax",
+    "flapple-thanksgiving",
+    "flareon",
+    "floette-spring",
+    "frillish",
+    "froakie-autumn",
+    "furret",
+    "gallade-festive",
+    "gallade-mega",
+    "galvantula",
+    "garbodor",
+    "garbodor-gmax",
+    "garchomp-mega",
+    "gardevoir-delphox-pride",
+    "gardevoir-festive",
+    "gardevoir-mega",
+    "gastly",
+    "gastly-christmas",
+    "genesect",
+    "gengar",
+    "gengar-gmax",
+    "gengar-mega",
+    "geodude",
+    "geodude-alola",
+    "gigalith"
+  ]
+}

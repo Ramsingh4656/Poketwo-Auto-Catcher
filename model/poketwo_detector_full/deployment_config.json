@@ -1,0 +1,20 @@
+{
+  "model": "model/poketwo_detector_full/pokemon_detector.onnx",
+  "metadata": "model/poketwo_detector_full/metadata.json",
+  "architecture": "mobilenet_v3_small",
+  "classes": 936,
+  "verified_official_reference_classes": 936,
+  "verified_real_render_test_classes": 839,
+  "reference_only_classes": 97,
+  "input_size": [224, 224],
+  "input_layout": "NCHW",
+  "normalization": {
+    "mean": [0.485, 0.456, 0.406],
+    "std": [0.229, 0.224, 0.225]
+  },
+  "runtime": "onnxruntime",
+  "providers": ["CPUExecutionProvider"],
+  "confidence_threshold": 0.30,
+  "unknown_policy": "return_none_and_use_poketwo_hint_fallback",
+  "unsupported_policy": "never_guess_closed_set_label_without_confidence"
+}

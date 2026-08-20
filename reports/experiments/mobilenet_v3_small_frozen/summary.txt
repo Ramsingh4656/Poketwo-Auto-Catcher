@@ -1,0 +1,17 @@
+arch "mobilenet_v3_small"
+validation_threshold {"accepted_rate": 1.0, "f1": 0.8959980596652922, "macro_f1": 0.8959980596652922, "precision": 0.8905913978494624, "recall": 0.9032258064516129, "threshold": 0.05}
+val {"accepted_count": 296, "count": 296, "f1_macro": 0.8959980596652922, "precision_macro": 0.8905913978494624, "recall_macro": 0.9032258064516129, "top1": 0.9864864864864865, "top3": 0.9932432432432432, "top5": 1.0, "unknown_rate": 0.0}
+test {"accepted_count": 297, "count": 297, "f1_macro": 0.8951030327241254, "precision_macro": 0.8917562724014337, "recall_macro": 0.9014336917562723, "top1": 0.9865319865319865, "top3": 0.98989898989899, "top5": 1.0, "unknown_rate": 0.0}
+hard_case {"accepted_count": 2376, "count": 2376, "f1_macro": 0.8890509739897652, "precision_macro": 0.9155511317113006, "recall_macro": 0.8895889336917562, "top1": 0.9734848484848485, "top3": 0.9936868686868687, "top5": 0.997895622895623, "unknown_rate": 0.0}
+cpu_inference_ms_mean 9.293990561272949
+cpu_inference_ms_p95 9.591525967698544
+model_size_mb 6.147866249084473
+largest_confusions [(1, 45, 51), (1, 32, 17), (1, 14, 51), (1, 0, 27)]
+hard_transform blur {'top1': 0.9326599326599326, 'precision_macro': 0.8481662979540737, 'recall_macro': 0.836021505376344, 'f1_macro': 0.8294840516851901, 'unknown_rate': 0.0}
+hard_transform brightness_high {'top1': 0.9764309764309764, 'precision_macro': 0.8831541218637994, 'recall_macro': 0.8879928315412187, 'f1_macro': 0.8823453320207539, 'unknown_rate': 0.0}
+hard_transform brightness_low {'top1': 0.9865319865319865, 'precision_macro': 0.9080645161290322, 'recall_macro': 0.9155465949820788, 'f1_macro': 0.9102566663337661, 'unknown_rate': 0.0}
+hard_transform contrast_low {'top1': 0.9865319865319865, 'precision_macro': 0.8917562724014337, 'recall_macro': 0.9014336917562723, 'f1_macro': 0.8951030327241254, 'unknown_rate': 0.0}
+hard_transform crop {'top1': 0.9865319865319865, 'precision_macro': 0.8919354838709677, 'recall_macro': 0.9014336917562723, 'f1_macro': 0.894515701017249, 'unknown_rate': 0.0}
+hard_transform dark_ui {'top1': 0.9865319865319865, 'precision_macro': 0.8919354838709677, 'recall_macro': 0.9014336917562723, 'f1_macro': 0.894515701017249, 'unknown_rate': 0.0}
+hard_transform jpeg_like {'top1': 0.9461279461279462, 'precision_macro': 0.8767045454545455, 'recall_macro': 0.871415770609319, 'f1_macro': 0.8634986858353981, 'unknown_rate': 0.0}
+hard_transform light_ui {'top1': 0.9865319865319865, 'precision_macro': 0.8917562724014337, 'recall_macro': 0.9014336917562723, 'f1_macro': 0.8951030327241254, 'unknown_rate': 0.0}

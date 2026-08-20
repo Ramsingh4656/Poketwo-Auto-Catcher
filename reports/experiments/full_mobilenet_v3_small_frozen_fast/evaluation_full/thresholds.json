@@ -1,0 +1,85 @@
+{
+  "validation_calibrated_threshold": {
+    "threshold": 0.05,
+    "f1": 0.7911083222909918,
+    "accepted_rate": 0.9713945172824792,
+    "precision": 0.846396578848502,
+    "recall": 0.8133903133903133,
+    "macro_f1": 0.8144047636836099
+  },
+  "thresholds": [
+    {
+      "threshold": 0.05,
+      "accepted_count": 3270,
+      "count": 3356,
+      "accepted_rate": 0.9743742550655542,
+      "unknown_rate": 0.025625744934445804,
+      "score_min_accepted": 0.05031047388911247
+    },
+    {
+      "threshold": 0.25,
+      "accepted_count": 2631,
+      "count": 3356,
+      "accepted_rate": 0.783969010727056,
+      "unknown_rate": 0.21603098927294395,
+      "score_min_accepted": 0.2501290440559387
+    },
+    {
+      "threshold": 0.5,
+      "accepted_count": 1951,
+      "count": 3356,
+      "accepted_rate": 0.5813468414779499,
+      "unknown_rate": 0.4186531585220501,
+      "score_min_accepted": 0.500103235244751
+    },
+    {
+      "threshold": 0.7,
+      "accepted_count": 1413,
+      "count": 3356,
+      "accepted_rate": 0.4210369487485101,
+      "unknown_rate": 0.5789630512514898,
+      "score_min_accepted": 0.7000530958175659
+    },
+    {
+      "threshold": 0.8,
+      "accepted_count": 1059,
+      "count": 3356,
+      "accepted_rate": 0.31555423122765197,
+      "unknown_rate": 0.684445768772348,
+      "score_min_accepted": 0.8006867170333862
+    },
+    {
+      "threshold": 0.85,
+      "accepted_count": 864,
+      "count": 3356,
+      "accepted_rate": 0.25744934445768775,
+      "unknown_rate": 0.7425506555423123,
+      "score_min_accepted": 0.850094199180603
+    },
+    {
+      "threshold": 0.9,
+      "accepted_count": 623,
+      "count": 3356,
+      "accepted_rate": 0.18563766388557806,
+      "unknown_rate": 0.8143623361144219,
+      "score_min_accepted": 0.9001513719558716
+    },
+    {
+      "threshold": 0.95,
+      "accepted_count": 343,
+      "count": 3356,
+      "accepted_rate": 0.10220500595947557,
+      "unknown_rate": 0.8977949940405244,
+      "score_min_accepted": 0.9500424861907959
+    },
+    {
+      "threshold": 0.99,
+      "accepted_count": 54,
+      "count": 3356,
+      "accepted_rate": 0.016090584028605484,
+      "unknown_rate": 0.9839094159713945,
+      "score_min_accepted": 0.9901797771453857
+    }
+  ],
+  "note": "This score-only report does not recompute precision/recall because the compact evaluator artifact does not store true-label arrays; full top-k and macro metrics remain in evaluation.json."
+}

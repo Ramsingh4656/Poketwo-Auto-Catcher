@@ -1,0 +1,7490 @@
+[
+  {
+    "index": 0,
+    "label": "abomasnow",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 1,
+    "label": "absol",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 2,
+    "label": "accelgor",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 3,
+    "label": "aegislash-blade",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 4,
+    "label": "aipom",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 5,
+    "label": "alcremie-vanilla-cream-berry-sweet",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 6,
+    "label": "alcremie-vanilla-cream-clover-sweet",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 7,
+    "label": "alcremie-vanilla-cream-flower-sweet",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 8,
+    "label": "alcremie-vanilla-cream-love-sweet",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 9,
+    "label": "alcremie-vanilla-cream-ribbon-sweet",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 10,
+    "label": "alcremie-vanilla-cream-star-sweet",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 11,
+    "label": "alcremie-vanilla-cream-strawberry-sweet",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 12,
+    "label": "altaria",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 13,
+    "label": "amaura",
+    "test_support": 4,
+    "correct": 2,
+    "per_class_accuracy": 0.5,
+    "independent_real_tested": true
+  },
+  {
+    "index": 14,
+    "label": "ambipom",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 15,
+    "label": "amoonguss",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 16,
+    "label": "ampharos",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 17,
+    "label": "annihilape",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 18,
+    "label": "anorith",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 19,
+    "label": "appletun",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 20,
+    "label": "applin",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 21,
+    "label": "arboliva",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 22,
+    "label": "archaludon",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 23,
+    "label": "archen",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 24,
+    "label": "arctibax",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 25,
+    "label": "arctovish",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 26,
+    "label": "arctozolt",
+    "test_support": 4,
+    "correct": 2,
+    "per_class_accuracy": 0.5,
+    "independent_real_tested": true
+  },
+  {
+    "index": 27,
+    "label": "ariados",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 28,
+    "label": "armaldo",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 29,
+    "label": "armarouge",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 30,
+    "label": "aromatisse",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 31,
+    "label": "arrokuda",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 32,
+    "label": "articuno-galar",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 33,
+    "label": "audino",
+    "test_support": 4,
+    "correct": 2,
+    "per_class_accuracy": 0.5,
+    "independent_real_tested": true
+  },
+  {
+    "index": 34,
+    "label": "aurorus",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 35,
+    "label": "avalugg",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 36,
+    "label": "avalugg-hisui",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 37,
+    "label": "axew",
+    "test_support": 4,
+    "correct": 2,
+    "per_class_accuracy": 0.5,
+    "independent_real_tested": true
+  },
+  {
+    "index": 38,
+    "label": "azelf",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 39,
+    "label": "azumarill",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 40,
+    "label": "azurill",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 41,
+    "label": "barboach",
+    "test_support": 4,
+    "correct": 2,
+    "per_class_accuracy": 0.5,
+    "independent_real_tested": true
+  },
+  {
+    "index": 42,
+    "label": "barraskewda",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 43,
+    "label": "basculegion-male",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 44,
+    "label": "basculin-white-striped",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 45,
+    "label": "baxcalibur",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 46,
+    "label": "bayleef",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 47,
+    "label": "beartic",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 48,
+    "label": "beautifly",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 49,
+    "label": "beedrill",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 50,
+    "label": "bellibolt",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 51,
+    "label": "bellossom",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 52,
+    "label": "bellsprout",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 53,
+    "label": "bergmite",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 54,
+    "label": "bewear",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 55,
+    "label": "blastoise",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 56,
+    "label": "blaziken",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 57,
+    "label": "blipbug",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 58,
+    "label": "blissey",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 59,
+    "label": "blitzle",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 60,
+    "label": "boltund",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 61,
+    "label": "bombirdier",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 62,
+    "label": "bonsly",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 63,
+    "label": "bouffalant",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 64,
+    "label": "bounsweet",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 65,
+    "label": "braixen",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 66,
+    "label": "brambleghast",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 67,
+    "label": "bramblin",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 68,
+    "label": "breloom",
+    "test_support": 4,
+    "correct": 2,
+    "per_class_accuracy": 0.5,
+    "independent_real_tested": true
+  },
+  {
+    "index": 69,
+    "label": "bronzong",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 70,
+    "label": "bronzor",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 71,
+    "label": "brute-bonnet",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 72,
+    "label": "budew",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 73,
+    "label": "buizel",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 74,
+    "label": "bulbasaur",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 75,
+    "label": "buneary",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 76,
+    "label": "bunnelby",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 77,
+    "label": "burmy-plant",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 78,
+    "label": "burmy-sandy",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 79,
+    "label": "burmy-trash",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 80,
+    "label": "butterfree",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 81,
+    "label": "cacnea",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 82,
+    "label": "cacturne",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 83,
+    "label": "calyrex",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 84,
+    "label": "capsakid",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 85,
+    "label": "carkol",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 86,
+    "label": "carnivine",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 87,
+    "label": "carracosta",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 88,
+    "label": "cascoon",
+    "test_support": 4,
+    "correct": 1,
+    "per_class_accuracy": 0.25,
+    "independent_real_tested": true
+  },
+  {
+    "index": 89,
+    "label": "castform",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 90,
+    "label": "castform-rainy",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 91,
+    "label": "castform-snowy",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 92,
+    "label": "castform-sunny",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 93,
+    "label": "caterpie",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 94,
+    "label": "celebi",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 95,
+    "label": "centiskorch",
+    "test_support": 4,
+    "correct": 2,
+    "per_class_accuracy": 0.5,
+    "independent_real_tested": true
+  },
+  {
+    "index": 96,
+    "label": "ceruledge",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 97,
+    "label": "cetitan",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 98,
+    "label": "cetoddle",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 99,
+    "label": "chandelure",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 100,
+    "label": "chansey",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 101,
+    "label": "charcadet",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 102,
+    "label": "charizard",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 103,
+    "label": "charmander",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 104,
+    "label": "charmeleon",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 105,
+    "label": "chatot",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 106,
+    "label": "cherrim",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 107,
+    "label": "cherrim-sunshine",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 108,
+    "label": "cherubi",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 109,
+    "label": "chesnaught",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 110,
+    "label": "chespin",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 111,
+    "label": "chewtle",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 112,
+    "label": "chi-yu",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 113,
+    "label": "chien-pao",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 114,
+    "label": "chikorita",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 115,
+    "label": "chimchar",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 116,
+    "label": "chimecho",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 117,
+    "label": "chinchou",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 118,
+    "label": "chingling",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 119,
+    "label": "cinccino",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 120,
+    "label": "cinderace",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 121,
+    "label": "clamperl",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 122,
+    "label": "claydol",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 123,
+    "label": "clefable",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 124,
+    "label": "clefairy",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 125,
+    "label": "cleffa",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 126,
+    "label": "clobbopus",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 127,
+    "label": "clodsire",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 128,
+    "label": "coalossal",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 129,
+    "label": "cobalion",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 130,
+    "label": "combee",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 131,
+    "label": "combusken",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 132,
+    "label": "comfey",
+    "test_support": 4,
+    "correct": 2,
+    "per_class_accuracy": 0.5,
+    "independent_real_tested": true
+  },
+  {
+    "index": 133,
+    "label": "conkeldurr",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 134,
+    "label": "copperajah",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 135,
+    "label": "corsola",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 136,
+    "label": "corsola-galar",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 137,
+    "label": "corviknight",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 138,
+    "label": "corvisquire",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 139,
+    "label": "cosmoem",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 140,
+    "label": "cosmog",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 141,
+    "label": "cottonee",
+    "test_support": 4,
+    "correct": 2,
+    "per_class_accuracy": 0.5,
+    "independent_real_tested": true
+  },
+  {
+    "index": 142,
+    "label": "crabominable",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 143,
+    "label": "crabrawler",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 144,
+    "label": "cradily",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 145,
+    "label": "cramorant",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 146,
+    "label": "cramorant-gorging",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 147,
+    "label": "cramorant-gulping",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 148,
+    "label": "cranidos",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 149,
+    "label": "cresselia",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 150,
+    "label": "croagunk",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 151,
+    "label": "crocalor",
+    "test_support": 4,
+    "correct": 2,
+    "per_class_accuracy": 0.5,
+    "independent_real_tested": true
+  },
+  {
+    "index": 152,
+    "label": "cubchoo",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 153,
+    "label": "cufant",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 154,
+    "label": "cursola",
+    "test_support": 4,
+    "correct": 2,
+    "per_class_accuracy": 0.5,
+    "independent_real_tested": true
+  },
+  {
+    "index": 155,
+    "label": "cutiefly",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 156,
+    "label": "cyclizar",
+    "test_support": 4,
+    "correct": 2,
+    "per_class_accuracy": 0.5,
+    "independent_real_tested": true
+  },
+  {
+    "index": 157,
+    "label": "cyclizar-battle",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 158,
+    "label": "cyclizar-ride",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 159,
+    "label": "dachsbun",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 160,
+    "label": "darmanitan-galar-standard",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 161,
+    "label": "darmanitan-galar-zen",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 162,
+    "label": "darmanitan-zen",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 163,
+    "label": "dartrix",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 164,
+    "label": "darumaka-galar",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 165,
+    "label": "decidueye",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 166,
+    "label": "decidueye-hisui",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 167,
+    "label": "dedenne",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 168,
+    "label": "deerling",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 169,
+    "label": "deerling-autumn",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 170,
+    "label": "deerling-summer",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 171,
+    "label": "deerling-winter",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 172,
+    "label": "delcatty",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 173,
+    "label": "delibird",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 174,
+    "label": "delphox",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 175,
+    "label": "deoxys-attack",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 176,
+    "label": "deoxys-defense",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 177,
+    "label": "deoxys-normal",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 178,
+    "label": "deoxys-speed",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 179,
+    "label": "dewgong",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 180,
+    "label": "dewott",
+    "test_support": 4,
+    "correct": 1,
+    "per_class_accuracy": 0.25,
+    "independent_real_tested": true
+  },
+  {
+    "index": 181,
+    "label": "dhelmise",
+    "test_support": 4,
+    "correct": 1,
+    "per_class_accuracy": 0.25,
+    "independent_real_tested": true
+  },
+  {
+    "index": 182,
+    "label": "diggersby",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 183,
+    "label": "diglett",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 184,
+    "label": "diglett-alola",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 185,
+    "label": "dipplin",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 186,
+    "label": "ditto",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 187,
+    "label": "dodrio",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 188,
+    "label": "doduo",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 189,
+    "label": "dolliv",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 190,
+    "label": "dondozo",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 191,
+    "label": "donphan",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 192,
+    "label": "dottler",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 193,
+    "label": "dracovish",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 194,
+    "label": "dracozolt",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 195,
+    "label": "dragapult",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 196,
+    "label": "dragonair",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 197,
+    "label": "drakloak",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 198,
+    "label": "dratini",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 199,
+    "label": "drednaw",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 200,
+    "label": "dreepy",
+    "test_support": 4,
+    "correct": 2,
+    "per_class_accuracy": 0.5,
+    "independent_real_tested": true
+  },
+  {
+    "index": 201,
+    "label": "drifblim",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 202,
+    "label": "drifloon",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 203,
+    "label": "drizzile",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 204,
+    "label": "dubwool",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 205,
+    "label": "ducklett",
+    "test_support": 4,
+    "correct": 2,
+    "per_class_accuracy": 0.5,
+    "independent_real_tested": true
+  },
+  {
+    "index": 206,
+    "label": "dudunsparce",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 207,
+    "label": "dudunsparce-three-segment",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 208,
+    "label": "dugtrio-alola",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 209,
+    "label": "dunsparce",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 210,
+    "label": "duosion",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 211,
+    "label": "duraludon",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 212,
+    "label": "durant",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 213,
+    "label": "dustox",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 214,
+    "label": "eevee",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 215,
+    "label": "eevee-starter",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 216,
+    "label": "eiscue-ice",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 217,
+    "label": "eiscue-noice",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 218,
+    "label": "eldegoss",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 219,
+    "label": "electabuzz",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 220,
+    "label": "electivire",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 221,
+    "label": "electrike",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 222,
+    "label": "electrode",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 223,
+    "label": "electrode-hisui",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 224,
+    "label": "elekid",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 225,
+    "label": "emboar",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 226,
+    "label": "emolga",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 227,
+    "label": "empoleon",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 228,
+    "label": "enamorus-incarnate",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 229,
+    "label": "entei",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 230,
+    "label": "espathra",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 231,
+    "label": "espeon",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 232,
+    "label": "espurr",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 233,
+    "label": "eternatus",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 234,
+    "label": "exeggcute",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 235,
+    "label": "exeggutor",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 236,
+    "label": "exeggutor-alola",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 237,
+    "label": "exploud",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 238,
+    "label": "falinks",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 239,
+    "label": "farfetchd",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 240,
+    "label": "farfetchd-galar",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 241,
+    "label": "farigiraf",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 242,
+    "label": "fennekin",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 243,
+    "label": "fezandipiti",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 244,
+    "label": "fidough",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 245,
+    "label": "finizen",
+    "test_support": 4,
+    "correct": 1,
+    "per_class_accuracy": 0.25,
+    "independent_real_tested": true
+  },
+  {
+    "index": 246,
+    "label": "flaaffy",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 247,
+    "label": "flabebe",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 248,
+    "label": "flabebe-blue",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 249,
+    "label": "flabebe-orange",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 250,
+    "label": "flabebe-white",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 251,
+    "label": "flabebe-yellow",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 252,
+    "label": "flamigo",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 253,
+    "label": "flapple",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 254,
+    "label": "fletchinder",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 255,
+    "label": "fletchling",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 256,
+    "label": "flittle",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 257,
+    "label": "floatzel",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 258,
+    "label": "floette",
+    "test_support": 4,
+    "correct": 2,
+    "per_class_accuracy": 0.5,
+    "independent_real_tested": true
+  },
+  {
+    "index": 259,
+    "label": "floette-blue",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 260,
+    "label": "floette-orange",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 261,
+    "label": "floette-white",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 262,
+    "label": "floette-yellow",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 263,
+    "label": "floragato",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 264,
+    "label": "florges",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 265,
+    "label": "florges-blue",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 266,
+    "label": "florges-orange",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 267,
+    "label": "florges-white",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 268,
+    "label": "florges-yellow",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 269,
+    "label": "flutter-mane",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 270,
+    "label": "flygon",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 271,
+    "label": "fomantis",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 272,
+    "label": "foongus",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 273,
+    "label": "forretress",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 274,
+    "label": "fraxure",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 275,
+    "label": "frigibax",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 276,
+    "label": "froakie",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 277,
+    "label": "frogadier",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 278,
+    "label": "froslass",
+    "test_support": 4,
+    "correct": 2,
+    "per_class_accuracy": 0.5,
+    "independent_real_tested": true
+  },
+  {
+    "index": 279,
+    "label": "frosmoth",
+    "test_support": 4,
+    "correct": 2,
+    "per_class_accuracy": 0.5,
+    "independent_real_tested": true
+  },
+  {
+    "index": 280,
+    "label": "fuecoco",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 281,
+    "label": "furfrou",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 282,
+    "label": "furfrou-dandy",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 283,
+    "label": "furfrou-debutante",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 284,
+    "label": "furfrou-diamond",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 285,
+    "label": "furfrou-heart",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 286,
+    "label": "furfrou-kabuki",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 287,
+    "label": "furfrou-la-reine",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 288,
+    "label": "furfrou-matron",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 289,
+    "label": "furfrou-pharaoh",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 290,
+    "label": "furfrou-star",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 291,
+    "label": "gabite",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 292,
+    "label": "gallade",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 293,
+    "label": "garchomp",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 294,
+    "label": "gardevoir",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 295,
+    "label": "garganacl",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 296,
+    "label": "gastrodon",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 297,
+    "label": "gastrodon-east",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 298,
+    "label": "gholdengo",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 299,
+    "label": "gible",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 300,
+    "label": "gimmighoul",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 301,
+    "label": "gimmighoul-roaming",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 302,
+    "label": "girafarig",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 303,
+    "label": "glaceon",
+    "test_support": 4,
+    "correct": 1,
+    "per_class_accuracy": 0.25,
+    "independent_real_tested": true
+  },
+  {
+    "index": 304,
+    "label": "glameow",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 305,
+    "label": "glastrier",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 306,
+    "label": "gligar",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 307,
+    "label": "glimmet",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 308,
+    "label": "glimmora",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 309,
+    "label": "gloom",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 310,
+    "label": "gogoat",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 311,
+    "label": "golduck",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 312,
+    "label": "goodra",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 313,
+    "label": "goodra-hisui",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 314,
+    "label": "goomy",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 315,
+    "label": "gorebyss",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 316,
+    "label": "gossifleur",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 317,
+    "label": "gothita",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 318,
+    "label": "gothitelle",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 319,
+    "label": "gothorita",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 320,
+    "label": "gouging-fire",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 321,
+    "label": "grafaiai",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 322,
+    "label": "granbull",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 323,
+    "label": "grapploct",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 324,
+    "label": "great-tusk",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 325,
+    "label": "greavard",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 326,
+    "label": "greedent",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 327,
+    "label": "greninja",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 328,
+    "label": "grimer-alola",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 329,
+    "label": "grimmsnarl",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 330,
+    "label": "grookey",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 331,
+    "label": "grotle",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 332,
+    "label": "grovyle",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 333,
+    "label": "grumpig",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 334,
+    "label": "gulpin",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 335,
+    "label": "gumshoos",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 336,
+    "label": "gurdurr",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 337,
+    "label": "hakamo-o",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 338,
+    "label": "happiny",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 339,
+    "label": "hariyama",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 340,
+    "label": "hatenna",
+    "test_support": 4,
+    "correct": 2,
+    "per_class_accuracy": 0.5,
+    "independent_real_tested": true
+  },
+  {
+    "index": 341,
+    "label": "hatterene",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 342,
+    "label": "hattrem",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 343,
+    "label": "hawlucha",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 344,
+    "label": "haxorus",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 345,
+    "label": "helioptile",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 346,
+    "label": "heracross",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 347,
+    "label": "herdier",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 348,
+    "label": "hitmontop",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 349,
+    "label": "honchkrow",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 350,
+    "label": "hoothoot",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 351,
+    "label": "hoppip",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 352,
+    "label": "houndstone",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 353,
+    "label": "hydrapple",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 354,
+    "label": "igglybuff",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 355,
+    "label": "illumise",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 356,
+    "label": "impidimp",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 357,
+    "label": "incineroar",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 358,
+    "label": "indeedee-male",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 359,
+    "label": "inteleon",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 360,
+    "label": "iron-boulder",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 361,
+    "label": "iron-bundle",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 362,
+    "label": "iron-crown",
+    "test_support": 4,
+    "correct": 2,
+    "per_class_accuracy": 0.5,
+    "independent_real_tested": true
+  },
+  {
+    "index": 363,
+    "label": "iron-hands",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 364,
+    "label": "iron-jugulis",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 365,
+    "label": "iron-leaves",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 366,
+    "label": "iron-moth",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 367,
+    "label": "iron-thorns",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 368,
+    "label": "iron-treads",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 369,
+    "label": "iron-valiant",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 370,
+    "label": "ivysaur",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 371,
+    "label": "jangmo-o",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 372,
+    "label": "jigglypuff",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 373,
+    "label": "jirachi",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 374,
+    "label": "jumpluff",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 375,
+    "label": "kabutops",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 376,
+    "label": "kakuna",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 377,
+    "label": "karrablast",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 378,
+    "label": "kecleon",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 379,
+    "label": "keldeo-ordinary",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 380,
+    "label": "kilowattrel",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 381,
+    "label": "kingambit",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 382,
+    "label": "kirlia",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 383,
+    "label": "klawf",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 384,
+    "label": "kleavor",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 385,
+    "label": "klefki",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 386,
+    "label": "komala",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 387,
+    "label": "kommo-o",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 388,
+    "label": "koraidon",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 389,
+    "label": "koraidon-gliding-build",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 390,
+    "label": "koraidon-sprinting-build",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 391,
+    "label": "kricketot",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 392,
+    "label": "kricketune",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 393,
+    "label": "krokorok",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 394,
+    "label": "krookodile",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 395,
+    "label": "kubfu",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 396,
+    "label": "kyogre",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 397,
+    "label": "lampent",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 398,
+    "label": "lanturn",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 399,
+    "label": "lapras",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 400,
+    "label": "larvesta",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 401,
+    "label": "larvitar",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 402,
+    "label": "latias",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 403,
+    "label": "latios",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 404,
+    "label": "leafeon",
+    "test_support": 4,
+    "correct": 2,
+    "per_class_accuracy": 0.5,
+    "independent_real_tested": true
+  },
+  {
+    "index": 405,
+    "label": "leavanny",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 406,
+    "label": "lechonk",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 407,
+    "label": "ledyba",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 408,
+    "label": "lickilicky",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 409,
+    "label": "lickitung",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 410,
+    "label": "liepard",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 411,
+    "label": "lileep",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 412,
+    "label": "lilligant",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 413,
+    "label": "lilligant-hisui",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 414,
+    "label": "lillipup",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 415,
+    "label": "linoone-galar",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 416,
+    "label": "litleo",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 417,
+    "label": "litten",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 418,
+    "label": "lokix",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 419,
+    "label": "lombre",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 420,
+    "label": "lopunny",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 421,
+    "label": "lotad",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 422,
+    "label": "loudred",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 423,
+    "label": "lucario",
+    "test_support": 4,
+    "correct": 1,
+    "per_class_accuracy": 0.25,
+    "independent_real_tested": true
+  },
+  {
+    "index": 424,
+    "label": "ludicolo",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 425,
+    "label": "lunala",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 426,
+    "label": "lurantis",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 427,
+    "label": "luvdisc",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 428,
+    "label": "luxio",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 429,
+    "label": "luxray",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 430,
+    "label": "lycanroc-dusk",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 431,
+    "label": "lycanroc-midday",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 432,
+    "label": "lycanroc-midnight",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 433,
+    "label": "mabosstiff",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 434,
+    "label": "machop",
+    "test_support": 4,
+    "correct": 2,
+    "per_class_accuracy": 0.5,
+    "independent_real_tested": true
+  },
+  {
+    "index": 435,
+    "label": "magby",
+    "test_support": 4,
+    "correct": 2,
+    "per_class_accuracy": 0.5,
+    "independent_real_tested": true
+  },
+  {
+    "index": 436,
+    "label": "magcargo",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 437,
+    "label": "magmar",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 438,
+    "label": "magmortar",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 439,
+    "label": "magnemite",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 440,
+    "label": "magneton",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 441,
+    "label": "makuhita",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 442,
+    "label": "mandibuzz",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 443,
+    "label": "manectric",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 444,
+    "label": "maractus",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 445,
+    "label": "mareanie",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 446,
+    "label": "mareep",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 447,
+    "label": "marill",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 448,
+    "label": "marshadow-zenith",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 449,
+    "label": "marshtomp",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 450,
+    "label": "maschiff",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 451,
+    "label": "masquerain",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 452,
+    "label": "maushold",
+    "test_support": 4,
+    "correct": 1,
+    "per_class_accuracy": 0.25,
+    "independent_real_tested": true
+  },
+  {
+    "index": 453,
+    "label": "maushold-family-of-three",
+    "test_support": 4,
+    "correct": 2,
+    "per_class_accuracy": 0.5,
+    "independent_real_tested": true
+  },
+  {
+    "index": 454,
+    "label": "medicham",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 455,
+    "label": "meditite",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 456,
+    "label": "meganium",
+    "test_support": 4,
+    "correct": 2,
+    "per_class_accuracy": 0.5,
+    "independent_real_tested": true
+  },
+  {
+    "index": 457,
+    "label": "meloetta-aria",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 458,
+    "label": "meloetta-pirouette",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 459,
+    "label": "meowscarada",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 460,
+    "label": "meowstic-male",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 461,
+    "label": "meowth",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 462,
+    "label": "meowth-alola",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 463,
+    "label": "meowth-galar",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 464,
+    "label": "mesprit",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 465,
+    "label": "metapod",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 466,
+    "label": "mew",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 467,
+    "label": "mewtwo",
+    "test_support": 4,
+    "correct": 0,
+    "per_class_accuracy": 0.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 468,
+    "label": "mienfoo",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 469,
+    "label": "mienshao",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 470,
+    "label": "mightyena",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 471,
+    "label": "milcery",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 472,
+    "label": "milotic",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 473,
+    "label": "miltank",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 474,
+    "label": "mime-jr",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 475,
+    "label": "mimikyu-disguised",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 476,
+    "label": "minccino",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 477,
+    "label": "minun",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 478,
+    "label": "miraidon",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 479,
+    "label": "miraidon-drive-mode",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 480,
+    "label": "miraidon-glide-mode",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 481,
+    "label": "mismagius",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 482,
+    "label": "missingno",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 483,
+    "label": "moltres-galar",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 484,
+    "label": "morelull",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 485,
+    "label": "morgrem",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 486,
+    "label": "morpeko-full-belly",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 487,
+    "label": "morpeko-hangry",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 488,
+    "label": "mothim",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 489,
+    "label": "mr-mime",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 490,
+    "label": "mr-mime-galar",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 491,
+    "label": "mr-rime",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 492,
+    "label": "mudbray",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 493,
+    "label": "mudkip",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 494,
+    "label": "mudsdale",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 495,
+    "label": "muk-alola",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 496,
+    "label": "munchlax",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 497,
+    "label": "munkidori",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 498,
+    "label": "munna",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 499,
+    "label": "murkrow",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 500,
+    "label": "musharna",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 501,
+    "label": "nacli",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 502,
+    "label": "naclstack",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 503,
+    "label": "natu",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 504,
+    "label": "nickit",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 505,
+    "label": "nidoking",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 506,
+    "label": "nidoqueen",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 507,
+    "label": "nidoran-f",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 508,
+    "label": "nidoran-m",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 509,
+    "label": "nidorina",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 510,
+    "label": "nidorino",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 511,
+    "label": "ninetales",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 512,
+    "label": "ninetales-alola",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 513,
+    "label": "ninjask",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 514,
+    "label": "noctowl",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 515,
+    "label": "nosepass",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 516,
+    "label": "numel",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 517,
+    "label": "nuzleaf",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 518,
+    "label": "nymble",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 519,
+    "label": "obstagoon",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 520,
+    "label": "octillery",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 521,
+    "label": "oddish",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 522,
+    "label": "ogerpon",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 523,
+    "label": "ogerpon-cornerstone-mask",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 524,
+    "label": "ogerpon-hearthflame-mask",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 525,
+    "label": "ogerpon-wellspring-mask",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 526,
+    "label": "oinkologne",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 527,
+    "label": "okidogi",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 528,
+    "label": "omanyte",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 529,
+    "label": "omastar",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 530,
+    "label": "oranguru",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 531,
+    "label": "orbeetle",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 532,
+    "label": "oricorio-baile",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 533,
+    "label": "oricorio-pau",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 534,
+    "label": "oricorio-pom-pom",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 535,
+    "label": "oricorio-sensu",
+    "test_support": 4,
+    "correct": 0,
+    "per_class_accuracy": 0.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 536,
+    "label": "orthworm",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 537,
+    "label": "oshawott",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 538,
+    "label": "overqwil",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 539,
+    "label": "pachirisu",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 540,
+    "label": "palafin",
+    "test_support": 4,
+    "correct": 0,
+    "per_class_accuracy": 0.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 541,
+    "label": "palafin-hero",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 542,
+    "label": "palossand",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 543,
+    "label": "palpitoad",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 544,
+    "label": "pancham",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 545,
+    "label": "pangoro",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 546,
+    "label": "panpour",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 547,
+    "label": "pansage",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 548,
+    "label": "pansear",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 549,
+    "label": "passimian",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 550,
+    "label": "patrat",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 551,
+    "label": "pawmi",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 552,
+    "label": "pawmo",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 553,
+    "label": "pawmot",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 554,
+    "label": "pecharunt",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 555,
+    "label": "perrserker",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 556,
+    "label": "persian",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 557,
+    "label": "persian-alola",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 558,
+    "label": "petilil",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 559,
+    "label": "phanpy",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 560,
+    "label": "pichu",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 561,
+    "label": "pichu-spiky-eared",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 562,
+    "label": "pidgey",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 563,
+    "label": "pidove",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 564,
+    "label": "pignite",
+    "test_support": 4,
+    "correct": 2,
+    "per_class_accuracy": 0.5,
+    "independent_real_tested": true
+  },
+  {
+    "index": 565,
+    "label": "pikachu",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 566,
+    "label": "pikachu-starter",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 567,
+    "label": "pikipek",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 568,
+    "label": "piloswine",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 569,
+    "label": "pincurchin",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 570,
+    "label": "pineco",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 571,
+    "label": "piplup",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 572,
+    "label": "plusle",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 573,
+    "label": "politoed",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 574,
+    "label": "poliwag",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 575,
+    "label": "poliwhirl",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 576,
+    "label": "poliwrath",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 577,
+    "label": "poltchageist",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 578,
+    "label": "polteageist",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 579,
+    "label": "ponyta",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 580,
+    "label": "ponyta-galar",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 581,
+    "label": "poochyena",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 582,
+    "label": "porygon",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 583,
+    "label": "porygon2",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 584,
+    "label": "primarina",
+    "test_support": 4,
+    "correct": 0,
+    "per_class_accuracy": 0.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 585,
+    "label": "prinplup",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 586,
+    "label": "psyduck",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 587,
+    "label": "pupitar",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 588,
+    "label": "purrloin",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 589,
+    "label": "purugly",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 590,
+    "label": "pyroar",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 591,
+    "label": "quaquaval",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 592,
+    "label": "quaxly",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 593,
+    "label": "quaxwell",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 594,
+    "label": "quilava",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 595,
+    "label": "quilladin",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 596,
+    "label": "raboot",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 597,
+    "label": "rabsca",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 598,
+    "label": "raging-bolt",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 599,
+    "label": "raichu",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 600,
+    "label": "raichu-alola",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 601,
+    "label": "raikou",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 602,
+    "label": "ralts",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 603,
+    "label": "rampardos",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 604,
+    "label": "rapidash",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 605,
+    "label": "rapidash-galar",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 606,
+    "label": "raticate",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 607,
+    "label": "raticate-alola",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 608,
+    "label": "rattata",
+    "test_support": 4,
+    "correct": 1,
+    "per_class_accuracy": 0.25,
+    "independent_real_tested": true
+  },
+  {
+    "index": 609,
+    "label": "rattata-alola",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 610,
+    "label": "rayquaza",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 611,
+    "label": "regidrago",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 612,
+    "label": "regieleki",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 613,
+    "label": "rellor",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 614,
+    "label": "reuniclus",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 615,
+    "label": "revavroom",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 616,
+    "label": "ribombee",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 617,
+    "label": "rillaboom",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 618,
+    "label": "riolu",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 619,
+    "label": "roaring-moon",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 620,
+    "label": "rockruff",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 621,
+    "label": "rolycoly",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 622,
+    "label": "rookidee",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 623,
+    "label": "roselia",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 624,
+    "label": "roserade",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 625,
+    "label": "rotom-drone",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 626,
+    "label": "rotom-fan",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 627,
+    "label": "rotom-frost",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 628,
+    "label": "rotom-heat",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 629,
+    "label": "rotom-mow",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 630,
+    "label": "rotom-phone",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 631,
+    "label": "rotom-pokedex",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 632,
+    "label": "rotom-wash",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 633,
+    "label": "rowlet",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 634,
+    "label": "rufflet",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 635,
+    "label": "runerigus",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 636,
+    "label": "samurott",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 637,
+    "label": "samurott-hisui",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 638,
+    "label": "sandaconda",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 639,
+    "label": "sandile",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 640,
+    "label": "sandshrew-alola",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 641,
+    "label": "sandslash-alola",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 642,
+    "label": "sandy-shocks",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 643,
+    "label": "sandygast",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 644,
+    "label": "sawsbuck",
+    "test_support": 4,
+    "correct": 2,
+    "per_class_accuracy": 0.5,
+    "independent_real_tested": true
+  },
+  {
+    "index": 645,
+    "label": "sawsbuck-autumn",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 646,
+    "label": "sawsbuck-summer",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 647,
+    "label": "sawsbuck-winter",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 648,
+    "label": "scatterbug",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 649,
+    "label": "sceptile",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 650,
+    "label": "scizor",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 651,
+    "label": "scolipede",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 652,
+    "label": "scorbunny",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 653,
+    "label": "scovillain",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 654,
+    "label": "scrafty",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 655,
+    "label": "scraggy",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 656,
+    "label": "scream-tail",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 657,
+    "label": "scyther",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 658,
+    "label": "sealeo",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 659,
+    "label": "seedot",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 660,
+    "label": "seel",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 661,
+    "label": "seismitoad",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 662,
+    "label": "serperior",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 663,
+    "label": "servine",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 664,
+    "label": "seviper",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 665,
+    "label": "sewaddle",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 666,
+    "label": "shaymin-land",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 667,
+    "label": "shellos",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 668,
+    "label": "shellos-east",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 669,
+    "label": "shelmet",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 670,
+    "label": "shiftry",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 671,
+    "label": "shiinotic",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 672,
+    "label": "shinx",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 673,
+    "label": "shroodle",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 674,
+    "label": "shroomish",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 675,
+    "label": "shuckle",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 676,
+    "label": "silcoon",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 677,
+    "label": "silicobra",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 678,
+    "label": "simipour",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 679,
+    "label": "simisage",
+    "test_support": 4,
+    "correct": 1,
+    "per_class_accuracy": 0.25,
+    "independent_real_tested": true
+  },
+  {
+    "index": 680,
+    "label": "simisear",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 681,
+    "label": "sinistcha",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 682,
+    "label": "sinistea",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 683,
+    "label": "sirfetchd",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 684,
+    "label": "sizzlipede",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 685,
+    "label": "skeledirge",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 686,
+    "label": "skiddo",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 687,
+    "label": "skiploom",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 688,
+    "label": "skitty",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 689,
+    "label": "skrelp",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 690,
+    "label": "skwovet",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 691,
+    "label": "slakoth",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 692,
+    "label": "sliggoo",
+    "test_support": 4,
+    "correct": 2,
+    "per_class_accuracy": 0.5,
+    "independent_real_tested": true
+  },
+  {
+    "index": 693,
+    "label": "sliggoo-hisui",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 694,
+    "label": "slither-wing",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 695,
+    "label": "slowbro",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 696,
+    "label": "slowbro-galar",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 697,
+    "label": "slowking",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 698,
+    "label": "slowking-galar",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 699,
+    "label": "slowpoke",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 700,
+    "label": "slowpoke-galar",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 701,
+    "label": "slugma",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 702,
+    "label": "slurpuff",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 703,
+    "label": "smeargle",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 704,
+    "label": "smoliv",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 705,
+    "label": "smoochum",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 706,
+    "label": "sneasel",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 707,
+    "label": "sneasel-hisui",
+    "test_support": 4,
+    "correct": 2,
+    "per_class_accuracy": 0.5,
+    "independent_real_tested": true
+  },
+  {
+    "index": 708,
+    "label": "sneasler",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 709,
+    "label": "snivy",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 710,
+    "label": "snom",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 711,
+    "label": "snorlax",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 712,
+    "label": "snorunt",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 713,
+    "label": "snover",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 714,
+    "label": "snubbull",
+    "test_support": 4,
+    "correct": 2,
+    "per_class_accuracy": 0.5,
+    "independent_real_tested": true
+  },
+  {
+    "index": 715,
+    "label": "sobble",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 716,
+    "label": "solosis",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 717,
+    "label": "spectrier",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 718,
+    "label": "spewpa",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 719,
+    "label": "spheal",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 720,
+    "label": "spidops",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 721,
+    "label": "spinarak",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 722,
+    "label": "spinda",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 723,
+    "label": "spiritomb",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 724,
+    "label": "sprigatito",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 725,
+    "label": "spritzee",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 726,
+    "label": "squawkabilly",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 727,
+    "label": "squawkabilly-blue-plumage",
+    "test_support": 4,
+    "correct": 2,
+    "per_class_accuracy": 0.5,
+    "independent_real_tested": true
+  },
+  {
+    "index": 728,
+    "label": "squawkabilly-white-plumage",
+    "test_support": 4,
+    "correct": 2,
+    "per_class_accuracy": 0.5,
+    "independent_real_tested": true
+  },
+  {
+    "index": 729,
+    "label": "squawkabilly-yellow-plumage",
+    "test_support": 4,
+    "correct": 2,
+    "per_class_accuracy": 0.5,
+    "independent_real_tested": true
+  },
+  {
+    "index": 730,
+    "label": "squirtle",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 731,
+    "label": "stantler",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 732,
+    "label": "staraptor",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 733,
+    "label": "staravia",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 734,
+    "label": "starly",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 735,
+    "label": "starmie",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 736,
+    "label": "staryu",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 737,
+    "label": "steenee",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 738,
+    "label": "stonjourner",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 739,
+    "label": "stoutland",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 740,
+    "label": "stufful",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 741,
+    "label": "stunfisk-galar",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 742,
+    "label": "sudowoodo",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 743,
+    "label": "suicune",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 744,
+    "label": "sunflora",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 745,
+    "label": "sunkern",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 746,
+    "label": "surskit",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 747,
+    "label": "swablu",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 748,
+    "label": "swadloon",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 749,
+    "label": "swalot",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 750,
+    "label": "swampert",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 751,
+    "label": "swanna",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 752,
+    "label": "swellow",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 753,
+    "label": "swinub",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 754,
+    "label": "swirlix",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 755,
+    "label": "sylveon",
+    "test_support": 4,
+    "correct": 0,
+    "per_class_accuracy": 0.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 756,
+    "label": "tadbulb",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 757,
+    "label": "taillow",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 758,
+    "label": "tandemaus",
+    "test_support": 4,
+    "correct": 2,
+    "per_class_accuracy": 0.5,
+    "independent_real_tested": true
+  },
+  {
+    "index": 759,
+    "label": "tangrowth",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 760,
+    "label": "tarountula",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 761,
+    "label": "tatsugiri",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 762,
+    "label": "tatsugiri-droopy",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 763,
+    "label": "tatsugiri-stretchy",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 764,
+    "label": "tauros-paldea-aqua-breed",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 765,
+    "label": "tauros-paldea-blaze-breed",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 766,
+    "label": "tauros-paldea-combat-breed",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 767,
+    "label": "teddiursa",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 768,
+    "label": "tentacool",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 769,
+    "label": "tentacruel",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 770,
+    "label": "tepig",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 771,
+    "label": "terapagos",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 772,
+    "label": "terapagos-terastal",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 773,
+    "label": "terrakion",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 774,
+    "label": "thievul",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 775,
+    "label": "thwackey",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 776,
+    "label": "timburr",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 777,
+    "label": "ting-lu",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 778,
+    "label": "tinkatink",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 779,
+    "label": "tinkaton",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 780,
+    "label": "tinkatuff",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 781,
+    "label": "toedscool",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 782,
+    "label": "toedscruel",
+    "test_support": 4,
+    "correct": 2,
+    "per_class_accuracy": 0.5,
+    "independent_real_tested": true
+  },
+  {
+    "index": 783,
+    "label": "togedemaru",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 784,
+    "label": "togepi",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 785,
+    "label": "togetic",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 786,
+    "label": "torchic",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 787,
+    "label": "torracat",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 788,
+    "label": "torterra",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 789,
+    "label": "toucannon",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 790,
+    "label": "toxapex",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 791,
+    "label": "toxel",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 792,
+    "label": "toxicroak",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 793,
+    "label": "toxtricity-amped",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 794,
+    "label": "toxtricity-low-key",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 795,
+    "label": "tranquill",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 796,
+    "label": "treecko",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 797,
+    "label": "tropius",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 798,
+    "label": "trumbeak",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 799,
+    "label": "tsareena",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 800,
+    "label": "turtonator",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 801,
+    "label": "turtwig",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 802,
+    "label": "tynamo",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 803,
+    "label": "typhlosion",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 804,
+    "label": "typhlosion-hisui",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 805,
+    "label": "tyranitar",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 806,
+    "label": "tyrantrum",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 807,
+    "label": "tyrogue",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 808,
+    "label": "tyrunt",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 809,
+    "label": "umbreon",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 810,
+    "label": "unfezant",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 811,
+    "label": "unown-a",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 812,
+    "label": "unown-b",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 813,
+    "label": "unown-c",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 814,
+    "label": "unown-d",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 815,
+    "label": "unown-e",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 816,
+    "label": "unown-exclamation",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 817,
+    "label": "unown-g",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 818,
+    "label": "unown-h",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 819,
+    "label": "unown-i",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 820,
+    "label": "unown-j",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 821,
+    "label": "unown-k",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 822,
+    "label": "unown-l",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 823,
+    "label": "unown-m",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 824,
+    "label": "unown-n",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 825,
+    "label": "unown-o",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 826,
+    "label": "unown-p",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 827,
+    "label": "unown-q",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 828,
+    "label": "unown-question",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 829,
+    "label": "unown-r",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 830,
+    "label": "unown-s",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 831,
+    "label": "unown-t",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 832,
+    "label": "unown-u",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 833,
+    "label": "unown-v",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 834,
+    "label": "unown-w",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 835,
+    "label": "unown-x",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 836,
+    "label": "unown-y",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 837,
+    "label": "unown-z",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 838,
+    "label": "ursaluna",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 839,
+    "label": "ursaluna-bloodmoon",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 840,
+    "label": "ursaring",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 841,
+    "label": "urshifu-rapid-strike",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 842,
+    "label": "urshifu-single-strike",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 843,
+    "label": "uxie",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 844,
+    "label": "vaporeon",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 845,
+    "label": "varoom",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 846,
+    "label": "veluza",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 847,
+    "label": "venipede",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 848,
+    "label": "venomoth",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 849,
+    "label": "venusaur",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 850,
+    "label": "vespiquen",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 851,
+    "label": "vibrava",
+    "test_support": 4,
+    "correct": 2,
+    "per_class_accuracy": 0.5,
+    "independent_real_tested": true
+  },
+  {
+    "index": 852,
+    "label": "victini",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 853,
+    "label": "victreebel",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 854,
+    "label": "vigoroth",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 855,
+    "label": "vileplume",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 856,
+    "label": "virizion",
+    "test_support": 4,
+    "correct": 2,
+    "per_class_accuracy": 0.5,
+    "independent_real_tested": true
+  },
+  {
+    "index": 857,
+    "label": "vivillon",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 858,
+    "label": "vivillon-archipelago",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 859,
+    "label": "vivillon-continental",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 860,
+    "label": "vivillon-elegant",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 861,
+    "label": "vivillon-fancy",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 862,
+    "label": "vivillon-garden",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 863,
+    "label": "vivillon-high-plains",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 864,
+    "label": "vivillon-icy-snow",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 865,
+    "label": "vivillon-jungle",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 866,
+    "label": "vivillon-marine",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 867,
+    "label": "vivillon-modern",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 868,
+    "label": "vivillon-monsoon",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 869,
+    "label": "vivillon-ocean",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 870,
+    "label": "vivillon-poke-ball",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 871,
+    "label": "vivillon-polar",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 872,
+    "label": "vivillon-river",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 873,
+    "label": "vivillon-sandstorm",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 874,
+    "label": "vivillon-savanna",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 875,
+    "label": "vivillon-sun",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 876,
+    "label": "vivillon-tundra",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 877,
+    "label": "volbeat",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 878,
+    "label": "volcanion",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 879,
+    "label": "volcarona",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 880,
+    "label": "voltorb",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 881,
+    "label": "voltorb-hisui",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 882,
+    "label": "vullaby",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 883,
+    "label": "vulpix",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 884,
+    "label": "vulpix-alola",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 885,
+    "label": "walking-wake",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 886,
+    "label": "walrein",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 887,
+    "label": "wartortle",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 888,
+    "label": "watchog",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 889,
+    "label": "wattrel",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 890,
+    "label": "weavile",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 891,
+    "label": "weedle",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 892,
+    "label": "weepinbell",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 893,
+    "label": "weezing-galar",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 894,
+    "label": "whimsicott",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 895,
+    "label": "whirlipede",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 896,
+    "label": "whismur",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 897,
+    "label": "wigglytuff",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 898,
+    "label": "wiglett",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 899,
+    "label": "wimpod",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 900,
+    "label": "wishiwashi-school",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 901,
+    "label": "wo-chien",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 902,
+    "label": "wobbuffet",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 903,
+    "label": "wooloo",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 904,
+    "label": "wooper-paldea",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 905,
+    "label": "wormadam-plant",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 906,
+    "label": "wormadam-sandy",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 907,
+    "label": "wormadam-trash",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 908,
+    "label": "wugtrio",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 909,
+    "label": "wurmple",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 910,
+    "label": "wynaut",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 911,
+    "label": "wyrdeer",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 912,
+    "label": "xatu",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 913,
+    "label": "xerneas",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 914,
+    "label": "xerneas-neutral",
+    "test_support": 0,
+    "correct": 0,
+    "per_class_accuracy": null,
+    "independent_real_tested": false
+  },
+  {
+    "index": 915,
+    "label": "yamask-galar",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 916,
+    "label": "yamper",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 917,
+    "label": "yanma",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 918,
+    "label": "yungoos",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 919,
+    "label": "zacian",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 920,
+    "label": "zamazenta",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 921,
+    "label": "zangoose",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 922,
+    "label": "zapdos-galar",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 923,
+    "label": "zarude",
+    "test_support": 4,
+    "correct": 3,
+    "per_class_accuracy": 0.75,
+    "independent_real_tested": true
+  },
+  {
+    "index": 924,
+    "label": "zarude-dada",
+    "test_support": 4,
+    "correct": 2,
+    "per_class_accuracy": 0.5,
+    "independent_real_tested": true
+  },
+  {
+    "index": 925,
+    "label": "zebstrika",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 926,
+    "label": "zeraora",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 927,
+    "label": "zigzagoon-galar",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 928,
+    "label": "zoroark",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 929,
+    "label": "zoroark-hisui",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 930,
+    "label": "zorua",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 931,
+    "label": "zorua-hisui",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 932,
+    "label": "zygarde-10-power-construct",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 933,
+    "label": "zygarde-cell",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 934,
+    "label": "zygarde-complete",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  },
+  {
+    "index": 935,
+    "label": "zygarde-core",
+    "test_support": 4,
+    "correct": 4,
+    "per_class_accuracy": 1.0,
+    "independent_real_tested": true
+  }
+]

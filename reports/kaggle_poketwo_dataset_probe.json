@@ -1,0 +1,9 @@
+{
+  "endpoint_status": 302,
+  "endpoint_content_type": "application/json",
+  "signed_url_present": true,
+  "archive_status": 200,
+  "archive_content_length": "8006210062",
+  "archive_content_type": "application/zip",
+  "archive_accept_ranges": "bytes"
+}

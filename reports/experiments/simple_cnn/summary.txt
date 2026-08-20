@@ -1,0 +1,17 @@
+arch "simple_cnn"
+validation_threshold {"accepted_rate": 1.0, "f1": 0.18993379581864553, "macro_f1": 0.18993379581864553, "precision": 0.19434701467808427, "recall": 0.22603046594982076, "threshold": 0.05}
+val {"accepted_count": 296, "count": 296, "f1_macro": 0.18993379581864553, "precision_macro": 0.19434701467808427, "recall_macro": 0.22603046594982076, "top1": 0.3918918918918919, "top3": 0.652027027027027, "top5": 0.7364864864864865, "unknown_rate": 0.0}
+test {"accepted_count": 297, "count": 297, "f1_macro": 0.18699369701091598, "precision_macro": 0.19652591990053292, "recall_macro": 0.23275089605734767, "top1": 0.4074074074074074, "top3": 0.6801346801346801, "top5": 0.7441077441077442, "unknown_rate": 0.0}
+hard_case {"accepted_count": 2374, "count": 2376, "f1_macro": 0.1753783593304392, "precision_macro": 0.19127954141380138, "recall_macro": 0.21319209590704127, "top1": 0.380050505050505, "top3": 0.6195286195286195, "top5": 0.7281144781144782, "unknown_rate": 0.0008417508417508657}
+cpu_inference_ms_mean 8.297883542254567
+cpu_inference_ms_p95 8.481512416619807
+model_size_mb 0.39667415618896484
+largest_confusions [(7, 32, 17), (6, 17, 40), (5, 52, 55), (5, 35, 33), (5, 13, 33), (4, 47, 60), (4, 47, 57), (4, 39, 61), (4, 18, 40), (4, 11, 36), (4, 4, 55), (3, 60, 57), (3, 57, 60), (3, 55, 52), (3, 49, 60), (3, 49, 57), (3, 49, 55), (3, 48, 52), (3, 38, 40), (3, 33, 35)]
+hard_transform blur {'top1': 0.4713804713804714, 'precision_macro': 0.19065730153253874, 'recall_macro': 0.26411290322580644, 'f1_macro': 0.21519813582631916, 'unknown_rate': 0.0}
+hard_transform brightness_high {'top1': 0.3063973063973064, 'precision_macro': 0.12430509403339401, 'recall_macro': 0.17517921146953408, 'f1_macro': 0.11907049634133793, 'unknown_rate': 0.0}
+hard_transform brightness_low {'top1': 0.2962962962962963, 'precision_macro': 0.10915696579374119, 'recall_macro': 0.1597222222222222, 'f1_macro': 0.11308112412808181, 'unknown_rate': 0.0}
+hard_transform contrast_low {'top1': 0.35353535353535354, 'precision_macro': 0.16294866655288232, 'recall_macro': 0.20206093189964155, 'f1_macro': 0.15374015842438168, 'unknown_rate': 0.006734006734006703}
+hard_transform crop {'top1': 0.4612794612794613, 'precision_macro': 0.20858272389653879, 'recall_macro': 0.2612007168458781, 'f1_macro': 0.21563841798029693, 'unknown_rate': 0.0}
+hard_transform dark_ui {'top1': 0.35353535353535354, 'precision_macro': 0.13087642606891225, 'recall_macro': 0.1917562724014337, 'f1_macro': 0.14193946492201864, 'unknown_rate': 0.0}
+hard_transform jpeg_like {'top1': 0.47474747474747475, 'precision_macro': 0.2077034889054264, 'recall_macro': 0.26814516129032256, 'f1_macro': 0.22172916660920686, 'unknown_rate': 0.0}
+hard_transform light_ui {'top1': 0.32323232323232326, 'precision_macro': 0.15076909528934393, 'recall_macro': 0.18413978494623656, 'f1_macro': 0.1318545852010053, 'unknown_rate': 0.0}

@@ -1,0 +1,29 @@
+class_counts
+train classes 69 total 21353 min 9 max 648 median 243
+val classes 60 total 301 min 1 max 9 median 4
+test classes 59 total 300 min 1 max 9 median 4
+split_source_overlap
+1746383752 ['test', 'train']
+1746440041 ['train', 'val']
+1745657999 ['train', 'val']
+1745609308 ['train', 'val']
+1746385252 ['test', 'train']
+cross_split_near_duplicate_candidates
+{'left': 'data/raw/kaggle/extracted/train/chimchar/1745782587.jpg', 'right': 'data/raw/kaggle/extracted/test/pikachu/1745782488.jpg', 'distance': 0}
+{'left': 'data/raw/kaggle/extracted/train/voltorb/1746378311.jpg', 'right': 'data/raw/kaggle/extracted/val/barraskewda/1746378310.jpg', 'distance': 0}
+official
+images count 1659 errors 111 duplicates 2 dims {'475x475': 1656, '2375x2375': 3}
+shiny count 1659 errors 111 duplicates 19 dims {'475x475': 1559, '750x750': 43, '474x474': 1, '650x650': 7, '534x534': 1, '536x536': 1, '570x570': 3, '500x500': 2, '490x490': 1, '1280x1280': 1, '2375x2375': 13, '300x300': 1, '1024x1024': 2, '380x380': 24}
+captured_exact_duplicate_groups
+['data/raw/kaggle/extracted/train/ampharos/1746217977.jpg', 'data/raw/kaggle/extracted/train/binacle/1746217979.jpg']
+['data/raw/kaggle/extracted/train/aron/1745651406.jpg', 'data/raw/kaggle/extracted/train/aron/1745651406_none.jpg']
+['data/raw/kaggle/extracted/train/aurorus/1746599762.jpg', 'data/raw/kaggle/extracted/train/aurorus/1746599762_none.jpg']
+['data/raw/kaggle/extracted/train/avalugg/1745595638.jpg', 'data/raw/kaggle/extracted/train/flabebe/1745595635.jpg']
+['data/raw/kaggle/extracted/train/axew/1745595466.jpg', 'data/raw/kaggle/extracted/train/ekans/1745595457.jpg']
+['data/raw/kaggle/extracted/train/bellibolt/1746002803.jpg', 'data/raw/kaggle/extracted/train/bellibolt/1746002803_none.jpg']
+['data/raw/kaggle/extracted/train/bellsprout/1745386500.jpg', 'data/raw/kaggle/extracted/train/bellsprout/1745386500_none.jpg']
+['data/raw/kaggle/extracted/train/bergmite/1745414474.jpg', 'data/raw/kaggle/extracted/train/frigibax/1745414478.jpg']
+['data/raw/kaggle/extracted/train/bergmite/1745420955.jpg', 'data/raw/kaggle/extracted/train/drampa/1745420959.jpg']
+['data/raw/kaggle/extracted/train/chimchar/1745782587.jpg', 'data/raw/kaggle/extracted/test/pikachu/1745782488.jpg']
+['data/raw/kaggle/extracted/train/goomy/1745425472.jpg', 'data/raw/kaggle/extracted/train/goomy/1745425472_none.jpg']
+['data/raw/kaggle/extracted/train/voltorb/1746378311.jpg', 'data/raw/kaggle/extracted/val/barraskewda/1746378310.jpg']
