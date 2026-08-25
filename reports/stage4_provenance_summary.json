@@ -1,0 +1,105 @@
+{
+  "stage": 4,
+  "scope": "Public-source provenance recovery, archive validation, and preprocessing geometry investigation. No training performed.",
+  "sources": [
+    {
+      "source_type": "kaggle_cc0",
+      "dataset_slug": "spreadsheets600/poketwo-spawn-images-v1",
+      "dataset_url": "https://www.kaggle.com/datasets/spreadsheets600/poketwo-spawn-images-v1",
+      "license_as_listed": "CC0 1.0 / Public Domain",
+      "archive_filename": "poketwo-spawn-images-v1.zip",
+      "archive_bytes": 381269985,
+      "archive_sha256": "2fdb999fc1fd101386c55395f11407013ed8f9dfd2c7a28ea7d663838cf7ce43",
+      "image_files": 21954,
+      "class_folders": 69,
+      "split_counts": {
+        "test": 300,
+        "train": 21353,
+        "val": 301
+      },
+      "dimensions": {
+        "224x224": 21954
+      },
+      "formats": {
+        "JPEG": 21954
+      },
+      "modes": {
+        "RGB": 21954
+      },
+      "notes": "Archive layout is split/class/image; the 69 class folders are nested under train, val, and test."
+    },
+    {
+      "source_type": "kaggle_full_apache",
+      "dataset_slug": "dhruv2015/poketwo-datset-3",
+      "dataset_version": 2,
+      "dataset_url": "https://www.kaggle.com/datasets/dhruv2015/poketwo-datset-3",
+      "license_as_listed": "Apache License 2.0",
+      "archive_filename": "poketwo-datset-3-v2.zip",
+      "archive_bytes": 8006210062,
+      "archive_sha256": "34033229d7475a39e32f19e6c32c4cb7bbd459ffc04de8c84625112b67e1d9ef",
+      "image_files": 33856,
+      "class_folders": 1472,
+      "images_per_class": 23,
+      "dimensions": {
+        "800x500": 33856
+      },
+      "formats": {
+        ".png": 33856
+      },
+      "modes": {
+        "RGB": 33856
+      },
+      "notes": "The page contains an ownership/provenance note; this report therefore treats the source as validated against the repository manifest, not as independently authored by assumption."
+    }
+  ],
+  "historical_manifest_validation": {
+    "manifest": "reports/full_coverage/full_manifest.csv",
+    "total_rows": 21169,
+    "official_reference_rows": 1872,
+    "kaggle_real_render_rows": 19297,
+    "real_render_labels": 839,
+    "real_render_rows_matching_archive_member": 19297,
+    "matching_member_hashes": 19297,
+    "matching_rate": 1.0,
+    "real_render_classes_not_in_archive": [],
+    "archive_extra_class_folders_not_in_historical_real_manifest": 633
+  },
+  "deployed_label_coverage": {
+    "onnx_labels": 936,
+    "archive_folders_matching_onnx_labels": 839,
+    "onnx_labels_without_matching_archive_folder": 97,
+    "real_render_coverage_percent": 0.8963675213675214,
+    "reference_only_percent": 0.10363247863247864,
+    "interpretation": "The historical full manifest has independent full-source real renders for 839 of 936 deployed labels and official reference assets for the remaining 97; the downloaded archive contains 1,472 folders, including many extra forms/classes outside the deployed 936-label universe."
+  },
+  "crop_geometry_evidence": {
+    "full_source_input": {
+      "width": 800,
+      "height": 500,
+      "aspect_ratio": 1.6
+    },
+    "deployed_input": {
+      "width": 224,
+      "height": 224,
+      "aspect_ratio": 1.0
+    },
+    "direct_resize_relative_horizontal_scale_vs_height": 0.625,
+    "contain_fit_size": {
+      "width": 224,
+      "height": 140
+    },
+    "contain_padding": {
+      "top": 42,
+      "bottom": 42,
+      "left": 0,
+      "right": 0
+    },
+    "cc0_input": {
+      "width": 224,
+      "height": 224,
+      "aspect_ratio": 1.0
+    },
+    "decision": "Do not change live preprocessing in Stage 4. The evidence supports testing aspect-preserving contain-padding in Stage 5, but does not establish an accuracy gain or justify deployment without a controlled benchmark."
+  },
+  "raw_data_policy": "Raw archives, extracted datasets, and debug panels remain outside Git; only provenance metadata, a read-only inspector, and sanitized sample records are repository artifacts."
+}
