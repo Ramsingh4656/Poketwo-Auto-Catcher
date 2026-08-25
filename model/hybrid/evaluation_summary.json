@@ -1,0 +1,24 @@
+{
+  "classes": 1659,
+  "validation_images": 1659,
+  "dark_mode_313338": {
+    "samples": 1659,
+    "top1_accuracy": 0.814948764315853,
+    "top5_accuracy": 0.918625678119349,
+    "mean_confidence": 0.769980251789093,
+    "mean_margin": 0.7046713829040527
+  },
+  "light_mode_ffffff": {
+    "samples": 1659,
+    "top1_accuracy": 0.7836045810729355,
+    "top5_accuracy": 0.9035563592525618,
+    "mean_confidence": 0.7401057481765747,
+    "mean_margin": 0.6685806512832642
+  },
+  "combined": {
+    "samples": 3318,
+    "top1_accuracy": 0.7992766726943943,
+    "top5_accuracy": 0.9110910186859554
+  },
+  "warning": "This is still a repository-asset validation benchmark, not a real Pok\u00e9two Discord screenshot benchmark."
+}

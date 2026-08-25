@@ -1,0 +1,6 @@
+# Optional dependencies for scripts/hybrid/ recognition tools
+ImageHash>=4.3.2
+Pillow>=10.0.0
+numpy>=1.24.0
+requests>=2.31.0
+tensorflow>=2.15.0
