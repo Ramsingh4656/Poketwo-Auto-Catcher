@@ -16,12 +16,6 @@ A Discord selfbot that uses an optimized **MobileNetV3-small ONNX model** to aut
 [Features](#-features) · [How It Works](#-how-it-works) · [Project Structure](#-project-structure) · [Setup](#-setup) · [AI Model](#-ai-model) · [Performance](#-accuracyperformance) · [Dashboard](#-dashboard) · [Tech Stack](#-tech-stack) · [Troubleshooting](#-troubleshooting) · [Contributing](#-contributing)
 
 </div>
-
----
-
-> ⚠️ **Disclaimer**
-> Discord selfbots violate [Discord's Terms of Service](https://discord.com/terms). Using this tool may result in your account being banned. This project is for **educational purposes only** — use entirely at your own risk. **Never share your user token with anyone.**
-
 ---
 
 ## ✨ Features
