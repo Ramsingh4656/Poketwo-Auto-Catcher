@@ -1,6 +1,6 @@
 # Hybrid Pokémon Recognition
 
-This repository now includes an optional, standalone hybrid recognition pipeline under `scripts/hybrid/`. It is kept separate from the existing 936-class ONNX deployment so the established runtime path is not replaced unexpectedly.
+This repository includes an optional, standalone **experimental** hybrid recognition pipeline under `scripts/hybrid/`. It is kept separate from the existing 936-class ONNX deployment so the established runtime path is not replaced unexpectedly. Its 1,659-class mapping is intentionally not interchangeable with the deployed ONNX mapping; do not combine the two without retraining a model against one shared class order.
 
 ## Contents
 
@@ -54,7 +54,7 @@ python scripts/hybrid/hybrid_inference.py \
   --hint "_ i _ a _ h u"
 ```
 
-The detector first checks pHash exact and low-distance matches. If there is no unique hash result, it runs the TFLite classifier and reports the top five. A supplied hint is accepted only when exactly one top-five candidate matches; otherwise the engine abstains instead of guessing.
+The detector first checks pHash exact and low-distance matches. If there is no unique hash result, it runs the TFLite classifier and reports the top five. A supplied hint is cross-referenced against the complete 1,659-label experimental mapping, not only the CNN top five; it is accepted only when exactly one mapping label matches, otherwise the engine abstains instead of guessing. This hybrid path is experimental and is not wired into the live `bot/` runtime.
 
 ## Benchmark and limitations
 

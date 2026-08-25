@@ -45,18 +45,16 @@ def _hint_pattern(hint_string: str) -> str:
     return "^" + "".join(pieces) + "$"
 
 
-def resolve_hint(hint_string: str, top_5_list: Iterable[str | dict[str, Any]]) -> str | None:
-    """Return a name only when exactly one top-five candidate matches the hint.
+def resolve_hint(hint_string: str, label_universe: Iterable[str]) -> str | None:
+    """Return a name only when exactly one complete-universe label matches.
 
-    The function accepts either `['Pikachu', ...]` or detector result objects
-    such as `[{"name": "Pikachu", "confidence": 0.91}, ...]`. Underscore and
-    question-mark characters each match exactly one character after spaces,
-    punctuation, and accents are normalized away.
+    The resolver intentionally does not depend on CNN rank. It accepts a
+    conservative result only when the hint matches exactly one label in the
+    supplied model mapping; ambiguous or unknown hints return ``None``.
     """
     pattern = re.compile(_hint_pattern(hint_string))
     candidates: list[str] = []
-    for item in top_5_list:
-        name = item.get("name") if isinstance(item, dict) else item
+    for name in label_universe:
         if not isinstance(name, str):
             continue
         if pattern.fullmatch(_ascii_alnum(name)) and name not in candidates:
@@ -188,7 +186,8 @@ class HybridDetector:
             return {"name": hash_result["name"], "accepted": True, **hash_result, "top_5": []}
 
         top_5 = self._cnn_top5(image)
-        hinted = resolve_hint(hint_string, top_5) if hint_string else None
+        # Search the complete experimental TFLite mapping, not only CNN top-5.
+        hinted = resolve_hint(hint_string, self.mapping.values()) if hint_string else None
         if hinted is not None:
             return {
                 "name": hinted,

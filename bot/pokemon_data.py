@@ -10,6 +10,7 @@ the best-matching Pokémon name.
 import re
 import json
 import logging
+import unicodedata
 from pathlib import Path
 from typing import List, Optional, Tuple
 from difflib import SequenceMatcher
@@ -106,46 +107,86 @@ def parse_hint(hint_text: str) -> Optional[str]:
     return pattern if pattern else None
 
 
-def _hint_matches(pattern: str, name: str) -> bool:
-    """Check if a Pokémon name matches a parsed hint pattern character-by-character.
+_FORM_PREFIXES = {
+    "alola": "alolan",
+    "galar": "galarian",
+    "hisui": "hisuian",
+    "paldea": "paldean",
+    "gmax": "gigantamax",
+    "mega": "mega",
+}
 
-    Rules:
-    * ``_`` in the pattern matches any single character in the name.
-    * Literal characters must match (case-insensitive).
-    * Lengths must be equal.
+
+def _compact(value: str) -> str:
+    """Normalize labels and hints to comparable alphanumeric text.
+
+    Pokétwo may use hyphens, underscores, apostrophes, accents, or gender
+    symbols inconsistently. Gender symbols are intentionally mapped to the
+    same ``f``/``m`` suffix used by the authoritative ONNX labels.
     """
-    if len(pattern) != len(name):
-        return False
-    for pc, nc in zip(pattern.lower(), name.lower()):
-        if pc == "_":
-            continue  # wildcard
-        if pc != nc:
-            return False
-    return True
+    value = value.replace("\\_", "_").replace("♀", "f").replace("♂", "m")
+    value = unicodedata.normalize("NFKD", value)
+    return "".join(ch.lower() for ch in value if ch.isalnum())
+
+
+def _label_variants(name: str) -> set[str]:
+    """Return canonical and safe human-form variants for one model label."""
+    raw = name.replace("_", "-").strip().lower()
+    variants = {_compact(name)}
+    parts = [part for part in raw.split("-") if part]
+    if len(parts) < 2:
+        return variants
+
+    # The metadata uses suffix forms such as articuno-galar and
+    # charizard-mega-x, while Pokétwo hints commonly say Galarian Articuno or
+    # Mega Charizard X. Add only known form reorderings.
+    form = parts[-1]
+    if form in _FORM_PREFIXES:
+        variants.add(_compact(f"{_FORM_PREFIXES[form]} {' '.join(parts[:-1])}"))
+    if len(parts) >= 3 and parts[-2] == "mega":
+        variants.add(_compact(f"mega {' '.join(parts[:-2])} {parts[-1]}"))
+    if form == "gmax":
+        variants.add(_compact(f"gigantamax {' '.join(parts[:-1])}"))
+    if parts[-2:] in (["white", "striped"], ["blue", "striped"], ["red", "striped"]):
+        variants.add(_compact(f"{' '.join(parts[-2:])} {' '.join(parts[:-2])}"))
+    return variants
+
+
+def _hint_pattern(pattern: str) -> tuple[str, int]:
+    """Normalize a hint while preserving one-character wildcards."""
+    pattern = pattern.replace("\\_", "_").replace("♀", "f").replace("♂", "m")
+    normalized = unicodedata.normalize("NFKD", pattern)
+    pieces: list[str] = []
+    for char in normalized:
+        if char in "_?":
+            pieces.append(".")
+        elif char.isalnum():
+            pieces.append(re.escape(char.lower()))
+    return "^" + "".join(pieces) + "$", len(pieces)
+
+
+def _hint_matches(pattern: str, name: str) -> bool:
+    """Match a normalized hint against all safe variants of one label."""
+    regex, length = _hint_pattern(pattern)
+    compiled = re.compile(regex)
+    return any(len(variant) == length and compiled.fullmatch(variant) for variant in _label_variants(name))
 
 
 def match_from_hint(pattern: str) -> List[str]:
-    """Return all Pokémon names that match *pattern* exactly."""
+    """Return every authoritative label matching *pattern*."""
     return [name for name in ALL_POKEMON if _hint_matches(pattern, name)]
 
 
 def get_best_hint_match(hint_text: str) -> Optional[str]:
-    """High-level helper: parse hint → match → return best result or None."""
+    """Return exactly one full-universe match; abstain on ambiguity."""
     pattern = parse_hint(hint_text)
     if pattern is None:
         logger.debug("Could not parse hint from: %s", hint_text)
         return None
 
     matches = match_from_hint(pattern)
-    logger.debug("Hint pattern '%s' matched %d names: %s", pattern, len(matches), matches[:10])
-
-    if len(matches) == 1:
-        return matches[0]
-    if len(matches) > 1:
-        # If multiple matches, pick the shortest (base-form bias)
-        matches.sort(key=len)
-        return matches[0]
-    return None
+    logger.debug("Hint pattern '%s' matched %d authoritative labels: %s", pattern, len(matches), matches[:10])
+    return matches[0] if len(matches) == 1 else None
 
 
 def fuzzy_match(query: str, threshold: float = 0.6) -> Optional[str]:
