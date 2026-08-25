@@ -31,7 +31,10 @@ CATCH_CHANNEL_ID = int(_raw_channel_id) if _raw_channel_id.isdigit() else None
 MIN_DELAY, MAX_DELAY = 2.0, 5.0
 DISTRACTION_CHANCE = 0.05
 DISTRACTION_DELAY = (3.0, 8.0)
-CNN_CONFIDENCE_THRESHOLD = float(os.getenv("CNN_CONFIDENCE_THRESHOLD", "0.30"))
+# Conservative interim gate: the published 0.30 metric was calibrated on the
+# training/evaluation pipeline, not directly on the deployed ONNX session.
+# Override with CNN_CONFIDENCE_THRESHOLD after Stage 6 calibration.
+CNN_CONFIDENCE_THRESHOLD = float(os.getenv("CNN_CONFIDENCE_THRESHOLD", "0.85"))
 
 SPAWN_RE = re.compile(r"A wild pok[eé]mon has appeared!", re.IGNORECASE)
 HINT_RE = re.compile(r"The pok[eé]mon is \*\*.+\*\*", re.IGNORECASE)
