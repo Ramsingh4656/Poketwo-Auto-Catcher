@@ -134,8 +134,9 @@ Poketwo-Auto-Catcher/
    CATCH_CHANNEL_ID=your_target_channel_id_here
    AUTOSTART=false
    PORT=5000
-   CNN_CONFIDENCE_THRESHOLD=0.30
+   CNN_CONFIDENCE_THRESHOLD=0.85
    ```
+   > **Threshold note:** The `0.85` default was chosen based on Stage 6 validation-only calibration, with zero observed accepted errors at 31.4% coverage; see the Stage 6 validation report for the full tradeoff table.
    > ⚠️ **Important**: Do **not** enclose your token in quotes.
 
 ### ▶️ How to Run the Bot
