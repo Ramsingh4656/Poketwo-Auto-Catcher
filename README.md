@@ -108,11 +108,11 @@ python -c "import discord, flask, onnxruntime, PIL, dotenv; print('dependencies:
 ### 3. Create the private environment file
 
 The app reads `.env` from the **`bot/` directory**, not the repo root:
-  # macOS/Linux
+  #### macOS/Linux
 ```bash
 cp bot/.env.example bot/.env  
 ```
-  # Windows Command Prompt
+  #### Windows Command Prompt
 ```bash
 copy bot\.env.example bot\.env
 ```
