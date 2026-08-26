@@ -41,7 +41,7 @@ The bot is a `discord.py-self` client that only reacts inside your configured ch
 1. **Detect** — it watches for Pokétwo's spawn embed (`A wild pokémon has appeared!`).
 2. **Wait** — it sleeps a randomized human-like delay (2–5 s, occasionally longer) before acting.
 3. **Identify** — it downloads the spawn image and runs the ONNX classifier. If the top-1 confidence is at or above the threshold, it sends `@Pokétwo catch <name>`.
-4. **Fall back** — if the classifier is not confident, it abstains and waits for Pokétwo's text hint, resolves it against the 936-label mapping, and catches only on a unique match. It also requests a hint from the built-in P2 Assistant (bot ID `854233015475109888`) as an additive signal; that has no effect in servers where the Assistant isn't present.
+4. **Fall back** — if the classifier is not confident, it abstains and waits for Pokétwo's text hint. The bot requests hints exclusively from Pokétwo itself (bot ID `716390085896962058`), never from P2 Assistant. The P2 Assistant (bot ID `854233015475109888`) integration is purely passive: the bot only processes P2 Assistant's own unprompted messages—either an early high-confidence auto-guess (≥90%) that can trigger an immediate catch (skipping the CNN wait and hint window), or a post-hint "Possible Pokémon" message used as a fallback while awaiting Pokétwo's hint. In either case, the name is resolved against the 936-label mapping and caught on a unique match.
 5. **Confirm** — it reads Pokétwo's response, records the result, and returns to idle. Hints and results have timeouts, so a missed message can't wedge the bot.
 
 The image contract and model details are under [AI Model](#-ai-model).
