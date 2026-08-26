@@ -90,13 +90,27 @@ if len(_token_parts) != 3:
 
 logger.info("Token format OK: 3 parts, %d total chars", len(TOKEN))
 
-# Validate CATCH_CHANNEL_ID
+# Validate CATCH_CHANNEL_ID — fail closed rather than catching in every channel.
 _raw_channel = os.getenv("CATCH_CHANNEL_ID", "").strip()
-if _raw_channel and not _raw_channel.isdigit():
-    logger.error("CATCH_CHANNEL_ID must be a number, got: %r", _raw_channel)
+_CHANNEL_ERROR = (
+    "CATCH_CHANNEL_ID is required and must be set to a valid numeric channel ID "
+    "— refusing to start to avoid catching in all channels"
+)
+if not _raw_channel.isdigit() or int(_raw_channel) <= 0:
+    logger.error(_CHANNEL_ERROR)
     sys.exit(1)
 
-PORT = int(os.getenv("PORT", "5000"))
+# Validate PORT before Flask uses it so configuration errors are actionable.
+_raw_port = os.getenv("PORT", "5000").strip()
+try:
+    PORT = int(_raw_port)
+except ValueError:
+    logger.error("PORT must be a valid integer in the range 1-65535, got: %r", _raw_port)
+    sys.exit(1)
+if not 1 <= PORT <= 65535:
+    logger.error("PORT must be a valid integer in the range 1-65535, got: %r", _raw_port)
+    sys.exit(1)
+
 AUTOSTART = os.getenv("AUTOSTART", "").lower() in ("1", "true", "yes")
 # ── Verify correct discord library ─────────────────────────────────────────────
 # discord.py-self (selfbot fork) sends tokens as-is.

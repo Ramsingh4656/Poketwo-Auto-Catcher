@@ -22,11 +22,18 @@ POKETWO_BOT_ID = 716390085896962058
 # ═══════════════════════════════════════════════════════════════════════════════
 # SET YOUR CATCH CHANNEL ID HERE — the bot will ONLY catch in this channel.
 # To find a channel ID: right-click the channel in Discord → Copy Channel ID
-# Set to None to catch in ALL channels (not recommended).
+# Blank or invalid values are rejected at startup to prevent all-channel catching.
 # You can also set via environment variable: CATCH_CHANNEL_ID=123456789
 # ═══════════════════════════════════════════════════════════════════════════════
 _raw_channel_id = os.getenv("CATCH_CHANNEL_ID", "").strip()
-CATCH_CHANNEL_ID = int(_raw_channel_id) if _raw_channel_id.isdigit() else None
+_CHANNEL_ERROR = (
+    "CATCH_CHANNEL_ID is required and must be set to a valid numeric channel ID "
+    "— refusing to start to avoid catching in all channels"
+)
+if not _raw_channel_id.isdigit() or int(_raw_channel_id) <= 0:
+    logger.error(_CHANNEL_ERROR)
+    raise SystemExit(1)
+CATCH_CHANNEL_ID = int(_raw_channel_id)
 
 MIN_DELAY, MAX_DELAY = 2.0, 5.0
 DISTRACTION_CHANCE = 0.05
@@ -34,7 +41,19 @@ DISTRACTION_DELAY = (3.0, 8.0)
 # Conservative interim gate: the published 0.30 metric was calibrated on the
 # training/evaluation pipeline, not directly on the deployed ONNX session.
 # Override with CNN_CONFIDENCE_THRESHOLD after Stage 6 calibration.
-CNN_CONFIDENCE_THRESHOLD = float(os.getenv("CNN_CONFIDENCE_THRESHOLD", "0.85"))
+_raw_threshold = os.getenv("CNN_CONFIDENCE_THRESHOLD", "0.85").strip()
+_THRESHOLD_ERROR = (
+    "CNN_CONFIDENCE_THRESHOLD must be a number between 0 and 1, "
+    f"got: {_raw_threshold!r}"
+)
+try:
+    CNN_CONFIDENCE_THRESHOLD = float(_raw_threshold)
+except ValueError:
+    logger.error(_THRESHOLD_ERROR)
+    raise SystemExit(1)
+if not 0 <= CNN_CONFIDENCE_THRESHOLD <= 1:
+    logger.error(_THRESHOLD_ERROR)
+    raise SystemExit(1)
 
 SPAWN_RE = re.compile(r"A wild pok[eé]mon has appeared!", re.IGNORECASE)
 HINT_RE = re.compile(r"The pok[eé]mon is \*\*.+\*\*", re.IGNORECASE)
