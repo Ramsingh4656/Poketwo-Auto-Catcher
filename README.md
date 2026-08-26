@@ -108,18 +108,21 @@ python -c "import discord, flask, onnxruntime, PIL, dotenv; print('dependencies:
 ### 3. Create the private environment file
 
 The app reads `.env` from the **`bot/` directory**, not the repo root:
-
+  # macOS/Linux
 ```bash
-cp bot/.env.example bot/.env        # macOS/Linux
-copy bot\.env.example bot\.env      # Windows Command Prompt
+cp bot/.env.example bot/.env  
+```
+  # Windows Command Prompt
+```bash
+copy bot\.env.example bot\.env
 ```
 
 Edit `bot/.env`. There are exactly five variables:
 
 | Variable | Required value and behavior |
 |---|---|
-| `USER_TOKEN` | Your Discord **user-account token**, required. Must be non-empty with three dot-separated parts. Never use a bot token or a `Bot ` prefix. |
-| `CATCH_CHANNEL_ID` | Required numeric channel ID. A blank, zero, or non-numeric value stops startup rather than catching in all channels. |
+| `USER_TOKEN` | Your Discord **user-account token**, required. |
+| `CATCH_CHANNEL_ID` | Required numeric channel ID. |
 | `CNN_CONFIDENCE_THRESHOLD` | Top-1 confidence required to catch. Keep the validated default `0.85`; lower values trade accuracy for coverage. |
 | `AUTOSTART` | `false` (default) starts only the dashboard; the Discord client starts from there. `true`/`1`/`yes` starts it automatically. |
 | `PORT` | Local Flask dashboard port. Default `5000`. |
@@ -131,8 +134,6 @@ AUTOSTART=false
 PORT=5000
 CNN_CONFIDENCE_THRESHOLD=0.85
 ```
-
-`.env` is gitignored, but double-check `git status` before committing anything. Never paste the token into an issue, chat, screenshot, or log. If exposed, treat it as compromised and revoke the session.
 
 ### 4. Get your user token safely
 
