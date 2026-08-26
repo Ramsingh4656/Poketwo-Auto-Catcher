@@ -11,217 +11,106 @@
 [![Flask](https://img.shields.io/badge/Flask-3.0+-000000?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com)
 [![License](https://img.shields.io/badge/License-MIT-22c55e?style=for-the-badge)](LICENSE)
 
-A Discord selfbot that uses an optimized **MobileNetV3-small ONNX model** to automatically identify and catch Pokémon spawned by the [Pokétwo](https://poketwo.net/) bot — with human-like delays, a smart text-hint fallback system, and a live web dashboard.
-
 [Features](#-features) · [How It Works](#-how-it-works) · [Project Structure](#-project-structure) · [Setup](#-setup) · [AI Model](#-ai-model) · [Performance](#-accuracyperformance) · [Dashboard](#-dashboard) · [Tech Stack](#-tech-stack) · [Troubleshooting](#-troubleshooting) · [Contributing](#-contributing)
 
 </div>
 ---
+A CPU-oriented Pokétwo spawn-recognition bot with an ONNX image classifier, conservative confidence gating, and text-hint fallback.
 
-## ✨ Features
+> **Accuracy status:** The current repository contains the verified Stage 5/7 **MobileNetV3-large direct-resize ONNX detector**, now integrated as the live model. The measured results below apply to this live artifact; they are benchmark evidence, not an aspirational production-accuracy guarantee.
 
-- 🧠 **Optimized ONNX Model** — runs a 936-class MobileNetV3-small vision model locally on CPU with zero external API call overhead.
-- 🎯 **High Accuracy & Fallback** — delivers over 98% accepted top-1 accuracy on high-confidence visual predictions.
-- 💡 **Smart Fallback** — if the AI prediction confidence is below the threshold (`0.30`), the bot abstains from guessing and automatically parses Pokétwo's text hints.
-- 🧍 **Human-like Behaviour** — randomized response delays (2–5s), typing indicators, and occasional 3–8s "distraction" pauses.
-- 🌐 **Live Dashboard** — start/stop the selfbot, view catch metrics, and read live execution logs directly from your browser.
-- 📺 **Single Channel Only** — strictly watches the designated `CATCH_CHANNEL_ID` channel and ignores all other noise.
-- ⚡ **Ultra-Fast Inference** — processing and classification complete in ~8.76 ms per image on standard CPUs.
+## Current status
 
----
+| Item | Current state |
+|---|---|
+| Live bot model path | `model/poketwo_detector_full/pokemon_detector.onnx` |
+| Live bot model in repository | **MobileNetV3-large**, according to `model/poketwo_detector_full/deployment_config.json` |
+| Stage 5 accuracy candidate | **MobileNetV3-large, direct RGB resize — now live** |
+| Closed-set label universe | 936 labels |
+| Real-render evaluation coverage | 839 labels |
+| Official-reference-only training classes | 97 labels |
+| Runtime | ONNX Runtime on CPU |
+| Live threshold | `CNN_CONFIDENCE_THRESHOLD`, default `0.85` in `bot/bot.py` |
+| Below-threshold behavior | Abstain from CNN catch and wait for Pokétwo’s text hint |
+| Stage 7 status | Locked-test evaluation complete; winner integrated and smoke-tested |
 
-## 🔧 How It Works
+## Measured Stage 5/7 winner results
 
-```
-Pokétwo Spawn Message
-        ↓
-  Download Image
-        ↓
-  Image Preprocessing (224x224, NCHW Normalized)
-        ↓
-  ONNX Model Inference (MobileNetV3-small CPU)
-        ↓
-  Confidence ≥ 0.30? ──── YES ──→ Send catch command ✅
-        │
-       NO
-        ↓
-  Wait for Hint from Pokétwo
-        ↓
-  Pattern Match Hint Against 936 Pokémon Names
-        ↓
-  Match Found? ────────── YES ──→ Send catch command ✅
-        │
-       NO
-        ↓
-  Skip Spawn (avoid risk) ⏭️
-```
+The MobileNetV3-large direct-resize checkpoint was trained on a leakage-safe external dataset with 35,574 records: 19,297 full real renders, 16,083 CC0 real renders, and 194 official-reference images used for training-only coverage of otherwise missing classes. The split was 22,586 train, 6,533 validation, and 6,455 locked held-out test images.
 
-**Human-like behavior at every step:**
-- A random delay of 2–5 seconds is applied before downloading the image or identifying.
-- A 5% chance of an extra 3–8 second distraction delay is simulated to mock user distraction.
-- Typing indicators are triggered inside the Discord channel before sending the catch message.
+The 936-class mapping is fixed. The test split contains real-render examples for 839 labels; the 97 official-reference-only labels have no held-out real-render support and cannot be validated by this benchmark.
 
----
+| Locked-test metric | Measured result |
+|---|---:|
+| Top-1 accuracy | **84.78699%** |
+| Top-3 accuracy | **92.42448%** |
+| Top-5 accuracy | **94.53137%** |
+| Present-label macro F1 | **78.07583%** |
+| All-936 macro F1 | **69.98464%** |
+| Test images | 6,455 |
 
-## 📁 Project Structure
+**95%+ practical accuracy was not achieved.** Top-1 accuracy was 84.78699%, and even top-5 accuracy was 94.53137%. Top-5 retrieval should not be interpreted as automatic-catch accuracy.
+
+## Confidence threshold and abstention
+
+The live bot reads `CNN_CONFIDENCE_THRESHOLD` from the environment and defaults to `0.85`. A prediction is accepted only when the top-1 maximum softmax probability is at least that value. Otherwise, the bot does not catch from the CNN result and waits for the Pokétwo hint resolver.
+
+The `0.85` value was selected using validation-only Stage 6 calibration. On validation, it produced 31.4% coverage with zero observed accepted errors. When applied once to the unseen locked test set, it produced:
+
+| Threshold | Coverage | Abstention | Accuracy on accepted predictions | Accepted errors |
+|---:|---:|---:|---:|---:|
+| 0.85 | 26.94036% | 73.05964% | **99.94250%** | 1 / 1,739 |
+
+The accepted-prediction result is **not overall catch accuracy**. It is a selective operating point: the bot abstained on 4,716 of 6,455 test images. The higher-coverage validation alternative of 0.75 is not currently selected as the default.
+
+## Image contract
+
+The deployed ONNX preprocessing contract is RGB direct resize to 224×224 followed by ImageNet normalization:
 
 ```text
-Poketwo-Auto-Catcher/
-├── bot/
-│   ├── bot.py                   # Main selfbot listener & handler
-│   ├── main.py                  # Web dashboard launcher & entry point
-│   ├── pokemon_data.py          # Hint regex matcher & name dictionary
-│   ├── predictor.py             # ONNX Runtime model inference engine
-│   ├── web.py                   # Flask dashboard routes & controls
-│   ├── requirements.txt         # Runtime requirements list
-│   └── .env.example             # Environment template file
-├── model/
-│   └── poketwo_detector_full/   # Active 936-class detector assets
-│       ├── pokemon_detector.onnx       # Compiled ONNX model
-│       ├── pokemon_detector.onnx.data  # Model weight tensors
-│       ├── metadata.json               # Index-to-class labels list
-│       └── deployment_config.json      # Preprocessing configuration
-├── scripts/
-│   ├── download_dataset.py      # Pokétwo official metadata downloader
-│   ├── download_kaggle_full.py  # Kaggle spawn image downloader
-│   ├── prepare_full_manifest.py # Train/Val/Test manifest compiler
-│   ├── train.py                 # PyTorch model training entry point
-│   ├── evaluate.py              # Test set evaluation suite
-│   ├── export_model.py          # PyTorch to ONNX converter script
-│   └── infer.py                 # Standalone CLI prediction tool
-├── POKETWO_FULL_COVERAGE_REPORT.md  # Detailed technical benchmark report
-├── requirements.txt             # Primary runtime setup file
-└── requirements-training.txt    # Optional model retraining requirements
+mean = [0.485, 0.456, 0.406]
+std  = [0.229, 0.224, 0.225]
 ```
 
----
+The verified Stage 5 winner is now the live artifact at `model/poketwo_detector_full/pokemon_detector.onnx`. It achieved 100% top-1 decision agreement with its PyTorch checkpoint on all 6,455 locked-test images. The measured single-image ONNX model latency was 2.6104 ms median and 3.0102 ms at P95 using four CPU threads; preprocessing, image download, and decoding are excluded.
 
-## 🚀 Setup
+## Setup
 
-### Prerequisites
-- **Python**: Version `3.9` through `3.12` installed.
-- **RAM**: ~1 GB of available system memory.
-- **Discord**: An active user account.
+1. Install the dependencies from `bot/requirements.txt` and ensure ONNX Runtime is available.
+2. Copy the environment template:
 
-### Step-by-Step Installation
-
-1. **Clone the repository:**
    ```bash
-   git clone https://github.com/Ramsingh4656/Poketwo-Auto-Catcher.git
-   cd Poketwo-Auto-Catcher
+   cp bot/.env.example bot/.env
    ```
 
-2. **Install Python** (if you don't already have it):
-   Download and install [Python 3.9 – 3.12](https://python.org) for your OS, then confirm it's on your `PATH`:
+3. Set the Discord user token and target channel ID in `bot/.env`. Keep the file private and never commit it.
+4. Review the model path and metadata in `model/poketwo_detector_full/`.
+5. Start the application:
+
    ```bash
-   python --version
+   python bot/main.py
    ```
 
-3. **Install the dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
-   > 📌 **Note**: This bot requires `discord.py-self`, which is installed automatically by the command above. If regular `discord.py` is *also* present in your Python environment, it will conflict — see [Troubleshooting](#-troubleshooting) below.
+The application loads `bot/.env` before importing the bot. A process restart is required after changing the threshold or other environment variables.
 
-4. **Configure environment variables:**
-   Copy the configuration template:
-   - **Windows:** `copy bot\.env.example bot\.env`
-   - **Linux/macOS:** `cp bot/.env.example bot/.env`
+## Model and label limitations
 
-   Open `bot/.env` and edit the values:
-   ```env
-   USER_TOKEN=your_actual_discord_user_token_here
-   CATCH_CHANNEL_ID=your_target_channel_id_here
-   AUTOSTART=false
-   PORT=5000
-   CNN_CONFIDENCE_THRESHOLD=0.85
-   ```
-   > **Threshold note:** The `0.85` default was chosen based on Stage 6 validation-only calibration, with zero observed accepted errors at 31.4% coverage; see the Stage 6 validation report for the full tradeoff table.
-   > ⚠️ **Important**: Do **not** enclose your token in quotes.
+This is a 936-class closed-set classifier. The 97 classes with official-reference-only training images do not have real-render validation/test evidence in the Stage 5 dataset. Sparse support for many classes and form-level confusion remain significant risks. Observed locked-test confusion patterns include Zygarde core versus cell, Palafin versus Finizen, and Squawkabilly plumage variants.
 
-### ▶️ How to Run the Bot
+The model may abstain rather than guess. A hint is accepted only when the authoritative 936-label mapping yields a unique match. The separate 1,659-class hybrid TFLite/pHash experiment is not wired into `bot/` and must not be mixed with the 936-class ONNX mapping without retraining and re-exporting against the same label order.
 
-Launch the dashboard and bot using:
-```bash
-python bot/main.py
-```
-Open your browser and navigate to `http://localhost:5000/dashboard` to view statistics and start/stop the bot.
+## Security, policy, and operational limitations
 
----
+This project automates a Discord user account rather than using a conventional bot account. That creates an unresolved Discord selfbot policy and account-risk concern; users are responsible for reviewing Discord’s current terms and applicable policies.
 
-## 🧠 AI Model
+The Flask dashboard is unauthenticated. It must not be exposed to an untrusted network without adding authentication, access control, and transport protection. Treat the Discord user token as a high-impact secret: keep it in the local ignored `.env` file and never place it in logs, screenshots, commits, or issue reports.
 
-The active classification model uses a **MobileNetV3-small** backbone exported to **ONNX Runtime format**, optimizing inference speed for typical host CPUs.
+## Evaluation and deployment status
 
-- **Class Universe**: Covers **936 labels** mapped from the official Pokétwo catchable dataset.
-- **Test Evidence**: **839 labels** are supported with independent real-render Discord spawn screenshots. The remaining **97 labels** represent rare alternative forms that have official reference artwork but no active real-render samples in the dataset.
-- **Abstention Logic**: Predictions scoring below `0.30` confidence return `None`, defaulting the bot's catch flow to the safe regex hint matching subsystem.
+Stage 7 is complete for the live Stage 5 winner. The locked-test report, per-class breakdown, parity results, and cleanup proposal are maintained as audit artifacts. The Stage 5 winner replaced the prior live MobileNetV3-small model in commit `1728caa5d2a2f37e1b8acf0f8058392011673ea2` and passed post-swap loading, sample-inference, preprocessing, and exact 936-label mapping checks. Any future model integration, metadata replacement, or live configuration change requires a separate approved change.
 
----
+The repository currently contains historical training, hybrid, and experiment artifacts. A cleanup proposal has been prepared but not applied. No destructive cleanup should be performed until dependencies and rollback requirements are reviewed.
 
-## 📊 Accuracy/Performance
+## License and responsibility
 
-Evaluation metrics on independent real-render test partitions:
-
-| Metric | Measured Value |
-|---|---|
-| **Overall Top-1 Accuracy** | **92.2825%** |
-| **Overall Top-3 Accuracy** | **97.5566%** |
-| **Overall Top-5 Accuracy** | **98.5101%** |
-| **Accepted Top-1 Accuracy (Confidence $\ge 0.30$)** | **98.8871%** |
-| **Mean Inference Time (CPU)** | **~8.76 ms** / image |
-| **P95 Inference Time (CPU)** | **~9.36 ms** / image |
-| **Model Size** | **~9.58 MB** |
-
-*Note: No AI detector achieves 100% accuracy. The bot protects your account by pairing visual predictions with a regular expression hint fallback system.*
-
----
-
-## 🌐 Dashboard
-
-The built-in Flask web panel provides a visual control suite:
-- **State Toggle**: Start and stop the selfbot capture loop with click controls.
-- **Live Statistics**: Monitor Total Caught, CNN catches, Hint catches, Skipped counts, and Uptime.
-- **Real-Time Logs**: Review predictions, delays, raw API logs, and catch notices.
-
----
-
-## 🛠️ Tech Stack
-
-- **Core Language**: [Python](https://python.org) (v3.9+)
-- **Inference Engine**: [ONNX Runtime](https://onnxruntime.ai) (CPU execution provider)
-- **Image Processing**: [Pillow](https://python-pillow.org) (Lanczos resizing & RGB scaling)
-- **Selfbot Driver**: [discord.py-self](https://github.com/dolfies/discord.py-self) (Discord user-agent client fork)
-- **Web Interface**: [Flask](https://flask.palletsprojects.com) (WSGI dashboard engine)
-
----
-
-> 🔒 **Never expose your token.** Don't paste it into chat messages, screenshots, commits, or issue reports. Anyone with your `USER_TOKEN` has full access to your Discord account. Keep `bot/.env` local and out of version control (it's already covered by `.gitignore`-style practice — never commit it).
-
-### Find Discord Channel ID
-- Go to Discord Settings → Advanced → Enable **Developer Mode**.
-- Right-click the desired spawn channel → Click **Copy Channel ID**.
-
----
-
-## 📄 License
-
-This repository is distributed under the [MIT License](LICENSE). 
-Pokémon assets and trademarks belong to their respective owners.
-
----
-
-## 🤝 Contributing
-
-Contributions, bug reports, and suggestions are welcome!
-1. Fork this repository.
-2. Create a feature branch: `git checkout -b feature/your-feature`.
-3. Commit changes: `git commit -m 'Add your feature description'`.
-4. Push to the branch: `git push origin feature/your-feature`.
-5. Open a Pull Request.
-
----
-
-<div align="center">
-PokéCatcher is built with ❤️ for education & research.
-</div>
+See `LICENSE` for the repository license. Use the software responsibly and keep all credentials private.
