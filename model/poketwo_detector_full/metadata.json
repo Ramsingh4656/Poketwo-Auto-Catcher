@@ -1,5 +1,5 @@
 {
-  "arch": "mobilenet_v3_small",
+  "arch": "mobilenet_v3_large",
   "labels": [
     "abomasnow",
     "absol",
@@ -937,25 +937,5 @@
     "zygarde-cell",
     "zygarde-complete",
     "zygarde-core"
-  ],
-  "input_size": [
-    224,
-    224
-  ],
-  "input_layout": "NCHW",
-  "normalization": {
-    "mean": [
-      0.485,
-      0.456,
-      0.406
-    ],
-    "std": [
-      0.229,
-      0.224,
-      0.225
-    ]
-  },
-  "output": "softmax(logits)",
-  "checkpoint_epoch": 6,
-  "source_checkpoint": "reports/experiments/full_mobilenet_v3_small_frozen_fast/best.pt"
+  ]
 }
