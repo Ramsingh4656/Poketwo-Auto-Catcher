@@ -7,7 +7,7 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT / "bot"))
-sys.path.insert(0, str(REPO_ROOT / "scripts" / "hybrid"))
+sys.path.insert(0, str(REPO_ROOT / "archive" / "experimental_hybrid" / "scripts"))
 
 from pokemon_data import ALL_POKEMON, get_best_hint_match, match_from_hint  # noqa: E402
 from hybrid_inference import resolve_hint  # noqa: E402

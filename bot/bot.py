@@ -38,6 +38,7 @@ else:
 
 _P2_SCORE_RE = re.compile(r"^\s*([^:\n]+?)\s*:\s*(\d+(?:\.\d+)?)%\s*$", re.IGNORECASE)
 _P2_NAME_RE = re.compile(r"^\s*Possible Pokémon:\s*(.+?)\s*$", re.IGNORECASE)
+P2_AUTO_GUESS_MIN_CONFIDENCE = 0.90
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # SET YOUR CATCH CHANNEL ID HERE — the bot will ONLY catch in this channel.
@@ -175,21 +176,19 @@ class PokeCatcherBot(discord.Client):
                 return (name, None) if name else None
         return None
 
-    async def _request_p2_hint(self, channel):
-        """Ask the configured P2 Assistant for a hint exactly once."""
-        if not P2_ASSISTANT_ENABLED or P2_ASSISTANT_ID is None:
-            return
-        hint_cmd = f"<@{P2_ASSISTANT_ID}> hint"
-        self._log(f"Requesting hint from P2 Assistant: {hint_cmd}")
+    async def _request_poketwo_hint(self, channel):
+        """Ask Pokétwo for a hint; P2 Assistant remains a passive listener only."""
+        hint_cmd = f"<@{POKETWO_BOT_ID}> hint"
+        self._log(f"Requesting hint from Pokétwo: {hint_cmd}")
         try:
             await channel.send(hint_cmd)
         except discord.HTTPException as exc:
-            self._log(f"Failed to request P2 Assistant hint: {exc}", "error")
+            self._log(f"Failed to request Pokétwo hint: {exc}", "error")
 
     async def _handle_p2_assistant(self, message):
-        """Use only a strict, authoritative P2 candidate while awaiting a hint."""
-        if self.state != BotState.WAITING_FOR_HINT:
-            self._log("Ignored P2 Assistant candidate because the bot is not awaiting a hint.", "debug")
+        """Passively consume valid P2 guesses; never ask P2 for a hint."""
+        if self.state not in (BotState.IDENTIFYING, BotState.WAITING_FOR_HINT):
+            self._log("Ignored P2 Assistant candidate because no spawn is awaiting identification.", "debug")
             return
 
         candidate = self._parse_p2_candidate(message.content or "")
@@ -198,7 +197,24 @@ class PokeCatcherBot(discord.Client):
             return
 
         pokemon_name, assistant_confidence = candidate
-        suffix = f" ({assistant_confidence:.1%})" if assistant_confidence is not None else ""
+        is_post_hint_candidate = assistant_confidence is None
+        is_high_confidence_auto_guess = (
+            assistant_confidence is not None
+            and assistant_confidence >= P2_AUTO_GUESS_MIN_CONFIDENCE
+        )
+        if self.state == BotState.IDENTIFYING and not is_high_confidence_auto_guess:
+            self._log(
+                "Ignored P2 Assistant auto-guess below 90% confidence; continuing CNN identification.",
+                "debug",
+            )
+            return
+        if self.state == BotState.WAITING_FOR_HINT and not (
+            is_post_hint_candidate or is_high_confidence_auto_guess
+        ):
+            self._log("Ignored P2 Assistant auto-guess below 90% confidence.", "debug")
+            return
+
+        suffix = f" ({assistant_confidence:.1%})" if assistant_confidence is not None else " (post-hint)"
         self._log(f"P2 Assistant candidate: {pokemon_name}{suffix}")
         await self._attempt_catch(message.channel, pokemon_name)
         self.stats.total_p2_assistant += 1
@@ -292,7 +308,7 @@ class PokeCatcherBot(discord.Client):
 
         self._log("Waiting for hint from Poketwo...")
         self.state = BotState.WAITING_FOR_HINT
-        await self._request_p2_hint(message.channel)
+        await self._request_poketwo_hint(message.channel)
 
         # Wait for hint with timeout — use a task so hint handler can cancel it
         await asyncio.sleep(30)
