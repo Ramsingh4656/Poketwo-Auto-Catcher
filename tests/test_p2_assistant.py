@@ -316,7 +316,7 @@ class P2AssistantEarlySignalTests(unittest.TestCase):
             return b, ch
 
         b, ch = run(scenario())
-        self.assertIn(f"<@{P2}> hint", ch.sent)
+        self.assertIn(f"<@{POKETWO}> hint", ch.sent)
         self.assertIn("Waiting for hint from Poketwo", logs_text(b))
         self.assertEqual(catches(ch), [])  # nothing caught from the CNN path
 

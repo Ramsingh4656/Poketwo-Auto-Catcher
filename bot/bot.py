@@ -245,14 +245,14 @@ class PokeCatcherBot(discord.Client):
                 return (name, None) if name else None
         return None
 
-    async def _request_p2_hint(self, channel):
-        """Ask the built-in P2 Assistant for a hint exactly once."""
-        hint_cmd = f"<@{P2_ASSISTANT_ID}> hint"
-        self._log(f"{self._chan(channel)} Requesting hint from P2 Assistant: {hint_cmd}")
+    async def _request_poketwo_hint(self, channel):
+        """Ask Poketwo for a hint exactly once."""
+        hint_cmd = f"<@{POKETWO_BOT_ID}> hint"
+        self._log(f"{self._chan(channel)} Requesting hint from Poketwo: {hint_cmd}")
         try:
             await channel.send(hint_cmd)
         except discord.HTTPException as exc:
-            self._log(f"{self._chan(channel)} Failed to request P2 Assistant hint: {exc}", "error")
+            self._log(f"{self._chan(channel)} Failed to request Poketwo hint: {exc}", "error")
 
     async def _handle_p2_assistant(self, message, session):
         """Act on P2 Assistant's two unprompted message formats, per channel.
@@ -434,7 +434,7 @@ class PokeCatcherBot(discord.Client):
 
         self._log(f"{self._chan(channel)} Waiting for hint from Poketwo...")
         session.state = BotState.WAITING_FOR_HINT
-        await self._request_p2_hint(channel)
+        await self._request_poketwo_hint(channel)
 
         # Wait for hint with timeout — the hint handler flips state before this fires
         await asyncio.sleep(30)
