@@ -117,7 +117,7 @@ cp bot/.env.example bot/.env
 copy bot\.env.example bot\.env
 ```
 
-Edit `bot/.env`. There are exactly five variables:
+Edit `bot/.env`. There are six supported variables, including one optional integration setting:
 
 | Variable | Required value and behavior |
 |---|---|
@@ -126,6 +126,7 @@ Edit `bot/.env`. There are exactly five variables:
 | `CNN_CONFIDENCE_THRESHOLD` | Top-1 confidence required to catch. Keep the validated default `0.85`; lower values trade accuracy for coverage. |
 | `AUTOSTART` | `false` (default) starts only the dashboard; the Discord client starts from there. `true`/`1`/`yes` starts it automatically. |
 | `PORT` | Local Flask dashboard port. Default `5000`. |
+| `P2_ASSISTANT_ID` | Optional numeric user ID for the P2 Assistant hint fallback. Leave blank to disable it; set `854233015475109888` (or your server’s P2 Assistant ID) only if that Assistant is present. An invalid value logs a warning and disables this optional feature without blocking startup. |
 
 ```dotenv
 USER_TOKEN=your_actual_discord_user_token
@@ -133,6 +134,7 @@ CATCH_CHANNEL_ID=123456789012345678
 AUTOSTART=false
 PORT=5000
 CNN_CONFIDENCE_THRESHOLD=0.85
+P2_ASSISTANT_ID=
 ```
 
 ### 4. Get your user token safely
@@ -182,6 +184,7 @@ The token itself is never logged — only its last 4 characters. Open the dashbo
 | `No usable Pokémon detector found; predictor disabled.` | Neither model pair loaded. Dashboard may still run, but inference is off. |
 | `Model loaded: False` | Check the predictor error above this line. |
 | `PORT must be a valid integer in the range 1-65535, got: '<value>'` | Set `PORT` to a valid, available integer. |
+| `P2_ASSISTANT_ID is invalid; P2 Assistant feature disabled. Set it to a valid numeric user ID or leave it unset.` | The optional P2 Assistant fallback is disabled. Leave the variable blank/unset or replace it with the Assistant’s numeric user ID. |
 | Dashboard doesn't open | Confirm the process is running and the port isn't already in use. |
 | Discord login error after local startup succeeds | Token may be invalid, expired, or restricted. Never send it to anyone for debugging. |
 

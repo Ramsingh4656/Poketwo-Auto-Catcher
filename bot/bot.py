@@ -13,11 +13,31 @@ import aiohttp
 import discord
 
 from predictor import PokemonPredictor
-from pokemon_data import get_best_hint_match
+from pokemon_data import get_best_hint_match, resolve_authoritative_name
 
 logger = logging.getLogger("bot")
 
 POKETWO_BOT_ID = 716390085896962058
+_DEFAULT_P2_ASSISTANT_ID = 854233015475109888
+_raw_p2_assistant_id = os.getenv("P2_ASSISTANT_ID", "").strip()
+P2_ASSISTANT_ENABLED = False
+if not _raw_p2_assistant_id:
+    # Keep the documented default target available, but require explicit opt-in
+    # so an unset optional integration remains completely inactive.
+    P2_ASSISTANT_ID = _DEFAULT_P2_ASSISTANT_ID
+    logger.info("P2 Assistant fallback disabled; P2_ASSISTANT_ID is not set.")
+elif _raw_p2_assistant_id.isdigit() and int(_raw_p2_assistant_id) > 0:
+    P2_ASSISTANT_ID = int(_raw_p2_assistant_id)
+    P2_ASSISTANT_ENABLED = True
+else:
+    P2_ASSISTANT_ID = None
+    logger.warning(
+        "P2_ASSISTANT_ID is invalid; P2 Assistant feature disabled. "
+        "Set it to a valid numeric user ID or leave it unset."
+    )
+
+_P2_SCORE_RE = re.compile(r"^\s*([^:\n]+?)\s*:\s*(\d+(?:\.\d+)?)%\s*$", re.IGNORECASE)
+_P2_NAME_RE = re.compile(r"^\s*Possible Pokémon:\s*(.+?)\s*$", re.IGNORECASE)
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # SET YOUR CATCH CHANNEL ID HERE — the bot will ONLY catch in this channel.
@@ -71,6 +91,7 @@ class Stats:
         self.total_caught = 0
         self.total_cnn_correct = 0
         self.total_hint_used = 0
+        self.total_p2_assistant = 0
         self.total_skipped = 0
         self.start_time = time.time()
 
@@ -79,6 +100,7 @@ class Stats:
             "total_caught": self.total_caught,
             "cnn_catches": self.total_cnn_correct,
             "hint_catches": self.total_hint_used,
+            "p2_assistant_catches": self.total_p2_assistant,
             "skipped": self.total_skipped,
             "uptime_seconds": int(time.time() - self.start_time),
         }
@@ -128,15 +150,71 @@ class PokeCatcherBot(discord.Client):
         self._log(f"Model loaded: {self.predictor.loaded}")
         if self.catch_channel_id:
             self._log(f"Catching ONLY in channel: {self.catch_channel_id}")
+        if P2_ASSISTANT_ENABLED:
+            self._log(f"P2 Assistant fallback enabled for user: {P2_ASSISTANT_ID}")
         else:
-            self._log("WARNING: No channel set — catching in ALL channels!")
+            self._log("P2 Assistant fallback disabled.")
+
+    @staticmethod
+    def _parse_p2_candidate(content):
+        """Parse the first strict candidate line from P2 Assistant."""
+        for raw_line in content.splitlines():
+            line = raw_line.strip()
+            if not line:
+                continue
+
+            score_match = _P2_SCORE_RE.fullmatch(line)
+            if score_match:
+                raw_name, score = score_match.groups()
+                name = resolve_authoritative_name(raw_name)
+                return (name, float(score) / 100.0) if name else None
+
+            name_match = _P2_NAME_RE.fullmatch(line)
+            if name_match:
+                name = resolve_authoritative_name(name_match.group(1))
+                return (name, None) if name else None
+        return None
+
+    async def _request_p2_hint(self, channel):
+        """Ask the configured P2 Assistant for a hint exactly once."""
+        if not P2_ASSISTANT_ENABLED or P2_ASSISTANT_ID is None:
+            return
+        hint_cmd = f"<@{P2_ASSISTANT_ID}> hint"
+        self._log(f"Requesting hint from P2 Assistant: {hint_cmd}")
+        try:
+            await channel.send(hint_cmd)
+        except discord.HTTPException as exc:
+            self._log(f"Failed to request P2 Assistant hint: {exc}", "error")
+
+    async def _handle_p2_assistant(self, message):
+        """Use only a strict, authoritative P2 candidate while awaiting a hint."""
+        if self.state != BotState.WAITING_FOR_HINT:
+            self._log("Ignored P2 Assistant candidate because the bot is not awaiting a hint.", "debug")
+            return
+
+        candidate = self._parse_p2_candidate(message.content or "")
+        if candidate is None:
+            self._log("Ignored unrecognized P2 Assistant candidate.", "warning")
+            return
+
+        pokemon_name, assistant_confidence = candidate
+        suffix = f" ({assistant_confidence:.1%})" if assistant_confidence is not None else ""
+        self._log(f"P2 Assistant candidate: {pokemon_name}{suffix}")
+        await self._attempt_catch(message.channel, pokemon_name)
+        self.stats.total_p2_assistant += 1
 
     async def on_message(self, message):
-        # Only process messages from Poketwo
-        if message.author.id != POKETWO_BOT_ID:
-            return
-        # Only process messages in the designated catch channel
+        # Only process messages in the designated catch channel.
         if self.catch_channel_id and message.channel.id != self.catch_channel_id:
+            return
+
+        # P2 Assistant is an additive fallback signal; it never replaces Poketwo.
+        if P2_ASSISTANT_ENABLED and P2_ASSISTANT_ID is not None and message.author.id == P2_ASSISTANT_ID:
+            await self._handle_p2_assistant(message)
+            return
+
+        # Only process the remaining messages from Poketwo.
+        if message.author.id != POKETWO_BOT_ID:
             return
 
         # Check for spawn embed
@@ -214,6 +292,7 @@ class PokeCatcherBot(discord.Client):
 
         self._log("Waiting for hint from Poketwo...")
         self.state = BotState.WAITING_FOR_HINT
+        await self._request_p2_hint(message.channel)
 
         # Wait for hint with timeout — use a task so hint handler can cancel it
         await asyncio.sleep(30)

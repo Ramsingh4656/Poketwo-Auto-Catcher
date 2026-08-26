@@ -77,6 +77,35 @@ if not ALL_POKEMON:
 # Build a lowercased lookup set for O(1) membership checks
 _POKEMON_LOWER = {p.lower(): p for p in ALL_POKEMON}
 
+_AUTHORITATIVE_LABEL_COUNT = 936
+
+
+def resolve_authoritative_name(query: str) -> Optional[str]:
+    """Return one canonical 936-label name for an Assistant-provided name.
+
+    Matching accepts exact model labels and the safe human-form variants already
+    used by the full-universe hint resolver.  It refuses to resolve when the
+    authoritative mapping is unavailable, the name is unknown, or more than one
+    canonical label matches.
+    """
+    if len(ALL_POKEMON) != _AUTHORITATIVE_LABEL_COUNT:
+        logger.error(
+            "Authoritative Pokémon mapping unavailable or incomplete: expected %d labels, found %d.",
+            _AUTHORITATIVE_LABEL_COUNT,
+            len(ALL_POKEMON),
+        )
+        return None
+
+    normalized = _compact(query.strip())
+    if not normalized:
+        return None
+
+    matches = [
+        name for name in ALL_POKEMON
+        if normalized in _label_variants(name)
+    ]
+    return matches[0] if len(matches) == 1 else None
+
 
 # ── Hint Parsing ──────────────────────────────────────────────────────────────
 
