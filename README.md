@@ -117,7 +117,7 @@ cp bot/.env.example bot/.env
 copy bot\.env.example bot\.env
 ```
 
-Edit `bot/.env`. There are six supported variables, including one optional integration setting:
+Edit `bot/.env`. There are eight supported variables, including two optional dashboard settings and one optional integration setting:
 
 | Variable | Required value and behavior |
 |---|---|
@@ -127,6 +127,8 @@ Edit `bot/.env`. There are six supported variables, including one optional integ
 | `AUTOSTART` | `false` (default) starts only the dashboard; the Discord client starts from there. `true`/`1`/`yes` starts it automatically. |
 | `PORT` | Local Flask dashboard port. Default `5000`. |
 | `P2_ASSISTANT_ID` | Optional numeric user ID for the P2 Assistant hint fallback. Leave blank to disable it; set `854233015475109888` (or your server’s P2 Assistant ID) only if that Assistant is present. An invalid value logs a warning and disables this optional feature without blocking startup. |
+| `DASHBOARD_PASSWORD` | Optional HTTP Basic Auth password for every dashboard route, including `/dashboard/status`. Strongly recommended if the dashboard could be reached by another user or network. Leave blank only for trusted local use. |
+| `DASHBOARD_HOST` | Dashboard bind address. Defaults to `127.0.0.1` (localhost-only). Set explicitly only when deliberate network exposure is required, and pair that with `DASHBOARD_PASSWORD`. |
 
 ```dotenv
 USER_TOKEN=your_actual_discord_user_token
@@ -135,6 +137,8 @@ AUTOSTART=false
 PORT=5000
 CNN_CONFIDENCE_THRESHOLD=0.85
 P2_ASSISTANT_ID=
+DASHBOARD_PASSWORD=
+DASHBOARD_HOST=127.0.0.1
 ```
 
 ### 4. Get your user token safely
@@ -168,7 +172,7 @@ Dashboard: http://127.0.0.1:5000/dashboard
 
 The token itself is never logged — only its last 4 characters. Open the dashboard, check `model_loaded: true`, then start the bot if `AUTOSTART=false`. On successful login it logs the account and `Catching ONLY in channel: <id>`.
 
-**The dashboard is unauthenticated and binds to `0.0.0.0`.** Keep it on a trusted machine/network only — don't expose or port-forward it without adding authentication.
+By default, the dashboard binds to `127.0.0.1` and is reachable at `http://127.0.0.1:5000/dashboard`. If `DASHBOARD_PASSWORD` is set, all dashboard routes require HTTP Basic Auth. If it is blank, startup logs a clear warning that dashboard authentication is disabled; keep the dashboard on localhost and never expose it to an untrusted network.
 
 ### 7. Common first-run issues
 
@@ -185,7 +189,9 @@ The token itself is never logged — only its last 4 characters. Open the dashbo
 | `Model loaded: False` | Check the predictor error above this line. |
 | `PORT must be a valid integer in the range 1-65535, got: '<value>'` | Set `PORT` to a valid, available integer. |
 | `P2_ASSISTANT_ID is invalid; P2 Assistant feature disabled. Set it to a valid numeric user ID or leave it unset.` | The optional P2 Assistant fallback is disabled. Leave the variable blank/unset or replace it with the Assistant’s numeric user ID. |
-| Dashboard doesn't open | Confirm the process is running and the port isn't already in use. |
+| `Dashboard authentication required.` or HTTP `401` | `DASHBOARD_PASSWORD` is set. Open the dashboard with HTTP Basic Auth using any username and the configured password. |
+| `Dashboard authentication is disabled; set DASHBOARD_PASSWORD and keep DASHBOARD_HOST on localhost before exposing it to any untrusted network.` | `DASHBOARD_PASSWORD` is blank. This is allowed for trusted localhost-only use, but set a password before deliberate network exposure. |
+| Dashboard doesn't open | Confirm the process is running, the configured `DASHBOARD_HOST` is reachable, and the port isn't already in use. |
 | Discord login error after local startup succeeds | Token may be invalid, expired, or restricted. Never send it to anyone for debugging. |
 
 ## Model and label limitations
@@ -198,7 +204,7 @@ The model abstains rather than guesses when unsure. A hint is only accepted when
 
 This project automates a Discord **user account**, not a bot account — an unresolved Discord policy and account-risk concern. You're responsible for reviewing Discord's current terms.
 
-The Flask dashboard has **no authentication**. Don't expose it to an untrusted network without adding auth, access control, and transport protection. Treat the Discord token as a high-impact secret — keep it only in the local, gitignored `.env` file.
+The Flask dashboard supports optional HTTP Basic Auth through `DASHBOARD_PASSWORD` and binds to localhost by default through `DASHBOARD_HOST=127.0.0.1`. Set a strong password before deliberate network exposure; treat the Discord token as a high-impact secret and keep it only in the local, gitignored `.env` file.
 
 ## Evaluation and deployment status
 

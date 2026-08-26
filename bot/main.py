@@ -4,6 +4,8 @@ main.py — Entry point: starts Flask dashboard and optionally auto-starts the b
 Environment variables:
   USER_TOKEN       — Discord user token (required)
   PORT             — Dashboard port (default 5000)
+  DASHBOARD_HOST   — Dashboard bind address (default 127.0.0.1)
+  DASHBOARD_PASSWORD — Optional HTTP Basic Auth password for the dashboard
   AUTOSTART        — Set to "1" or "true" to start the bot automatically
   CATCH_CHANNEL_ID — Channel ID where bot catches Pokemon (required)
 """
@@ -112,6 +114,7 @@ if not 1 <= PORT <= 65535:
     sys.exit(1)
 
 AUTOSTART = os.getenv("AUTOSTART", "").lower() in ("1", "true", "yes")
+DASHBOARD_HOST = os.getenv("DASHBOARD_HOST", "127.0.0.1").strip() or "127.0.0.1"
 # ── Verify correct discord library ─────────────────────────────────────────────
 # discord.py-self (selfbot fork) sends tokens as-is.
 # Regular discord.py sends tokens as "Bot <token>" which causes 401 for user tokens.
@@ -178,5 +181,5 @@ if AUTOSTART:
 
 # ── Run Flask ──────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
-    logger.info("Dashboard: http://127.0.0.1:%d/dashboard", PORT)
-    app.run(host="0.0.0.0", port=PORT, debug=False, use_reloader=False)
+    logger.info("Dashboard: http://%s:%d/dashboard", DASHBOARD_HOST, PORT)
+    app.run(host=DASHBOARD_HOST, port=PORT, debug=False, use_reloader=False)

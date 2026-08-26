@@ -2,8 +2,8 @@
 web.py — Flask dashboard for monitoring and controlling the selfbot.
 """
 
-import os, threading, asyncio, logging, time
-from flask import Flask, render_template_string, jsonify, request
+import os, threading, asyncio, logging, time, hmac
+from flask import Flask, render_template_string, jsonify, request, Response
 from bot import (
     CNN_CONFIDENCE_THRESHOLD, MIN_DELAY, MAX_DELAY,
     DISTRACTION_CHANCE, CATCH_CHANNEL_ID, PokeCatcherBot,
@@ -11,7 +11,41 @@ from bot import (
 
 logger = logging.getLogger("web")
 
+# Optional dashboard protection. When unset, preserve the existing local-use
+# behavior but make the unsafe network exposure explicit in the logs.
+DASHBOARD_PASSWORD = os.getenv("DASHBOARD_PASSWORD", "")
+if DASHBOARD_PASSWORD:
+    logger.info("Dashboard authentication enabled (HTTP Basic Auth).")
+else:
+    logger.warning(
+        "Dashboard authentication is disabled; set DASHBOARD_PASSWORD and keep "
+        "DASHBOARD_HOST on localhost before exposing it to any untrusted network."
+    )
+
 app = Flask(__name__)
+
+
+def _dashboard_auth_response():
+    """Return a 401 response when configured dashboard credentials are absent/invalid."""
+    if not DASHBOARD_PASSWORD:
+        return None
+    auth = request.authorization
+    supplied = auth.password if auth else ""
+    if auth and hmac.compare_digest(supplied, DASHBOARD_PASSWORD):
+        return None
+    return Response(
+        "Dashboard authentication required.\n",
+        401,
+        {"WWW-Authenticate": 'Basic realm="PokéCatcher Dashboard"'},
+        mimetype="text/plain",
+    )
+
+
+@app.before_request
+def _protect_dashboard_routes():
+    """Protect the root redirect and every dashboard endpoint."""
+    if request.path == "/" or request.path.startswith("/dashboard"):
+        return _dashboard_auth_response()
 
 # References set by main.py after bot is created
 _bot_ref = None
