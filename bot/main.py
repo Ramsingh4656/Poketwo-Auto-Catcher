@@ -7,7 +7,8 @@ Environment variables:
   DASHBOARD_HOST   — Dashboard bind address (default 127.0.0.1)
   DASHBOARD_PASSWORD — Optional HTTP Basic Auth password for the dashboard
   AUTOSTART        — Set to "1" or "true" to start the bot automatically
-  CATCH_CHANNEL_ID — Channel ID where bot catches Pokemon (required)
+  CATCH_CHANNEL_ID — One channel ID, or several comma-separated, where the bot
+                     catches Pokemon (required)
 """
 
 # ── Load .env FIRST — before any os.getenv() call ─────────────────────────────
@@ -93,13 +94,24 @@ if len(_token_parts) != 3:
 logger.info("Token format OK: 3 parts, %d total chars", len(TOKEN))
 
 # Validate CATCH_CHANNEL_ID — fail closed rather than catching in every channel.
+# Accepts a single ID or a comma-separated list; every entry must be a positive
+# integer. This mirrors bot.py's parser so misconfiguration fails fast, before
+# the heavier discord/model imports run.
 _raw_channel = os.getenv("CATCH_CHANNEL_ID", "").strip()
-_CHANNEL_ERROR = (
-    "CATCH_CHANNEL_ID is required and must be set to a valid numeric channel ID "
-    "— refusing to start to avoid catching in all channels"
-)
-if not _raw_channel.isdigit() or int(_raw_channel) <= 0:
-    logger.error(_CHANNEL_ERROR)
+_channel_tokens = [t.strip() for t in _raw_channel.split(",")] if _raw_channel else []
+_invalid_channel_tokens = [t for t in _channel_tokens if not (t.isdigit() and int(t) > 0)]
+if not _channel_tokens or _invalid_channel_tokens:
+    if _invalid_channel_tokens:
+        logger.error(
+            "CATCH_CHANNEL_ID contains invalid channel ID(s): %s — every entry "
+            "must be a positive numeric channel ID",
+            ", ".join(repr(t) for t in _invalid_channel_tokens),
+        )
+    else:
+        logger.error(
+            "CATCH_CHANNEL_ID is required and must be one or more numeric channel "
+            "IDs (comma-separated) — refusing to start to avoid catching in all channels"
+        )
     sys.exit(1)
 
 # Validate PORT before Flask uses it so configuration errors are actionable.
@@ -171,7 +183,7 @@ bot = get_bot()
 set_bot_ref(bot, TOKEN)
 
 logger.info("Bot user token: ...%s (last 4 chars)", TOKEN[-4:] if len(TOKEN) >= 4 else "????")
-logger.info("Catch channel: %s", bot.catch_channel_id or "ALL CHANNELS (not recommended)")
+logger.info("Catch channel(s): %s", ", ".join(str(c) for c in sorted(bot.catch_channel_ids)))
 logger.info("Model loaded: %s", bot.predictor.loaded)
 
 # ── Auto-start ─────────────────────────────────────────────────────────────────

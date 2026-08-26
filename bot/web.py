@@ -6,7 +6,7 @@ import os, threading, asyncio, logging, time, hmac
 from flask import Flask, render_template_string, jsonify, request, Response
 from bot import (
     CNN_CONFIDENCE_THRESHOLD, MIN_DELAY, MAX_DELAY,
-    DISTRACTION_CHANCE, CATCH_CHANNEL_ID, PokeCatcherBot,
+    DISTRACTION_CHANCE, CATCH_CHANNEL_IDS, PokeCatcherBot,
 )
 
 logger = logging.getLogger("web")
@@ -403,7 +403,7 @@ def status():
         "model_loaded": model_loaded,
         "stats": stats,
         "logs": logs[-50:],
-        "state": _bot_ref.state.name if _bot_ref else "UNKNOWN",
+        "channel_states": _bot_ref.channel_state_names() if _bot_ref else {},
     })
 
 
@@ -428,5 +428,5 @@ def settings():
         "min_delay": MIN_DELAY,
         "max_delay": MAX_DELAY,
         "distraction_chance": DISTRACTION_CHANCE,
-        "catch_channel_id": CATCH_CHANNEL_ID,
+        "catch_channel_ids": sorted(CATCH_CHANNEL_IDS),
     })

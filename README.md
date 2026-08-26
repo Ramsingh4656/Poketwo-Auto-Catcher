@@ -26,8 +26,8 @@ A CPU-oriented Pokétwo spawn-recognition bot with an ONNX image classifier, con
 - **On-device ONNX classifier** — MobileNetV3-large, 936-class closed set, running on CPU through ONNX Runtime. No GPU required.
 - **Conservative confidence gate** — a spawn is auto-caught only when the top-1 softmax probability is at least `CNN_CONFIDENCE_THRESHOLD` (default `0.85`). Below that, the bot **abstains instead of guessing**.
 - **Text-hint fallback** — when the classifier abstains, the bot waits for Pokétwo's own hint (`The pokémon is **...**`) and resolves it against the same 936-label universe, accepting only a unique match.
-- **Optional P2 Assistant fallback** — an additive, opt-in hint source (`P2_ASSISTANT_ID`); it never overrides Pokétwo.
-- **Single-channel safety** — the bot refuses to start without a valid `CATCH_CHANNEL_ID`, so it can never catch in every channel.
+- **Built-in P2 Assistant fallback** — an additive, always-on secondary hint signal (built-in bot ID `854233015475109888`); it never overrides Pokétwo and has no effect in servers where that bot isn't present.
+- **One or more catch channels** — `CATCH_CHANNEL_ID` accepts a single ID or a comma-separated list, and the bot refuses to start without at least one valid ID, so it can never catch in every channel.
 - **Human-like pacing** — randomized 2–5 s pre-catch delays, with an occasional longer "distraction" delay.
 - **Fail-closed configuration** — token format, channel ID, port, and threshold are validated at startup with clear, actionable errors.
 - **ONNX-only by default** — the legacy TensorFlow/Keras model is never selected automatically; it requires an explicit `ALLOW_LEGACY_FALLBACK=true` opt-in and is unverified.
@@ -36,12 +36,12 @@ A CPU-oriented Pokétwo spawn-recognition bot with an ONNX image classifier, con
 
 ## 🧠 How It Works
 
-The bot is a `discord.py-self` client that only reacts inside your configured channel. Its catch loop is a small state machine (`IDLE → IDENTIFYING → WAITING_FOR_HINT → WAITING_FOR_RESULT`):
+The bot is a `discord.py-self` client that only reacts inside your configured channel(s). Each channel runs its own small state machine (`IDLE → IDENTIFYING → WAITING_FOR_HINT → WAITING_FOR_RESULT`), so concurrent spawns in different channels don't interfere:
 
 1. **Detect** — it watches for Pokétwo's spawn embed (`A wild pokémon has appeared!`).
 2. **Wait** — it sleeps a randomized human-like delay (2–5 s, occasionally longer) before acting.
 3. **Identify** — it downloads the spawn image and runs the ONNX classifier. If the top-1 confidence is at or above the threshold, it sends `@Pokétwo catch <name>`.
-4. **Fall back** — if the classifier is not confident, it abstains and waits for Pokétwo's text hint, resolves it against the 936-label mapping, and catches only on a unique match. If `P2_ASSISTANT_ID` is enabled, it also requests a P2 Assistant hint.
+4. **Fall back** — if the classifier is not confident, it abstains and waits for Pokétwo's text hint, resolves it against the 936-label mapping, and catches only on a unique match. It also requests a hint from the built-in P2 Assistant (bot ID `854233015475109888`) as an additive signal; that has no effect in servers where the Assistant isn't present.
 5. **Confirm** — it reads Pokétwo's response, records the result, and returns to idle. Hints and results have timeouts, so a missed message can't wedge the bot.
 
 The image contract and model details are under [AI Model](#-ai-model).
@@ -120,18 +120,17 @@ cp bot/.env.example bot/.env
 copy bot\.env.example bot\.env
 ```
 
-Then edit `bot/.env`. There are **nine** supported variables — two required, the rest optional with safe defaults:
+Then edit `bot/.env`. There are **eight** supported variables — two required, the rest optional with safe defaults:
 
 | Variable | Required? | Default | What it does |
 |---|---|---|---|
 | `USER_TOKEN` | **Required** | — | Your Discord **user-account token**. No `Bot ` prefix, no surrounding quotes. |
-| `CATCH_CHANNEL_ID` | **Required** | — | Numeric ID of the one channel the bot may catch in. Startup fails if it is missing or non-numeric, so the bot can never catch in every channel. |
+| `CATCH_CHANNEL_ID` | **Required** | — | Numeric channel ID, or several as a comma-separated list (e.g. `123456789012345678,987654321098765432`), that the bot may catch in. A single ID still works. Startup fails if it is missing or any entry is non-numeric, so the bot can never catch in every channel. |
 | `AUTOSTART` | Optional | `false` | `false` starts only the dashboard; you press **Start Bot** there. `true` / `1` / `yes` logs the Discord client in automatically. |
 | `PORT` | Optional | `5000` | Local Flask dashboard port. Must be an integer in `1–65535`. |
 | `CNN_CONFIDENCE_THRESHOLD` | Optional | `0.85` | Top-1 confidence required to auto-catch. Must be between `0` and `1`. Keep the validated `0.85`; lower values trade accuracy for coverage. |
 | `DASHBOARD_HOST` | Optional | `127.0.0.1` | Dashboard bind address. Localhost-only by default. Change it only for deliberate network exposure — and set `DASHBOARD_PASSWORD` if you do. |
 | `DASHBOARD_PASSWORD` | Optional | *(blank)* | Enables HTTP Basic Auth on every dashboard route when set. Blank is allowed for trusted localhost use, but startup logs a warning. Strongly recommended before any network exposure. |
-| `P2_ASSISTANT_ID` | Optional | *(blank)* | Numeric user ID for the optional P2 Assistant hint fallback. Blank disables it. Set `854233015475109888` (or your server's P2 Assistant ID) to enable. An invalid value logs a warning and disables the feature without blocking startup. |
 | `ALLOW_LEGACY_FALLBACK` | Optional | `false` | Degraded-mode opt-in. `false` means startup refuses to continue if the verified ONNX detector fails to load. Set `true` only for deliberate troubleshooting — the fallback is a **different** TensorFlow/Keras model with a **different 1,218-label** universe, and none of the accuracy figures below apply to it. |
 
 A minimal working `bot/.env`:
@@ -145,8 +144,9 @@ CNN_CONFIDENCE_THRESHOLD=0.85
 ALLOW_LEGACY_FALLBACK=false
 DASHBOARD_PASSWORD=
 DASHBOARD_HOST=127.0.0.1
-P2_ASSISTANT_ID=
 ```
+
+`CATCH_CHANNEL_ID` also accepts several channels as a comma-separated list, e.g. `CATCH_CHANNEL_ID=123456789012345678,987654321098765432`.
 
 ### 4. Get your Discord user token safely
 
@@ -173,12 +173,12 @@ Token format OK: 3 parts, ... total chars
 Discord library: discord.py-self <version> (OK)
 Loaded Pokétwo ONNX detector (936 classes).
 Bot user token: ...<last-4-chars>
-Catch channel: <your numeric channel ID>
+Catch channel(s): <your channel ID, or comma-separated IDs>
 Model loaded: True
 Dashboard: http://127.0.0.1:5000/dashboard
 ```
 
-Open the dashboard, confirm **Model: Loaded ✓** (`model_loaded: true`), then press **Start Bot** if `AUTOSTART=false`. On successful login the bot logs the account and `Catching ONLY in channel: <id>`. The token itself is never logged — only its last 4 characters.
+Open the dashboard, confirm **Model: Loaded ✓** (`model_loaded: true`), then press **Start Bot** if `AUTOSTART=false`. On successful login the bot logs the account and `Catching ONLY in channel(s): <id(s)>`. The token itself is never logged — only its last 4 characters.
 
 If something doesn't line up, see [Troubleshooting](#-troubleshooting).
 
@@ -265,14 +265,13 @@ This is a **selective operating point**, not overall catch accuracy — the bot 
 |---|---|
 | `USER_TOKEN environment variable is not set!` | `bot/.env` is missing, in the wrong folder, or empty. Re-copy the template and edit it. |
 | `TOKEN FORMAT ERROR: Discord tokens have 3 parts separated by dots.` | The value is incomplete or a bot token. Use the full user-token value, with no `Bot ` prefix and no quotes. |
-| `CATCH_CHANNEL_ID is required and must be set to a valid numeric channel ID — refusing to start to avoid catching in all channels` | Set a valid numeric channel ID. |
+| `CATCH_CHANNEL_ID is required ... refusing to start to avoid catching in all channels` / `CATCH_CHANNEL_ID contains invalid channel ID(s): ...` | Set `CATCH_CHANNEL_ID` to one valid numeric channel ID, or several comma-separated. The second message names the offending entries. |
 | `ModuleNotFoundError: No module named 'discord'` | Dependencies weren't installed — rerun step 2. |
 | `WRONG DISCORD LIBRARY DETECTED!` | Regular `discord.py` was imported instead of `discord.py-self`. `main.py` tries to uninstall it automatically; if that fails, run `pip uninstall discord.py -y` and reinstall from `bot/requirements.txt` in a clean environment. |
 | `ONNX detector failed to load: ... Refusing to start with an unverified/incompatible legacy model` | The ONNX artifact, metadata, ONNX Runtime install, or model contract is invalid. Fix the ONNX deployment; don't enable the fallback unless you intentionally accept degraded, unverified behavior. |
 | `DEGRADED LEGACY MODE ACTIVE: ... This is NOT the verified 936-class ... model; none of the README accuracy figures apply.` | `ALLOW_LEGACY_FALLBACK=true` is set. The running detector is a different model with a different label universe — treat its results as unverified and turn the opt-in back off after troubleshooting. |
 | `Model loaded: False` | Check the predictor startup error logged just above this line. |
 | `PORT must be a valid integer in the range 1-65535, got: '<value>'` | Set `PORT` to a valid, available integer. |
-| `P2_ASSISTANT_ID is invalid; P2 Assistant feature disabled.` | The optional P2 Assistant fallback is off. Leave the variable blank/unset, or set it to the Assistant's numeric user ID. |
 | `Dashboard authentication required.` / HTTP `401` | `DASHBOARD_PASSWORD` is set. Open the dashboard with HTTP Basic Auth using any username and the configured password. |
 | `Dashboard authentication is disabled; set DASHBOARD_PASSWORD ...` | `DASHBOARD_PASSWORD` is blank. Fine for trusted localhost use; set a password before deliberate network exposure. |
 | Dashboard doesn't open | Confirm the process is running, the configured `DASHBOARD_HOST` is reachable, and the port isn't already in use. |
