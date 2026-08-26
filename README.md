@@ -32,6 +32,7 @@ A CPU-oriented Pokétwo spawn-recognition bot with an ONNX image classifier, con
 | Official-reference-only training classes | 97 labels |
 | Runtime | ONNX Runtime on CPU |
 | Live threshold | `CNN_CONFIDENCE_THRESHOLD`, default `0.85` |
+| Legacy fallback policy | ONNX-only by default; legacy TensorFlow/Keras fallback requires explicit `ALLOW_LEGACY_FALLBACK=true` and is unverified |
 | Configuration validation | `CATCH_CHANNEL_ID`, `PORT`, and `CNN_CONFIDENCE_THRESHOLD` fail closed with clear startup errors |
 | Below-threshold behavior | Abstain from CNN catch and wait for Pokétwo's text hint |
 
@@ -129,6 +130,7 @@ Edit `bot/.env`. There are eight supported variables, including two optional das
 | `P2_ASSISTANT_ID` | Optional numeric user ID for the P2 Assistant hint fallback. Leave blank to disable it; set `854233015475109888` (or your server’s P2 Assistant ID) only if that Assistant is present. An invalid value logs a warning and disables this optional feature without blocking startup. |
 | `DASHBOARD_PASSWORD` | Optional HTTP Basic Auth password for every dashboard route, including `/dashboard/status`. Strongly recommended if the dashboard could be reached by another user or network. Leave blank only for trusted local use. |
 | `DASHBOARD_HOST` | Dashboard bind address. Defaults to `127.0.0.1` (localhost-only). Set explicitly only when deliberate network exposure is required, and pair that with `DASHBOARD_PASSWORD`. |
+| `ALLOW_LEGACY_FALLBACK` | Optional degraded-mode opt-in. Default `false`: startup refuses to continue if the verified ONNX detector fails. Set `true` only for deliberate troubleshooting; the fallback is a different TensorFlow/Keras model with a different 1,218-label universe, and none of the README accuracy figures apply. |
 
 ```dotenv
 USER_TOKEN=your_actual_discord_user_token
@@ -136,6 +138,7 @@ CATCH_CHANNEL_ID=123456789012345678
 AUTOSTART=false
 PORT=5000
 CNN_CONFIDENCE_THRESHOLD=0.85
+ALLOW_LEGACY_FALLBACK=false
 P2_ASSISTANT_ID=
 DASHBOARD_PASSWORD=
 DASHBOARD_HOST=127.0.0.1
@@ -151,7 +154,7 @@ If you're authorized on your own account and accept the policy risk: open Discor
 python bot/main.py
 ```
 
-This loads `bot/.env`, validates the token and channel ID, checks the selfbot library, loads `model/poketwo_detector_full/pokemon_detector.onnx` + `metadata.json`, and starts Flask.
+This loads `bot/.env`, validates the token and channel ID, checks the selfbot library, loads `model/poketwo_detector_full/pokemon_detector.onnx` + `metadata.json`, and starts Flask. If the verified ONNX detector cannot load, startup fails rather than silently switching models unless `ALLOW_LEGACY_FALLBACK=true` was deliberately configured.
 
 With `AUTOSTART=false`, the dashboard starts but Discord doesn't log in until you press **Start Bot** there. With `AUTOSTART=true`, both start automatically.
 
@@ -183,10 +186,10 @@ By default, the dashboard binds to `127.0.0.1` and is reachable at `http://127.0
 | `CATCH_CHANNEL_ID is required and must be set to a valid numeric channel ID — refusing to start to avoid catching in all channels` | Set a valid numeric channel ID. |
 | `ModuleNotFoundError: No module named 'discord'` | Dependencies weren't installed — rerun step 2. |
 | `WRONG DISCORD LIBRARY DETECTED!` | Regular `discord.py` got imported instead of `discord.py-self`. Reinstall from `bot/requirements.txt` in a clean environment. |
-| `Failed to load ONNX detector; trying legacy Keras model.` | Check the `.onnx`/`metadata.json` files and the ONNX Runtime install. The Keras fallback is not the verified model. |
-| `Loaded legacy TensorFlow detector; accuracy is not the verified ONNX model.` | The ONNX path failed. Fix that before relying on results. |
-| `No usable Pokémon detector found; predictor disabled.` | Neither model pair loaded. Dashboard may still run, but inference is off. |
-| `Model loaded: False` | Check the predictor error above this line. |
+| `ONNX detector failed to load: ... Refusing to start with an unverified/incompatible legacy model — fix the ONNX artifact or explicitly enable the legacy fallback.` | The verified ONNX artifact, metadata, ONNX Runtime installation, or model contract is invalid. Fix the ONNX deployment; do not enable the fallback unless you intentionally accept degraded, unverified behavior. |
+| `DEGRADED LEGACY MODE ACTIVE: TensorFlow/Keras model loaded with ... labels. This is NOT the verified 936-class ONNX model; none of the README accuracy figures apply.` | `ALLOW_LEGACY_FALLBACK=true` was explicitly enabled. The running detector is a different model with a different label universe; treat its results as unverified and disable the opt-in after troubleshooting. |
+| `No usable Pokémon detector found; predictor disabled.` | This message is no longer expected from a normal startup path; the predictor now raises a clear startup error when ONNX fails and legacy fallback is not explicitly enabled. |
+| `Model loaded: False` | Check the predictor startup error above this line. |
 | `PORT must be a valid integer in the range 1-65535, got: '<value>'` | Set `PORT` to a valid, available integer. |
 | `P2_ASSISTANT_ID is invalid; P2 Assistant feature disabled. Set it to a valid numeric user ID or leave it unset.` | The optional P2 Assistant fallback is disabled. Leave the variable blank/unset or replace it with the Assistant’s numeric user ID. |
 | `Dashboard authentication required.` or HTTP `401` | `DASHBOARD_PASSWORD` is set. Open the dashboard with HTTP Basic Auth using any username and the configured password. |

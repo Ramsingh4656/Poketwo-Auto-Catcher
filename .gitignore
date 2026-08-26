@@ -13,8 +13,6 @@ build/
 # ── TensorFlow / Model artifacts ───────────────
 *.h5
 *.tflite
-# The optional hybrid deployment artifacts are intentionally versioned.
-!model/hybrid/*.tflite
 checkpoint
 
 # ── OS / IDE ───────────────────────────────────

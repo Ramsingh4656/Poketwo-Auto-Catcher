@@ -79,7 +79,7 @@ The hard-case suite applies brightness, contrast, blur, JPEG-like degradation, c
 
 The most difficult measured transformations were crop, with accepted top-1 of 92.8668%, and high brightness, with accepted top-1 of 97.4691% and a 47.0203% fallback rate. This is preferable to silently guessing on degraded images.
 
-The complete per-class file is `reports/experiments/full_mobilenet_v3_small_frozen_fast/evaluation_full/per_class.csv`. It reports support, correct predictions, per-class accuracy, and whether each class has independent test evidence. The 97 reference-only labels have `independent_real_tested=false` and no real-render accuracy value.
+The complete per-class file is `archive/historical_experiments/reports_experiments/full_mobilenet_v3_small_frozen_fast/evaluation_full/per_class.csv`. It reports support, correct predictions, per-class accuracy, and whether each class has independent test evidence. The 97 reference-only labels have `independent_real_tested=false` and no real-render accuracy value.
 
 ## 5. Deployment and fallback policy
 
@@ -102,7 +102,7 @@ The 97 reference-only labels include rare visual variants such as Alcremie sweet
 
 ## 7. Reproducibility
 
-From the repository root, install runtime dependencies with `python -m pip install -r requirements.txt`. Acquire the documented sources with `python scripts/download_dataset.py` and, where storage permits, `python scripts/download_kaggle_full.py`. Validate and construct the manifest with `python scripts/prepare_full_manifest.py`. Train with `python scripts/train.py --manifest reports/full_coverage/full_manifest.csv --data-root . --arch mobilenet_v3_small --output-dir reports/experiments/full_mobilenet_v3_small_frozen_fast --epochs 6 --batch-size 256 --lr 3e-4 --workers 0 --freeze-backbone`. Export with `python scripts/export_model.py`, verify with `python scripts/verify_export.py`, and evaluate with `python scripts/evaluate.py`.
+From the repository root, install runtime dependencies with `python -m pip install -r requirements.txt`. Acquire the documented sources with `python scripts/download_dataset.py` and, where storage permits, `python scripts/download_kaggle_full.py`. Validate and construct the manifest with `python scripts/prepare_full_manifest.py`. Train with `python scripts/train.py --manifest reports/full_coverage/full_manifest.csv --data-root . --arch mobilenet_v3_small --output-dir archive/historical_experiments/reports_experiments/full_mobilenet_v3_small_frozen_fast --epochs 6 --batch-size 256 --lr 3e-4 --workers 0 --freeze-backbone`. Export with `python scripts/export_model.py`, verify with `python scripts/verify_export.py`, and evaluate with `python scripts/evaluate.py`.
 
 The raw datasets and checkpoints are intentionally excluded from the GitHub-ready ZIP. The downloader and all provenance/manifests required to reproduce the process are included.
 

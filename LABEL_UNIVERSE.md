@@ -12,7 +12,7 @@ A hint resolver that returns a label outside the visual model's universe can pro
 
 ## Experimental hybrid universe
 
-`model/hybrid/index_to_pokemon.json` remains a separate 1,659-class mapping for the optional TFLite/pHash experiment. The hybrid path is not wired into `bot/` and is not part of the deployed live-system accuracy claims. Its resolver now searches the complete 1,659-class experimental mapping rather than only CNN top-five candidates. The hybrid mapping must not be mixed with the 936-class ONNX mapping without retraining/exporting a model against the same label order.
+`archive/experimental_hybrid/model/index_to_pokemon.json` remains a separate 1,659-class mapping for the optional TFLite/pHash experiment. The hybrid path is not wired into `bot/` and is not part of the deployed live-system accuracy claims. Its resolver now searches the complete 1,659-class experimental mapping rather than only CNN top-five candidates. The hybrid mapping must not be mixed with the 936-class ONNX mapping without retraining/exporting a model against the same label order.
 
 ## Interim visual threshold
 

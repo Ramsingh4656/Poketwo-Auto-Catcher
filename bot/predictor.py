@@ -1,9 +1,9 @@
 """CPU image predictor for Pokétwo spawn images.
 
 The primary detector is the verified 936-class ONNX Runtime export in
-``model/poketwo_detector_full/``. The earlier ONNX/Keras models are retained as fallbacks
-only when the ONNX artifact is unavailable, so existing deployments do not
-fail hard during migration.
+``model/poketwo_detector_full/``. The earlier Keras model is never selected
+automatically; it is available only when ``ALLOW_LEGACY_FALLBACK=true`` is set
+as an explicit, degraded-mode opt-in.
 """
 
 from __future__ import annotations
@@ -27,9 +27,13 @@ _ONNX_PATH = _NEW_MODEL_DIR / "pokemon_detector.onnx"
 _METADATA_PATH = _NEW_MODEL_DIR / "metadata.json"
 _LEGACY_MODEL_PATH = _BASE_DIR / "model" / "pokemon_cnn.keras"
 _LEGACY_INDEX_PATH = _BASE_DIR / "model" / "index_to_pokemon.json"
+_LEGACY_CLASS_INDICES_PATH = _BASE_DIR / "model" / "class_indices.json"
 IMG_SIZE = (224, 224)
 MEAN = np.asarray([0.485, 0.456, 0.406], dtype=np.float32)
 STD = np.asarray([0.229, 0.224, 0.225], dtype=np.float32)
+_ALLOW_LEGACY_FALLBACK = os.getenv("ALLOW_LEGACY_FALLBACK", "").strip().lower() in (
+    "1", "true", "yes", "on"
+)
 
 
 class PokemonPredictor:
@@ -44,7 +48,15 @@ class PokemonPredictor:
         self._load()
 
     def _load(self) -> None:
-        if _ONNX_PATH.exists() and _METADATA_PATH.exists():
+        onnx_error = None
+        if not _ONNX_PATH.exists() or not _METADATA_PATH.exists():
+            missing = []
+            if not _ONNX_PATH.exists():
+                missing.append(str(_ONNX_PATH))
+            if not _METADATA_PATH.exists():
+                missing.append(str(_METADATA_PATH))
+            onnx_error = "required artifact(s) missing: " + ", ".join(missing)
+        else:
             try:
                 import onnxruntime as ort
                 metadata = json.loads(_METADATA_PATH.read_text(encoding="utf-8"))
@@ -61,23 +73,62 @@ class PokemonPredictor:
                 self.backend = "onnxruntime"
                 logger.info("Loaded Pokétwo ONNX detector (%d classes).", len(self.index_to_pokemon))
                 return
-            except Exception:
-                logger.exception("Failed to load ONNX detector; trying legacy Keras model.")
+            except Exception as exc:
+                onnx_error = f"{type(exc).__name__}: {exc}"
+                logger.exception("ONNX detector load failed.")
 
+        failure = (
+            f"ONNX detector failed to load: {onnx_error}. "
+            "Refusing to start with an unverified/incompatible legacy model — "
+            "fix the ONNX artifact or explicitly enable the legacy fallback."
+        )
+        if not _ALLOW_LEGACY_FALLBACK:
+            raise RuntimeError(failure)
+
+        logger.critical(
+            "ALLOW_LEGACY_FALLBACK is enabled. Attempting degraded legacy mode; "
+            "this is a DIFFERENT model with a DIFFERENT 1,218-label universe, "
+            "not the verified 936-class MobileNetV3-large. None of the README "
+            "accuracy figures apply to this fallback."
+        )
         if _LEGACY_MODEL_PATH.exists() and _LEGACY_INDEX_PATH.exists():
             try:
                 import tensorflow as tf
                 self.model = tf.keras.models.load_model(str(_LEGACY_MODEL_PATH))
-                raw = json.loads(_LEGACY_INDEX_PATH.read_text(encoding="utf-8"))
-                self.index_to_pokemon = {int(k): v for k, v in raw.items()}
+                model_classes = int(self.model.output_shape[-1])
+                mapping_path = (
+                    _LEGACY_CLASS_INDICES_PATH
+                    if _LEGACY_CLASS_INDICES_PATH.exists()
+                    else _LEGACY_INDEX_PATH
+                )
+                raw = json.loads(mapping_path.read_text(encoding="utf-8"))
+                if mapping_path == _LEGACY_CLASS_INDICES_PATH:
+                    self.index_to_pokemon = {int(index): name for name, index in raw.items()}
+                else:
+                    self.index_to_pokemon = {int(index): name for index, name in raw.items()}
+                if model_classes != len(self.index_to_pokemon):
+                    raise ValueError(
+                        f"legacy model classes={model_classes}, labels={len(self.index_to_pokemon)} "
+                        f"from {mapping_path.name}"
+                    )
                 self.loaded = True
                 self.backend = "tensorflow"
-                logger.warning("Loaded legacy TensorFlow detector; accuracy is not the verified ONNX model.")
+                logger.critical(
+                    "DEGRADED LEGACY MODE ACTIVE: TensorFlow/Keras model loaded with "
+                    "%d labels. This is a DIFFERENT model with a DIFFERENT label universe, "
+                    "not the verified 936-class MobileNetV3-large. None of the README "
+                    "accuracy figures apply.",
+                    len(self.index_to_pokemon),
+                )
                 return
-            except Exception:
-                logger.exception("Failed to load legacy TensorFlow detector.")
+            except Exception as exc:
+                logger.exception("Legacy TensorFlow fallback also failed to load.")
+                raise RuntimeError(f"{failure} Legacy fallback also failed: {exc}") from exc
 
-        logger.warning("No usable Pokémon detector found; predictor disabled.")
+        raise RuntimeError(
+            f"{failure} ALLOW_LEGACY_FALLBACK=true was set, but the legacy model "
+            "or mapping is missing."
+        )
 
     @staticmethod
     def _session_options():
