@@ -114,8 +114,9 @@ if not 0 <= CNN_CONFIDENCE_THRESHOLD <= 1:
     logger.error(_THRESHOLD_ERROR)
     raise SystemExit(1)
 
-SPAWN_RE = re.compile(r"A wild pok[eé]mon has appeared!", re.IGNORECASE)
+SPAWN_RE = re.compile(r"A\s+(?:new\s+)?wild\s+pok[eé]mon\s+has\s+appeared!", re.IGNORECASE)
 HINT_RE = re.compile(r"The pok[eé]mon is \*\*.+\*\*", re.IGNORECASE)
+FLEE_RE = re.compile(r"(?:The wild pok[eé]mon fled!|Wild\s+([^\n]+?)\s+fled\.?)", re.IGNORECASE)
 
 
 class BotState(Enum):
@@ -132,11 +133,12 @@ class ChannelSession:
     concurrent spawns in different channels never interfere with one another.
     """
 
-    __slots__ = ("state", "pending_pokemon")
+    __slots__ = ("state", "pending_pokemon", "spawn_id")
 
     def __init__(self):
         self.state = BotState.IDLE
         self.pending_pokemon = None
+        self.spawn_id = 0
 
 
 class Stats:
@@ -146,6 +148,7 @@ class Stats:
         self.total_hint_used = 0
         self.total_p2_assistant = 0
         self.total_skipped = 0
+        self.total_fled = 0
         self.start_time = time.time()
 
     def to_dict(self):
@@ -155,6 +158,7 @@ class Stats:
             "hint_catches": self.total_hint_used,
             "p2_assistant_catches": self.total_p2_assistant,
             "skipped": self.total_skipped,
+            "total_fled": self.total_fled,
             "uptime_seconds": int(time.time() - self.start_time),
         }
 
@@ -337,6 +341,29 @@ class PokeCatcherBot(discord.Client):
         if message.author.id != POKETWO_BOT_ID:
             return
 
+        # Check if the message contains a flee notification
+        is_flee = False
+        if message.content and FLEE_RE.search(message.content):
+            is_flee = True
+        elif message.embeds:
+            for embed in message.embeds:
+                embed_title = getattr(embed, "title", None)
+                embed_desc = getattr(embed, "description", None)
+                if (embed_title and FLEE_RE.search(embed_title)) or (embed_desc and FLEE_RE.search(embed_desc)):
+                    is_flee = True
+                    break
+
+        if is_flee:
+            if session.state != BotState.IDLE:
+                self._log(
+                    f"{self._chan(message.channel)} Previous spawn fled — resetting state from {session.state.name} to IDLE."
+                )
+            else:
+                self._log(f"{self._chan(message.channel)} Flee notice received — state already IDLE.", "debug")
+            session.state = BotState.IDLE
+            session.spawn_id += 1
+            self.stats.total_fled += 1
+
         # Check for spawn embed
         if message.embeds:
             for embed in message.embeds:
@@ -372,6 +399,8 @@ class PokeCatcherBot(discord.Client):
             return
 
         session.state = BotState.IDENTIFYING
+        session.spawn_id += 1
+        current_spawn_id = session.spawn_id
         self._log(f"{self._chan(channel)} Spawn detected")
 
         delay = random.uniform(MIN_DELAY, MAX_DELAY)
@@ -383,7 +412,7 @@ class PokeCatcherBot(discord.Client):
         await asyncio.sleep(delay)
 
         # If state changed while sleeping (e.g. another handler reset it), abort
-        if session.state != BotState.IDENTIFYING:
+        if session.spawn_id != current_spawn_id or session.state != BotState.IDENTIFYING:
             return
 
         image_bytes = await self._download_spawn_image(embed, channel)
@@ -399,10 +428,9 @@ class PokeCatcherBot(discord.Client):
             # A high-confidence P2 Assistant auto-guess may have already claimed
             # this spawn while we were downloading/inferring — stand down rather
             # than double-catch.
-            if session.state != BotState.IDENTIFYING:
+            if session.spawn_id != current_spawn_id or session.state != BotState.IDENTIFYING:
                 self._log(
-                    f"{self._chan(channel)} Spawn already claimed by another signal "
-                    "during identification — skipping CNN result.",
+                    f"{self._chan(channel)} Spawn already claimed or reset during identification — skipping CNN result.",
                     "debug",
                 )
                 return
@@ -424,10 +452,9 @@ class PokeCatcherBot(discord.Client):
         # If a P2 Assistant auto-guess claimed this spawn during image download or
         # CNN inference, it is already being caught — don't clobber that state by
         # entering the hint wait.
-        if session.state != BotState.IDENTIFYING:
+        if session.spawn_id != current_spawn_id or session.state != BotState.IDENTIFYING:
             self._log(
-                f"{self._chan(channel)} Spawn already claimed by another signal "
-                "during identification — not entering hint wait.",
+                f"{self._chan(channel)} Spawn already claimed or reset during identification — not entering hint wait.",
                 "debug",
             )
             return
@@ -438,7 +465,7 @@ class PokeCatcherBot(discord.Client):
 
         # Wait for hint with timeout — the hint handler flips state before this fires
         await asyncio.sleep(30)
-        if session.state == BotState.WAITING_FOR_HINT:
+        if session.spawn_id == current_spawn_id and session.state == BotState.WAITING_FOR_HINT:
             self._log(f"{self._chan(channel)} Hint timeout — returning to IDLE.", "warning")
             self.stats.total_skipped += 1
             session.state = BotState.IDLE
@@ -460,6 +487,7 @@ class PokeCatcherBot(discord.Client):
     async def _attempt_catch(self, channel, pokemon_name, session, source):
         session.state = BotState.WAITING_FOR_RESULT
         session.pending_pokemon = pokemon_name
+        current_spawn_id = session.spawn_id
         self._log(f"{self._chan(channel)} Catching {pokemon_name} (source: {source})")
         try:
             async with channel.typing():
@@ -473,11 +501,12 @@ class PokeCatcherBot(discord.Client):
             await channel.send(catch_cmd)
         except discord.HTTPException as exc:
             self._log(f"{self._chan(channel)} Failed to send catch command: {exc}", "error")
-            session.state = BotState.IDLE
+            if session.spawn_id == current_spawn_id:
+                session.state = BotState.IDLE
             return
 
         await asyncio.sleep(10)
-        if session.state == BotState.WAITING_FOR_RESULT:
+        if session.spawn_id == current_spawn_id and session.state == BotState.WAITING_FOR_RESULT:
             self._log(f"{self._chan(channel)} No catch confirmation received.", "warning")
             session.state = BotState.IDLE
 
