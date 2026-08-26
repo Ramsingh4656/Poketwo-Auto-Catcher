@@ -21,14 +21,28 @@ logger = logging.getLogger("bot")
 
 POKETWO_BOT_ID = 716390085896962058
 
-# ── P2 Assistant (built-in, always-on secondary hint signal) ──────────────────
+# ── P2 Assistant (built-in, always-on secondary hint source) ──────────────────
 # The P2 Assistant bot ID is a fixed constant, NOT a configurable option. The
 # integration is always active: it simply has no effect in servers where that
 # bot is absent, because the bot only ever reacts to messages P2 Assistant
-# actually sends. Its candidate names are still resolved through the
-# authoritative 936-label mapping and rejected when unknown/ambiguous, and it
-# never overrides Poketwo — it only fills in while the bot is awaiting a hint.
+# actually sends. P2 Assistant emits two useful, unprompted messages:
+#   1. "<Name>: <confidence>%"  — an automatic guess the instant a spawn appears
+#      (often before our own CNN finishes). Used as an EARLY fast-path catch when
+#      the confidence clears P2_ASSISTANT_AUTO_CONFIDENCE (see below).
+#   2. "Possible Pokémon: <name>" — a post-hint guess, used as a fallback while
+#      awaiting Poketwo's hint.
+# In every case the name is resolved through the authoritative 936-label mapping
+# and rejected when unknown/ambiguous, and P2 never overrides a Poketwo hint the
+# bot has already matched.
 P2_ASSISTANT_ID = 854233015475109888
+
+# Minimum self-reported confidence for P2 Assistant's automatic "<Name>: <conf>%"
+# guess to trigger an immediate catch, skipping the CNN wait and the hint window.
+# Deliberately stricter than CNN_CONFIDENCE_THRESHOLD: we're trusting a
+# third-party signal we can't verify against the spawn image ourselves. Hardcoded
+# (not an env var) to keep this narrow shortcut simple and predictable — tweak it
+# right here if the trade-off needs adjusting.
+P2_ASSISTANT_AUTO_CONFIDENCE = 0.90
 
 _P2_SCORE_RE = re.compile(r"^\s*([^:\n]+?)\s*:\s*(\d+(?:\.\d+)?)%\s*$", re.IGNORECASE)
 _P2_NAME_RE = re.compile(r"^\s*Possible Pokémon:\s*(.+?)\s*$", re.IGNORECASE)
@@ -206,7 +220,8 @@ class PokeCatcherBot(discord.Client):
         channels = ", ".join(str(c) for c in sorted(self.catch_channel_ids))
         self._log(f"Catching ONLY in channel(s): {channels}")
         self._log(
-            f"P2 Assistant fallback active (built-in, ID {P2_ASSISTANT_ID}); "
+            f"P2 Assistant active (built-in, ID {P2_ASSISTANT_ID}): early auto-guess "
+            f"catches at >= {P2_ASSISTANT_AUTO_CONFIDENCE:.0%}, plus post-hint fallback; "
             "no effect in servers where that bot is absent."
         )
 
@@ -240,12 +255,30 @@ class PokeCatcherBot(discord.Client):
             self._log(f"{self._chan(channel)} Failed to request P2 Assistant hint: {exc}", "error")
 
     async def _handle_p2_assistant(self, message, session):
-        """Use only a strict, authoritative P2 candidate while awaiting a hint."""
+        """Act on P2 Assistant's two unprompted message formats, per channel.
+
+        * ``<Name>: <confidence>%`` — posted automatically the instant a spawn
+          appears (often before our CNN finishes). Treated as an *early* signal:
+          from spawn detection onward (IDENTIFYING or WAITING_FOR_HINT), if the
+          confidence is at/above ``P2_ASSISTANT_AUTO_CONFIDENCE`` and the name
+          resolves to a single authoritative label, we catch immediately —
+          skipping the CNN wait and the hint window. Low-confidence or unresolved
+          auto-messages are ignored so the normal CNN+hint flow proceeds exactly
+          as before.
+        * ``Possible Pokémon: <name>`` — posted after a hint. Unchanged fallback:
+          acted on only while WAITING_FOR_HINT.
+
+        All state is read/written on the per-channel *session*, so a P2 message
+        in one channel never affects another.
+        """
         channel = message.channel
-        if session.state != BotState.WAITING_FOR_HINT:
+
+        # Only meaningful once a spawn has been detected in THIS channel; ignore
+        # P2 chatter while idle or already resolving a catch.
+        if session.state not in (BotState.IDENTIFYING, BotState.WAITING_FOR_HINT):
             self._log(
-                f"{self._chan(channel)} Ignored P2 Assistant candidate because this "
-                "channel is not awaiting a hint.",
+                f"{self._chan(channel)} Ignored P2 Assistant message — no spawn "
+                "awaiting identification in this channel.",
                 "debug",
             )
             return
@@ -256,9 +289,36 @@ class PokeCatcherBot(discord.Client):
             return
 
         pokemon_name, assistant_confidence = candidate
-        suffix = f" ({assistant_confidence:.1%})" if assistant_confidence is not None else ""
-        self._log(f"{self._chan(channel)} P2 Assistant candidate: {pokemon_name}{suffix}")
-        await self._attempt_catch(channel, pokemon_name, session)
+
+        # ── Post-hint "Possible Pokémon: <name>" (no confidence) — existing path ──
+        if assistant_confidence is None:
+            if session.state != BotState.WAITING_FOR_HINT:
+                self._log(
+                    f"{self._chan(channel)} Ignored P2 Assistant post-hint candidate "
+                    "— this channel is not awaiting a hint.",
+                    "debug",
+                )
+                return
+            self._log(f"{self._chan(channel)} P2 Assistant post-hint candidate: {pokemon_name}")
+            await self._attempt_catch(channel, pokemon_name, session, "P2 Assistant post-hint message")
+            self.stats.total_p2_assistant += 1
+            return
+
+        # ── Early automatic "<Name>: <confidence>%" — fast path ──
+        if assistant_confidence < P2_ASSISTANT_AUTO_CONFIDENCE:
+            self._log(
+                f"{self._chan(channel)} P2 Assistant auto-guess {pokemon_name} "
+                f"({assistant_confidence:.1%}) below the {P2_ASSISTANT_AUTO_CONFIDENCE:.0%} "
+                "bar — ignoring; continuing normal CNN/hint flow."
+            )
+            return
+
+        self._log(
+            f"{self._chan(channel)} P2 Assistant auto-guess {pokemon_name} "
+            f"({assistant_confidence:.1%}) meets the {P2_ASSISTANT_AUTO_CONFIDENCE:.0%} "
+            "bar — catching early (skipping CNN/hint wait)."
+        )
+        await self._attempt_catch(channel, pokemon_name, session, "P2 Assistant early auto-message")
         self.stats.total_p2_assistant += 1
 
     async def on_message(self, message):
@@ -336,10 +396,21 @@ class PokeCatcherBot(discord.Client):
                 self._log(f"{self._chan(channel)} CNN prediction error: {exc}", "error")
                 result = None
 
+            # A high-confidence P2 Assistant auto-guess may have already claimed
+            # this spawn while we were downloading/inferring — stand down rather
+            # than double-catch.
+            if session.state != BotState.IDENTIFYING:
+                self._log(
+                    f"{self._chan(channel)} Spawn already claimed by another signal "
+                    "during identification — skipping CNN result.",
+                    "debug",
+                )
+                return
+
             if result:
                 name, conf = result
                 self._log(f"{self._chan(channel)} CNN prediction: {name} ({conf:.1%})")
-                await self._attempt_catch(channel, name, session)
+                await self._attempt_catch(channel, name, session, "CNN")
                 self.stats.total_cnn_correct += 1
                 return
             else:
@@ -349,6 +420,17 @@ class PokeCatcherBot(discord.Client):
                     self._log(f"{self._chan(channel)} CNN uncertain — top: {top_str}")
                 except Exception as exc:
                     self._log(f"{self._chan(channel)} CNN top-k error: {exc}", "error")
+
+        # If a P2 Assistant auto-guess claimed this spawn during image download or
+        # CNN inference, it is already being caught — don't clobber that state by
+        # entering the hint wait.
+        if session.state != BotState.IDENTIFYING:
+            self._log(
+                f"{self._chan(channel)} Spawn already claimed by another signal "
+                "during identification — not entering hint wait.",
+                "debug",
+            )
+            return
 
         self._log(f"{self._chan(channel)} Waiting for hint from Poketwo...")
         session.state = BotState.WAITING_FOR_HINT
@@ -368,16 +450,17 @@ class PokeCatcherBot(discord.Client):
         if best:
             self._log(f"{self._chan(channel)} Hint matched: {best}")
             await asyncio.sleep(random.uniform(1.0, 3.0))
-            await self._attempt_catch(channel, best, session)
+            await self._attempt_catch(channel, best, session, "Poketwo hint")
             self.stats.total_hint_used += 1
         else:
             self._log(f"{self._chan(channel)} No hint match found — skipping.", "warning")
             self.stats.total_skipped += 1
             session.state = BotState.IDLE
 
-    async def _attempt_catch(self, channel, pokemon_name, session):
+    async def _attempt_catch(self, channel, pokemon_name, session, source):
         session.state = BotState.WAITING_FOR_RESULT
         session.pending_pokemon = pokemon_name
+        self._log(f"{self._chan(channel)} Catching {pokemon_name} (source: {source})")
         try:
             async with channel.typing():
                 await asyncio.sleep(random.uniform(0.3, 1.2))
