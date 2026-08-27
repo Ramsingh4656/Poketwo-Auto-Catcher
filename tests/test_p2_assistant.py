@@ -401,6 +401,19 @@ class P2AssistantEarlySignalTests(unittest.TestCase):
         self.assertIn("catching early (skipping CNN/hint wait)", logs_text(b))
         self.assertIn("skipping CNN result", logs_text(b))
 
+    def test_text_only_early_signal_logs_flag(self) -> None:
+        async def scenario():
+            b = make_bot([111], StubPredictor(loaded=True))
+            ch = FakeChannel(111, "general")
+            b._sessions[111].state = IDENTIFYING
+            # Klang is in EXTRA_POKEMON
+            await b.on_message(FakeMessage(ch, P2, content="Klang: 99.0%"))
+            return b, ch
+
+        b, ch = run(scenario())
+        self.assertEqual(catches(ch), [f"<@{POKETWO}> catch Klang"])
+        self.assertIn("[TEXT-ONLY CATCH]", logs_text(b))
+
 
 if __name__ == "__main__":
     unittest.main()

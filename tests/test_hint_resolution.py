@@ -9,7 +9,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT / "bot"))
 sys.path.insert(0, str(REPO_ROOT / "archive" / "experimental_hybrid" / "scripts"))
 
-from pokemon_data import ALL_POKEMON, get_best_hint_match, match_from_hint  # noqa: E402
+from pokemon_data import ALL_POKEMON, get_best_hint_match, match_from_hint, resolve_authoritative_name, is_text_only_name  # noqa: E402
 from hybrid_inference import resolve_hint  # noqa: E402
 
 
@@ -58,6 +58,24 @@ class LiveHintResolverTests(unittest.TestCase):
         self.assertNotIn(outside, ALL_POKEMON)
         compact = " ".join(outside)
         self.assertIsNone(get_best_hint_match(f"The pokémon is **{compact}**."))
+
+    def test_extra_catchable_2_text_only_recognition(self) -> None:
+        # Klang is not in the 936 visual universe (ALL_POKEMON)
+        self.assertNotIn("Klang", ALL_POKEMON)
+        self.assertNotIn("klang", ALL_POKEMON)
+
+        # Klang is recognized by text/hint matches
+        self.assertEqual(get_best_hint_match("The pokémon is **k l a n g**."), "Klang")
+        self.assertEqual(resolve_authoritative_name("Klang"), "Klang")
+        self.assertEqual(resolve_authoritative_name("klang"), "Klang")
+
+        # It is correctly flagged as a text-only name
+        self.assertTrue(is_text_only_name("Klang"))
+        self.assertFalse(is_text_only_name("pikachu"))
+
+        # Other catchable=2 names (like Aegislash) also resolve correctly
+        self.assertEqual(get_best_hint_match("The pokémon is **a e g i s l a s h**."), "Aegislash")
+        self.assertEqual(resolve_authoritative_name("Aegislash"), "Aegislash")
 
 
 class HybridHintResolverTests(unittest.TestCase):

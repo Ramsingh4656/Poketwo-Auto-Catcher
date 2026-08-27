@@ -15,7 +15,7 @@ import aiohttp
 import discord
 
 from predictor import PokemonPredictor
-from pokemon_data import get_best_hint_match, resolve_authoritative_name
+from pokemon_data import get_best_hint_match, resolve_authoritative_name, is_text_only_name
 
 logger = logging.getLogger("bot")
 
@@ -488,7 +488,10 @@ class PokeCatcherBot(discord.Client):
         session.state = BotState.WAITING_FOR_RESULT
         session.pending_pokemon = pokemon_name
         current_spawn_id = session.spawn_id
-        self._log(f"{self._chan(channel)} Catching {pokemon_name} (source: {source})")
+        if is_text_only_name(pokemon_name):
+            self._log(f"{self._chan(channel)} [TEXT-ONLY CATCH] Catching {pokemon_name} (source: {source})")
+        else:
+            self._log(f"{self._chan(channel)} Catching {pokemon_name} (source: {source})")
         try:
             async with channel.typing():
                 await asyncio.sleep(random.uniform(0.3, 1.2))

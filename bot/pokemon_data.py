@@ -79,63 +79,6 @@ _POKEMON_LOWER = {p.lower(): p for p in ALL_POKEMON}
 
 _AUTHORITATIVE_LABEL_COUNT = 936
 
-
-def resolve_authoritative_name(query: str) -> Optional[str]:
-    """Return one canonical 936-label name for an Assistant-provided name.
-
-    Matching accepts exact model labels and the safe human-form variants already
-    used by the full-universe hint resolver.  It refuses to resolve when the
-    authoritative mapping is unavailable, the name is unknown, or more than one
-    canonical label matches.
-    """
-    if len(ALL_POKEMON) != _AUTHORITATIVE_LABEL_COUNT:
-        logger.error(
-            "Authoritative Pokémon mapping unavailable or incomplete: expected %d labels, found %d.",
-            _AUTHORITATIVE_LABEL_COUNT,
-            len(ALL_POKEMON),
-        )
-        return None
-
-    normalized = _compact(query.strip())
-    if not normalized:
-        return None
-
-    matches = [
-        name for name in ALL_POKEMON
-        if normalized in _label_variants(name)
-    ]
-    return matches[0] if len(matches) == 1 else None
-
-
-# ── Hint Parsing ──────────────────────────────────────────────────────────────
-
-def parse_hint(hint_text: str) -> Optional[str]:
-    """Extract the hint pattern from a Pokétwo hint message.
-
-    Poketwo sends hints like:
-        ``The pokémon is **C\\_\\_ \\_ \\_z\\_\\_ \\_**.``
-
-    We strip markdown, unescape, and return a clean pattern string where
-    unknown letters are represented by ``_`` and known letters are kept.
-
-    Returns ``None`` if parsing fails.
-    """
-    # Try to find content between ** **
-    match = re.search(r"\*\*(.+?)\*\*", hint_text)
-    if not match:
-        return None
-
-    raw = match.group(1).strip().rstrip(".")
-
-    # Remove backslash escaping
-    raw = raw.replace("\\_", "_")
-    raw = raw.replace("\\", "")
-
-    # Normalise whitespace
-    pattern = raw.strip()
-    return pattern if pattern else None
-
-
 _FORM_PREFIXES = {
     "alola": "alolan",
     "galar": "galarian",
@@ -181,6 +124,125 @@ def _label_variants(name: str) -> set[str]:
     return variants
 
 
+_AUTHORITATIVE_VARIANTS = set()
+for name in ALL_POKEMON:
+    _AUTHORITATIVE_VARIANTS.update(_label_variants(name))
+
+
+def _load_extra_catchable_2_names() -> List[str]:
+    """Load names from hybrid mapping that are catchable == "2" in dataset_audit.json."""
+    audit_path = _BASE_DIR / "reports" / "dataset_audit.json"
+    catchable_2_norms = set()
+    if audit_path.exists():
+        try:
+            with open(audit_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            official = data.get("official", {})
+            dirs = official.get("directories", {})
+            images = dirs.get("images", {}).get("manifest", [])
+            shiny = dirs.get("shiny", {}).get("manifest", [])
+            for r in images + shiny:
+                if r.get("catchable") == "2":
+                    catchable_2_norms.add(_compact(r.get("pokemon_name", "")))
+                    catchable_2_norms.add(_compact(r.get("slug", "")))
+        except Exception as e:
+            logger.error("Failed to read dataset_audit.json: %s", e)
+
+    hybrid_path = _BASE_DIR / "archive" / "experimental_hybrid" / "model" / "index_to_pokemon.json"
+    extra_names = []
+    if hybrid_path.exists():
+        try:
+            with open(hybrid_path, "r", encoding="utf-8") as f:
+                hybrid_map = json.load(f)
+            for name in hybrid_map.values():
+                name_compact = _compact(name)
+                if name_compact in catchable_2_norms:
+                    if name_compact not in _AUTHORITATIVE_VARIANTS:
+                        if name not in extra_names:
+                            extra_names.append(name)
+        except Exception as e:
+            logger.error("Failed to read hybrid index_to_pokemon.json: %s", e)
+            
+    return sorted(extra_names)
+
+
+EXTRA_POKEMON: List[str] = _load_extra_catchable_2_names()
+
+
+def is_text_only_name(name: str) -> bool:
+    """Return True if the name is a text-only catchable-2 Pokémon name."""
+    comp = _compact(name)
+    return comp not in _AUTHORITATIVE_VARIANTS
+
+
+
+def resolve_authoritative_name(query: str) -> Optional[str]:
+    """Return one canonical 936-label or extra catchable-2 name for an Assistant name.
+
+    Matching accepts exact model labels and the safe human-form variants already
+    used by the full-universe hint resolver.  It refuses to resolve when the
+    authoritative mapping is unavailable, the name is unknown, or more than one
+    canonical label matches.
+    """
+    if len(ALL_POKEMON) != _AUTHORITATIVE_LABEL_COUNT:
+        logger.error(
+            "Authoritative Pokémon mapping unavailable or incomplete: expected %d labels, found %d.",
+            _AUTHORITATIVE_LABEL_COUNT,
+            len(ALL_POKEMON),
+        )
+        return None
+
+    normalized = _compact(query.strip())
+    if not normalized:
+        return None
+
+    matches = [
+        name for name in ALL_POKEMON
+        if normalized in _label_variants(name)
+    ]
+    if len(matches) == 1:
+        return matches[0]
+
+    # Fallback to extra catchable=2 names for text-only matching
+    extra_matches = [
+        name for name in EXTRA_POKEMON
+        if normalized in _label_variants(name)
+    ]
+    return extra_matches[0] if len(extra_matches) == 1 else None
+
+
+# ── Hint Parsing ──────────────────────────────────────────────────────────────
+
+def parse_hint(hint_text: str) -> Optional[str]:
+    """Extract the hint pattern from a Pokétwo hint message.
+
+    Poketwo sends hints like:
+        ``The pokémon is **C\\_\\_ \\_ \\_z\\_\\_ \\_**.``
+
+    We strip markdown, unescape, and return a clean pattern string where
+    unknown letters are represented by ``_`` and known letters are kept.
+
+    Returns ``None`` if parsing fails.
+    """
+    # Try to find content between ** **
+    match = re.search(r"\*\*(.+?)\*\*", hint_text)
+    if not match:
+        return None
+
+    raw = match.group(1).strip().rstrip(".")
+
+    # Remove backslash escaping
+    raw = raw.replace("\\_", "_")
+    raw = raw.replace("\\", "")
+
+    # Normalise whitespace
+    pattern = raw.strip()
+    return pattern if pattern else None
+
+
+# Helper functions (_compact, _label_variants, _FORM_PREFIXES) have been moved to the top of the file.
+
+
 def _hint_pattern(pattern: str) -> tuple[str, int]:
     """Normalize a hint while preserving one-character wildcards."""
     pattern = pattern.replace("\\_", "_").replace("♀", "f").replace("♂", "m")
@@ -202,8 +264,12 @@ def _hint_matches(pattern: str, name: str) -> bool:
 
 
 def match_from_hint(pattern: str) -> List[str]:
-    """Return every authoritative label matching *pattern*."""
-    return [name for name in ALL_POKEMON if _hint_matches(pattern, name)]
+    """Return every authoritative or text-only label matching *pattern*."""
+    auth_matches = [name for name in ALL_POKEMON if _hint_matches(pattern, name)]
+    if auth_matches:
+        return auth_matches
+    # Fallback to extra catchable=2 names for text-only matching
+    return [name for name in EXTRA_POKEMON if _hint_matches(pattern, name)]
 
 
 def get_best_hint_match(hint_text: str) -> Optional[str]:
@@ -219,7 +285,7 @@ def get_best_hint_match(hint_text: str) -> Optional[str]:
 
 
 def fuzzy_match(query: str, threshold: float = 0.6) -> Optional[str]:
-    """Fuzzy-search *query* against ALL_POKEMON using SequenceMatcher.
+    """Fuzzy-search *query* against ALL_POKEMON and EXTRA_POKEMON using SequenceMatcher.
 
     Returns the best match above *threshold*, or ``None``.
     """
@@ -235,4 +301,17 @@ def fuzzy_match(query: str, threshold: float = 0.6) -> Optional[str]:
 
     if best_ratio >= threshold and best_name is not None:
         return best_name
-    return None
+
+    # Fallback to extra catchable=2 names for text-only matching
+    best_extra_name: Optional[str] = None
+    best_extra_ratio: float = 0.0
+    for name in EXTRA_POKEMON:
+        ratio = SequenceMatcher(None, query_lower, name.lower()).ratio()
+        if ratio > best_extra_ratio:
+            best_extra_ratio = ratio
+            best_extra_name = name
+
+    if best_extra_ratio > best_ratio and best_extra_ratio >= threshold:
+        return best_extra_name
+
+    return best_name if best_ratio >= threshold else None
